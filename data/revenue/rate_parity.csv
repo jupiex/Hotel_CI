@@ -1,0 +1,5 @@
+property_id,property_name,market,radisson_rate,ota_lowest_rate,parity_gap_pct,ota_platform,date,source
+RAD001,Radisson Blu Berlin Mitte,Berlin,189,184,2.6,Booking.com,2026-04-22,OTA Insight
+RAD002,Radisson Collection Warsaw,Warsaw,245,228,6.9,Expedia,2026-04-22,OTA Insight
+RAD003,Park Inn Riyadh Centre,Riyadh,142,138,2.8,Booking.com,2026-04-22,OTA Insight
+RAD004,Radisson Blu Casablanca City,Casablanca,165,148,10.3,Agoda,2026-04-22,OTA Insight

@@ -1,0 +1,5 @@
+property_id,property_name,brand,city,country,region,owner_company,contract_type,gm_name,opening_date,rooms,reltio_id
+RAD001,Radisson Blu Berlin Mitte,Radisson Blu,Berlin,Germany,EMEA Central,Berlin Hospitality Holdings,Management,Anonymised GM,2018-03-01,427,RLT-0001
+RAD002,Radisson Collection Warsaw,Radisson Collection,Warsaw,Poland,EMEA Central,Polonia Estates SA,Franchise,Anonymised GM,2015-09-15,311,RLT-0002
+RAD003,Park Inn Riyadh Centre,Park Inn by Radisson,Riyadh,Saudi Arabia,MEA,Saudi Real Estate Co,Management,Anonymised GM,2020-06-01,289,RLT-0003
+RAD004,Radisson Blu Casablanca City,Radisson Blu,Casablanca,Morocco,MEA,Atlas Hotels Maroc,Management,Anonymised GM,2017-11-10,256,RLT-0004

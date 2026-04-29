@@ -1,0 +1,319 @@
+{
+  "agent": "entry",
+  "generated_at": "2026-04-29T13:31:58.147899Z",
+  "overall_status": "RED",
+  "abp_assumptions": {
+    "A1": "Target owner signs at Radisson standard fee structure (3-4% mgmt fee)",
+    "A2": "RevPAR breakeven achievable within 36 months of opening",
+    "A3": "No other Radisson brand already present in same submarket"
+  },
+  "hedging_actions": {
+    "H1": "FX RED: pause LOI negotiations; add FX floor clause to any term sheet",
+    "H2": "Pipeline RED: deprioritise market; redirect dev effort to next-priority country",
+    "H3": "Two simultaneous REDs: full 90-day hold; escalate to development committee"
+  },
+  "markets": [
+    {
+      "market": "Riyadh",
+      "country": "Saudi Arabia",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kits": [
+        {
+          "kit": "KIT_1",
+          "alert_level": "RED"
+        },
+        {
+          "kit": "KIT_2",
+          "alert_level": "GREEN"
+        },
+        {
+          "kit": "KIT_3",
+          "alert_level": "GREEN"
+        }
+      ],
+      "hedging_triggered": [
+        "H1 or H2 (per KIT)"
+      ]
+    },
+    {
+      "market": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "status": "YELLOW",
+      "red_count": 0,
+      "yellow_count": 3,
+      "kits": [
+        {
+          "kit": "KIT_1",
+          "alert_level": "YELLOW"
+        },
+        {
+          "kit": "KIT_2",
+          "alert_level": "YELLOW"
+        },
+        {
+          "kit": "KIT_3",
+          "alert_level": "YELLOW"
+        }
+      ],
+      "hedging_triggered": []
+    },
+    {
+      "market": "Warsaw",
+      "country": "Poland",
+      "status": "GREEN",
+      "red_count": 0,
+      "yellow_count": 0,
+      "kits": [
+        {
+          "kit": "KIT_1",
+          "alert_level": "GREEN"
+        },
+        {
+          "kit": "KIT_2",
+          "alert_level": "GREEN"
+        },
+        {
+          "kit": "KIT_3",
+          "alert_level": "GREEN"
+        }
+      ],
+      "hedging_triggered": []
+    },
+    {
+      "market": "Casablanca",
+      "country": "Morocco",
+      "status": "RED",
+      "red_count": 3,
+      "yellow_count": 0,
+      "kits": [
+        {
+          "kit": "KIT_1",
+          "alert_level": "RED"
+        },
+        {
+          "kit": "KIT_2",
+          "alert_level": "RED"
+        },
+        {
+          "kit": "KIT_3",
+          "alert_level": "RED"
+        }
+      ],
+      "hedging_triggered": [
+        "H3"
+      ]
+    }
+  ],
+  "indicators": [
+    {
+      "kit": "KIT_1",
+      "name": "Pipeline rooms vs existing supply",
+      "market": "Riyadh",
+      "country": "Saudi Arabia",
+      "value": 18.3,
+      "unit": "%",
+      "threshold_yellow": 10,
+      "threshold_red": 15,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "STR Pipeline",
+      "source_url": "https://str.com/products/pipeline",
+      "capture_date": "2026-04-22",
+      "recommendation": "Pause market development. Activate H2: redirect to next-priority country.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Pipeline rooms vs existing supply",
+      "market": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "value": 10.9,
+      "unit": "%",
+      "threshold_yellow": 10,
+      "threshold_red": 15,
+      "alert_level": "YELLOW",
+      "confidence": "MEDIUM",
+      "source": "STR Pipeline",
+      "source_url": "https://str.com/products/pipeline",
+      "capture_date": "2026-04-22",
+      "recommendation": "Monitor weekly. Review submarket exposure.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Pipeline rooms vs existing supply",
+      "market": "Warsaw",
+      "country": "Poland",
+      "value": 7.3,
+      "unit": "%",
+      "threshold_yellow": 10,
+      "threshold_red": 15,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "STR Pipeline",
+      "source_url": "https://str.com/products/pipeline",
+      "capture_date": "2026-04-22",
+      "recommendation": "Continue planned signings.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Pipeline rooms vs existing supply",
+      "market": "Casablanca",
+      "country": "Morocco",
+      "value": 16.1,
+      "unit": "%",
+      "threshold_yellow": 10,
+      "threshold_red": 15,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "STR Pipeline",
+      "source_url": "https://str.com/products/pipeline",
+      "capture_date": "2026-04-22",
+      "recommendation": "Pause market development. Activate H2: redirect to next-priority country.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Forward booking pace vs prior year",
+      "market": "Riyadh",
+      "country": "Saudi Arabia",
+      "value": 94.0,
+      "unit": "% of PY",
+      "threshold_yellow": 90,
+      "threshold_red": 80,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "OAG airline capacity",
+      "source_url": "https://www.oag.com/",
+      "capture_date": "2026-04-22",
+      "recommendation": "Demand on track.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Forward booking pace vs prior year",
+      "market": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "value": 86.0,
+      "unit": "% of PY",
+      "threshold_yellow": 90,
+      "threshold_red": 80,
+      "alert_level": "YELLOW",
+      "confidence": "MEDIUM",
+      "source": "OAG airline capacity",
+      "source_url": "https://www.oag.com/",
+      "capture_date": "2026-04-22",
+      "recommendation": "Demand softening. Stress-test breakeven model.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Forward booking pace vs prior year",
+      "market": "Warsaw",
+      "country": "Poland",
+      "value": 102.0,
+      "unit": "% of PY",
+      "threshold_yellow": 90,
+      "threshold_red": 80,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "OAG airline capacity",
+      "source_url": "https://www.oag.com/",
+      "capture_date": "2026-04-22",
+      "recommendation": "Demand on track.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Forward booking pace vs prior year",
+      "market": "Casablanca",
+      "country": "Morocco",
+      "value": 78.0,
+      "unit": "% of PY",
+      "threshold_yellow": 90,
+      "threshold_red": 80,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "OAG airline capacity",
+      "source_url": "https://www.oag.com/",
+      "capture_date": "2026-04-22",
+      "recommendation": "Demand pace below 80% prior year. Reassess opening-year P&L.",
+      "abp_assumption_affected": "A2"
+    },
+    {
+      "kit": "KIT_3",
+      "name": "FX depreciation vs EUR (6mo)",
+      "market": "Riyadh",
+      "country": "Saudi Arabia",
+      "value": 2.1,
+      "unit": "%",
+      "threshold_yellow": 8,
+      "threshold_red": 15,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "ECB exchange rate feed",
+      "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/",
+      "capture_date": "2026-04-22",
+      "policy_notes": "SAR pegged to USD; Vision 2030 hospitality incentives active",
+      "recommendation": "FX stable. No action required.",
+      "abp_assumption_affected": "A1"
+    },
+    {
+      "kit": "KIT_3",
+      "name": "FX depreciation vs EUR (6mo)",
+      "market": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "value": 9.4,
+      "unit": "%",
+      "threshold_yellow": 8,
+      "threshold_red": 15,
+      "alert_level": "YELLOW",
+      "confidence": "MEDIUM",
+      "source": "ECB exchange rate feed",
+      "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/",
+      "capture_date": "2026-04-22",
+      "policy_notes": "VND under pressure; new foreign ownership rules pending",
+      "recommendation": "FX volatility elevated. Re-price term sheets.",
+      "abp_assumption_affected": "A1"
+    },
+    {
+      "kit": "KIT_3",
+      "name": "FX depreciation vs EUR (6mo)",
+      "market": "Warsaw",
+      "country": "Poland",
+      "value": 0.2,
+      "unit": "%",
+      "threshold_yellow": 8,
+      "threshold_red": 15,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "ECB exchange rate feed",
+      "source_url": "https://api.frankfurter.dev (ECB rates)",
+      "capture_date": "2026-04-29",
+      "policy_notes": "PLN stable; EU funds supporting tourism infrastructure",
+      "recommendation": "FX stable. No action required.",
+      "abp_assumption_affected": "A1"
+    },
+    {
+      "kit": "KIT_3",
+      "name": "FX depreciation vs EUR (6mo)",
+      "market": "Casablanca",
+      "country": "Morocco",
+      "value": 16.8,
+      "unit": "%",
+      "threshold_yellow": 8,
+      "threshold_red": 15,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "ECB exchange rate feed",
+      "source_url": "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/",
+      "capture_date": "2026-04-22",
+      "policy_notes": "MAD weakening; tourism levy increase proposed for 2027",
+      "recommendation": "FX depreciation >15%. Activate H1: pause LOI; add FX floor clause.",
+      "abp_assumption_affected": "A1"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+property_id,property_name,date,occupancy_pct,adr_eur,revpar_eur,revpar_budget_eur,revpar_vs_budget_pct,revpar_vs_prior_year_pct,adr_vs_comp_set_pct,source
+RAD001,Radisson Blu Berlin Mitte,2026-04-28,82.4,189,155.7,160,97.3,3.2,1.4,Opera PMS via Synapse
+RAD002,Radisson Collection Warsaw,2026-04-28,71.6,245,175.4,210,83.5,-4.8,-2.1,Opera PMS via Synapse
+RAD003,Park Inn Riyadh Centre,2026-04-28,61.3,142,87.1,130,67.0,-12.6,-8.4,Opera PMS via Synapse
+RAD004,Radisson Blu Casablanca City,2026-04-28,54.8,148,81.1,145,55.9,-18.3,-9.2,Opera PMS via Synapse

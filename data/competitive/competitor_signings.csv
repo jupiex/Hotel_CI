@@ -1,0 +1,5 @@
+rival,market,country,property_name,brand,signing_date,source_url,in_radisson_target_market
+Marriott,Riyadh,Saudi Arabia,JW Marriott Diriyah,JW Marriott,2026-03-14,https://news.marriott.com/example,True
+Hilton,Ho Chi Minh City,Vietnam,Conrad Saigon,Conrad,2026-02-28,https://newsroom.hilton.com/example,True
+IHG,Casablanca,Morocco,InterContinental Casablanca Marina,InterContinental,2026-04-08,https://www.ihgplc.com/example,True
+Accor,Krakow,Poland,Sofitel Krakow Old Town,Sofitel,2026-01-20,https://group.accor.com/example,False

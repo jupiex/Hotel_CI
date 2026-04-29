@@ -1,0 +1,5 @@
+market,event_name,event_date,estimated_attendance,in_forecast,distance_km,source_url
+Berlin,IFA Consumer Electronics 2026,2026-09-05,240000,True,8,https://www.predicthq.com/example
+Warsaw,Impact CEE Tech Summit,2026-05-20,15000,False,3,https://www.predicthq.com/example
+Riyadh,FII Future Investment Initiative,2026-10-28,9000,True,12,https://www.predicthq.com/example
+Casablanca,GITEX Africa 2026,2026-09-22,45000,False,18,https://www.predicthq.com/example

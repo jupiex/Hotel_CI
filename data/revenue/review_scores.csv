@@ -1,0 +1,5 @@
+property_id,property_name,radisson_score,comp_set_avg_score,score_delta_30d,platform,date
+RAD001,Radisson Blu Berlin Mitte,8.6,8.4,0.05,Booking.com,2026-04-22
+RAD002,Radisson Collection Warsaw,9.0,8.7,0.10,Booking.com,2026-04-22
+RAD003,Park Inn Riyadh Centre,7.9,8.2,-0.35,Booking.com,2026-04-22
+RAD004,Radisson Blu Casablanca City,7.5,8.0,-0.45,Booking.com,2026-04-22

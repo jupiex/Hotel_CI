@@ -1,0 +1,5 @@
+jurisdiction,policy_name,status,effective_date,hotel_impact,source_url,months_to_compliance
+EU,EPBD - Energy Performance of Buildings Directive (recast),effective,2027-05-01,High - mandatory zero-emission new builds,https://eur-lex.europa.eu,12
+Italy,Tassa di soggiorno - Rome 2027 increase,passed,2027-01-01,Medium - +2 EUR/night,https://www.gazzettaufficiale.it,8
+Morocco,Tourism levy framework 2027,proposed,2027-06-01,Medium - new 3% revenue levy,https://www.maroc.ma,14
+EU,CSRD - Corporate Sustainability Reporting Directive Wave 2,effective,2026-01-01,Reporting - already in effect,https://eur-lex.europa.eu,0

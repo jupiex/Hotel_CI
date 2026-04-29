@@ -1,0 +1,5 @@
+market,country,forward_pace_pct,airline_capacity_change_pct,date,source_url
+Riyadh,Saudi Arabia,94,8.2,2026-04-22,https://www.oag.com/
+Ho Chi Minh City,Vietnam,86,3.4,2026-04-22,https://www.oag.com/
+Warsaw,Poland,102,5.7,2026-04-22,https://www.oag.com/
+Casablanca,Morocco,78,-2.1,2026-04-22,https://www.oag.com/

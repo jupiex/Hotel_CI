@@ -1,0 +1,115 @@
+{
+  "agent": "talent",
+  "generated_at": "2026-04-29T13:31:58.231281Z",
+  "overall_status": "RED",
+  "indicators": [
+    {
+      "kit": "KIT_1",
+      "name": "Radisson GM cluster departure",
+      "value": "2 GMs left in window",
+      "unit": "",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "LinkedIn profile changes",
+      "source_url": "https://www.linkedin.com",
+      "capture_date": "2026-04-29",
+      "recommendation": "Cluster of GM departures. HR briefing required; check exit-interview themes."
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Talent movement",
+      "value": "Marriott joined VP VP AI & Personalization",
+      "unit": "",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "LinkedIn",
+      "source_url": "https://www.linkedin.com/in/example1",
+      "capture_date": "2026-04-10",
+      "recommendation": "Senior strategic hire at rival. Capability gap closing."
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Talent movement",
+      "value": "Hilton joined SVP SVP Revenue Strategy",
+      "unit": "",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "LinkedIn",
+      "source_url": "https://www.linkedin.com/in/example2",
+      "capture_date": "2026-03-22",
+      "recommendation": "Senior strategic hire at rival. Capability gap closing."
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Talent movement",
+      "value": "Radisson left GM General Manager",
+      "unit": "",
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "LinkedIn",
+      "source_url": "https://www.linkedin.com/in/example3",
+      "capture_date": "2026-04-01",
+      "recommendation": "Routine."
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Talent movement",
+      "value": "Radisson left GM General Manager",
+      "unit": "",
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "LinkedIn",
+      "source_url": "https://www.linkedin.com/in/example4",
+      "capture_date": "2026-03-15",
+      "recommendation": "Routine."
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Talent movement",
+      "value": "Accor joined Director Director Generative AI",
+      "unit": "",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "LinkedIn",
+      "source_url": "https://www.linkedin.com/in/example5",
+      "capture_date": "2026-03-30",
+      "recommendation": "Senior strategic hire at rival. Capability gap closing."
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Rival capability signal",
+      "value": "Marriott: Bonvoy app adds AI-driven trip planner",
+      "unit": "",
+      "alert_level": "YELLOW",
+      "confidence": "MEDIUM",
+      "source": "Press / company news",
+      "source_url": "https://www.marriott.com/news/example",
+      "capture_date": "2026-04-05",
+      "recommendation": "Personalisation gap vs Radisson app"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Rival capability signal",
+      "value": "Hilton: Honors mobile key now works at all properties globally",
+      "unit": "",
+      "alert_level": "YELLOW",
+      "confidence": "MEDIUM",
+      "source": "Press / company news",
+      "source_url": "https://www.hilton.com/news/example",
+      "capture_date": "2026-03-12",
+      "recommendation": "Operational lead"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Rival capability signal",
+      "value": "IHG: IHG signs strategic AI deal with Microsoft",
+      "unit": "",
+      "alert_level": "YELLOW",
+      "confidence": "MEDIUM",
+      "source": "Press / company news",
+      "source_url": "https://www.ihgplc.com/news/example",
+      "capture_date": "2026-04-18",
+      "recommendation": "Capability acceleration"
+    }
+  ]
+}

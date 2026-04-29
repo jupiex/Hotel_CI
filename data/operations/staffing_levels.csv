@@ -1,0 +1,9 @@
+property_id,property_name,department,required_headcount,actual_headcount,gap_pct,date,notes
+RAD001,Radisson Blu Berlin Mitte,F&B,24,23,-4.2,2026-04-28,Within normal flex
+RAD001,Radisson Blu Berlin Mitte,Front Office,12,12,0.0,2026-04-28,Fully staffed
+RAD002,Radisson Collection Warsaw,F&B,18,13,-27.8,2026-04-28,3 sick + 2 no-shows - CRITICAL
+RAD002,Radisson Collection Warsaw,Housekeeping,22,19,-13.6,2026-04-28,Temp agency sourcing
+RAD003,Park Inn Riyadh Centre,Front Office,10,9,-10.0,2026-04-28,One vacancy unfilled
+RAD003,Park Inn Riyadh Centre,Engineering,6,4,-33.3,2026-04-28,Two positions vacant 6+ weeks
+RAD004,Radisson Blu Casablanca City,Housekeeping,20,20,0.0,2026-04-28,Fully staffed
+RAD004,Radisson Blu Casablanca City,F&B,16,15,-6.3,2026-04-28,Minor shortfall

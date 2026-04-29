@@ -1,0 +1,5 @@
+country,regulation_type,description,effective_date,wage_change_pct,source_url,compliance_cost_est
+Germany,minimum_wage,Min wage YoY change (Eurostat): +8.4%,2026-04-29,8.4,https://ec.europa.eu/eurostat (earn_mw_cur),low
+Poland,minimum_wage,Min wage YoY change (Eurostat): +3.5%,2026-04-29,3.5,https://ec.europa.eu/eurostat (earn_mw_cur),medium
+Spain,working_time,Min wage YoY change (Eurostat): +0.0%,2026-04-29,0.0,https://ec.europa.eu/eurostat (earn_mw_cur),high
+Italy,collective_bargaining,Hospitality CCNL renewal +5.8%,2026-04-01,5.8,https://ec.europa.eu/eurostat,medium

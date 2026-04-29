@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Radisson CI — Early Warning System</title>
+<style>
+  :root {
+    --bg: #0e1116; --panel: #161b22; --panel-2: #1c232c; --border: #2a323d;
+    --text: #e6edf3; --muted: #8b949e;
+    --green: #2ea043; --yellow: #d29922; --red: #da3633; --accent: #f7c948;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif; }
+  header { padding: 24px 36px 14px; border-bottom: 1px solid var(--border); }
+  h1 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+  header p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+  .meta { display: flex; gap: 22px; margin-top: 12px; font-size: 12px; color: var(--muted); flex-wrap: wrap; }
+  .meta b { color: var(--text); font-weight: 600; }
+  .pill { padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; }
+  .pill.RED    { background: rgba(218,54,51,0.15);  color: #f97066; }
+  .pill.YELLOW { background: rgba(210,153,34,0.15); color: #f1c40f; }
+  .pill.GREEN  { background: rgba(46,160,67,0.15);  color: #56d364; }
+  .pill.NO_DATA { background: rgba(110,118,129,0.2); color: var(--muted); }
+  nav { display: flex; gap: 4px; padding: 0 36px; border-bottom: 1px solid var(--border); overflow-x: auto; }
+  nav button { background: transparent; color: var(--muted); border: 0; padding: 12px 16px;
+    font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; }
+  nav button:hover { color: var(--text); }
+  nav button.active { color: var(--text); border-bottom-color: var(--accent); }
+  nav button .pill { margin-left: 8px; }
+  main { padding: 24px 36px 60px; max-width: 1500px; }
+  h2 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--muted); margin: 24px 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .card.RED { border-left: 4px solid var(--red); }
+  .card.YELLOW { border-left: 4px solid var(--yellow); }
+  .card.GREEN { border-left: 4px solid var(--green); }
+  .card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  .card-title { font-size: 15px; font-weight: 600; }
+  .card-sub { color: var(--muted); font-size: 12px; }
+  .kit-row { display: flex; justify-content: space-between; align-items: center;
+    padding: 7px 0; border-top: 1px solid var(--border); font-size: 13px; }
+  .kit-label { color: var(--muted); }
+  .kit-value { font-weight: 600; }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 8px; vertical-align: middle; }
+  .dot.RED { background: var(--red); } .dot.YELLOW { background: var(--yellow); } .dot.GREEN { background: var(--green); }
+  .hedge { margin-top: 10px; padding: 9px 11px; background: var(--panel-2); border-radius: 6px; font-size: 12px; }
+  .hedge b { color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; background: var(--panel);
+    border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--panel-2); color: var(--muted); font-weight: 600; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.06em; }
+  tr:last-child td { border-bottom: none; }
+  td.lvl-RED { color: #f97066; font-weight: 600; }
+  td.lvl-YELLOW { color: #f1c40f; font-weight: 600; }
+  td.lvl-GREEN { color: #56d364; font-weight: 600; }
+  a { color: #58a6ff; text-decoration: none; } a:hover { text-decoration: underline; }
+  .err { background: rgba(218,54,51,0.1); border: 1px solid var(--red); padding: 14px;
+    border-radius: 8px; color: #f97066; }
+  .panel { display: none; } .panel.active { display: block; }
+  .brief { background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+    padding: 22px 28px; line-height: 1.6; font-size: 14px; }
+  .brief h1 { font-size: 18px; margin: 0 0 6px; }
+  .brief h2 { color: var(--text); text-transform: none; letter-spacing: 0; font-size: 15px;
+    margin: 18px 0 8px; font-weight: 600; }
+  .brief ul { padding-left: 22px; } .brief li { margin: 4px 0; }
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .stat .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat .val { font-size: 22px; font-weight: 700; margin-top: 4px; }
+  .stat.RED .val { color: #f97066; } .stat.YELLOW .val { color: #f1c40f; } .stat.GREEN .val { color: #56d364; }
+  button.refresh { background: var(--accent); color: #1a1a1a; border: 0; padding: 7px 14px;
+    border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Radisson CI — Early Warning System</h1>
+  <p>7-agent EWS · CSV inputs → threshold logic → board brief. Reference: Inditex CI prototype.</p>
+  <div class="meta">
+    <span>System: <span id="overall-pill" class="pill">…</span></span>
+    <span>Generated: <b id="generated">…</b></span>
+    <span>RED indicators: <b id="red-count">…</b></span>
+    <span style="margin-left:auto;display:flex;gap:8px;align-items:center">
+      <a href="board.html" style="color:#58a6ff;font-size:12px;text-decoration:none">Board view →</a>
+      <button class="refresh" onclick="loadAll()">Refresh</button>
+    </span>
+  </div>
+</header>
+
+<nav id="nav"></nav>
+
+<main>
+  <div id="panel-overview" class="panel active">
+    <div class="stat-row" id="stat-row"></div>
+    <h2>System status by agent</h2>
+    <div class="grid" id="overview-cards"></div>
+    <h2>All RED indicators</h2>
+    <div id="red-table"></div>
+  </div>
+
+  <div id="panel-entry" class="panel"></div>
+  <div id="panel-competitive" class="panel"></div>
+  <div id="panel-revenue" class="panel"></div>
+  <div id="panel-owner" class="panel"></div>
+  <div id="panel-talent" class="panel"></div>
+  <div id="panel-regulatory" class="panel"></div>
+  <div id="panel-operations" class="panel"></div>
+  <div id="panel-brief" class="panel"></div>
+</main>
+
+<script>
+const AGENTS = [
+  {id: "entry",       label: "1. Market Entry"},
+  {id: "competitive", label: "2. Competitive"},
+  {id: "revenue",     label: "3. Revenue"},
+  {id: "owner",       label: "4. Owner"},
+  {id: "talent",      label: "5. Talent"},
+  {id: "regulatory",  label: "6. Regulatory"},
+  {id: "operations",  label: "8. Operations"},
+];
+
+const state = { alerts: {}, system: null, brief: "" };
+
+function buildNav() {
+  const nav = document.getElementById('nav');
+  const tabs = [{id: 'overview', label: 'Overview'}, ...AGENTS, {id: 'brief', label: 'Board brief'}];
+  nav.innerHTML = tabs.map(t =>
+    `<button data-tab="${t.id}" onclick="show('${t.id}')">${t.label}<span id="nav-pill-${t.id}" class="pill"></span></button>`
+  ).join('');
+  show('overview');
+}
+
+function show(tab) {
+  document.querySelectorAll('nav button').forEach(b =>
+    b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.panel').forEach(p =>
+    p.classList.toggle('active', p.id === 'panel-' + tab));
+}
+
+async function fetchJSON(path) {
+  const res = await fetch(path + '?_=' + Date.now());
+  if (!res.ok) throw new Error(path + ' missing — run: python run_all.py');
+  return res.json();
+}
+
+async function fetchText(path) {
+  const res = await fetch(path + '?_=' + Date.now());
+  if (!res.ok) return '';
+  return res.text();
+}
+
+async function loadAll() {
+  try {
+    state.system = await fetchJSON('../outputs/system_status.json');
+    for (const a of AGENTS) {
+      try { state.alerts[a.id] = await fetchJSON(`../outputs/alerts_${a.id}.json`); }
+      catch { state.alerts[a.id] = {agent: a.id, overall_status: 'NO_DATA', indicators: []}; }
+    }
+    state.brief = await fetchText('../outputs/board_brief.md');
+    render();
+  } catch (e) {
+    document.getElementById('panel-overview').innerHTML = `<div class="err">${e.message}</div>`;
+  }
+}
+
+function setPill(el, level) {
+  el.className = 'pill ' + level;
+  el.textContent = level;
+}
+
+function render() {
+  // Header
+  const sys = state.system || {overall_status: 'NO_DATA', red_indicator_count: 0, generated_at: ''};
+  setPill(document.getElementById('overall-pill'), sys.overall_status);
+  document.getElementById('generated').textContent = sys.generated_at;
+  document.getElementById('red-count').textContent = sys.red_indicator_count ?? 0;
+
+  // Nav pills
+  document.getElementById('nav-pill-overview').className = 'pill ' + sys.overall_status;
+  document.getElementById('nav-pill-overview').textContent = '';
+  for (const a of AGENTS) {
+    const lvl = state.alerts[a.id]?.overall_status || 'NO_DATA';
+    setPill(document.getElementById('nav-pill-' + a.id), lvl);
+    document.getElementById('nav-pill-' + a.id).textContent = '';
+  }
+  document.getElementById('nav-pill-brief').className = 'pill';
+  document.getElementById('nav-pill-brief').textContent = '';
+
+  // Overview stats
+  const counts = sys.indicator_counts || {};
+  document.getElementById('stat-row').innerHTML = `
+    <div class="stat RED"><div class="label">RED indicators</div><div class="val">${counts.RED ?? 0}</div></div>
+    <div class="stat YELLOW"><div class="label">YELLOW indicators</div><div class="val">${counts.YELLOW ?? 0}</div></div>
+    <div class="stat GREEN"><div class="label">GREEN indicators</div><div class="val">${counts.GREEN ?? 0}</div></div>
+    <div class="stat"><div class="label">Agents reporting</div><div class="val">${Object.keys(sys.agent_status || {}).length}</div></div>`;
+
+  // Overview cards
+  const oc = document.getElementById('overview-cards');
+  oc.innerHTML = AGENTS.map(a => {
+    const d = state.alerts[a.id]; const lvl = d?.overall_status || 'NO_DATA';
+    const reds = (d?.indicators || []).filter(i => i.alert_level === 'RED').length;
+    const ylw  = (d?.indicators || []).filter(i => i.alert_level === 'YELLOW').length;
+    return `<div class="card ${lvl}">
+      <div class="card-head"><div class="card-title">${a.label}</div>
+        <span class="pill ${lvl}">${lvl}</span></div>
+      <div class="card-sub">${(d?.indicators||[]).length} indicators · ${reds} RED · ${ylw} YELLOW</div>
+    </div>`;
+  }).join('');
+
+  // RED table
+  const reds = (sys.red_indicators || []);
+  document.getElementById('red-table').innerHTML = reds.length === 0
+    ? `<div class="card GREEN">No RED indicators across the system.</div>`
+    : indicatorTable(reds, true);
+
+  // Per-agent panels
+  for (const a of AGENTS) renderAgent(a.id, a.label);
+
+  // Brief
+  const md = state.brief || '_Brief not yet generated. Run: python run_all.py_';
+  document.getElementById('panel-brief').innerHTML =
+    `<div class="brief">${mdToHtml(md)}</div>`;
+}
+
+function indicatorTable(inds, withAgent) {
+  const head = ['KIT', withAgent ? 'Agent' : null, 'Name', 'Where', 'Value', 'Level', 'Confidence', 'Source', 'Recommendation']
+    .filter(Boolean);
+  const rows = inds.map(i => {
+    const where = i.market || i.property || i.country || i.rival || '';
+    const cells = [
+      i.kit || '',
+      withAgent ? (i.agent || '').toUpperCase() : null,
+      i.name || '',
+      where,
+      `${i.value ?? ''} ${i.unit || ''}`.trim(),
+      `<span class="lvl-${i.alert_level}">${i.alert_level}</span>`,
+      i.confidence || '',
+      i.source ? (i.source_url ? `<a href="${i.source_url}" target="_blank">${i.source}</a>` : i.source) : '',
+      i.recommendation || ''
+    ].filter((_, idx) => withAgent || idx !== 1);
+    return '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+  }).join('');
+  return `<table><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function renderAgent(id, label) {
+  const d = state.alerts[id]; const el = document.getElementById('panel-' + id);
+  if (!d) { el.innerHTML = '<div class="err">No data</div>'; return; }
+  const inds = d.indicators || [];
+
+  // Market cards (Agent 1 — entry)
+  let marketsHtml = '';
+  if (d.markets && d.markets.length) {
+    const indByMarket = {};
+    inds.forEach(i => { if (i.market) (indByMarket[i.market] = indByMarket[i.market] || []).push(i); });
+    marketsHtml = '<h2>Markets</h2><div class="grid">' + d.markets.map(m => {
+      const rows = (indByMarket[m.market] || []).map(i =>
+        `<div class="kit-row"><span class="kit-label">${i.kit} · ${i.name}</span>
+         <span class="kit-value">${i.value ?? '—'}${i.unit ? ' '+i.unit : ''}<span class="dot ${i.alert_level}"></span></span></div>`
+      ).join('');
+      const hedge = (m.hedging_triggered && m.hedging_triggered.length)
+        ? `<div class="hedge"><b>Hedging:</b> ${m.hedging_triggered.join(', ')}</div>` : '';
+      return `<div class="card ${m.status}">
+        <div class="card-head">
+          <div><div class="card-title">${m.market}</div><div class="card-sub">${m.country}</div></div>
+          <span class="pill ${m.status}">${m.status}</span>
+        </div>${rows}${hedge}</div>`;
+    }).join('') + '</div>';
+  }
+
+  // Property cards (Agent 8 — operations)
+  let propertiesHtml = '';
+  if (d.properties && d.properties.length) {
+    const indByProp = {};
+    inds.forEach(i => { if (i.property_id) (indByProp[i.property_id] = indByProp[i.property_id] || []).push(i); });
+    propertiesHtml = '<h2>Properties — GM daily view</h2><div class="grid">' + d.properties.map(p => {
+      const pInds = indByProp[p.property_id] || [];
+      // Group by KIT, show worst alert per KIT
+      const kitWorst = {};
+      pInds.forEach(i => {
+        const prev = kitWorst[i.kit]; const priority = {RED:3,YELLOW:2,GREEN:1};
+        if (!prev || (priority[i.alert_level]||0) > (priority[prev.alert_level]||0)) kitWorst[i.kit] = i;
+      });
+      const kitRows = Object.values(kitWorst).map(i =>
+        `<div class="kit-row">
+          <span class="kit-label">${i.kit} · ${i.name}</span>
+          <span class="kit-value">${i.alert_level}<span class="dot ${i.alert_level}"></span></span>
+        </div>`).join('');
+      // Top RED recommendation
+      const topRed = pInds.find(i => i.alert_level === 'RED');
+      const actionHtml = topRed
+        ? `<div class="hedge"><b>Action:</b> ${topRed.recommendation}</div>` : '';
+      return `<div class="card ${p.status}">
+        <div class="card-head">
+          <div><div class="card-title">${p.property}</div>
+          <div class="card-sub">${p.red_count} RED · ${p.yellow_count} YELLOW</div></div>
+          <span class="pill ${p.status}">${p.status}</span>
+        </div>${kitRows}${actionHtml}</div>`;
+    }).join('') + '</div>';
+  }
+
+  el.innerHTML = `
+    <h2>${label} — status: <span class="pill ${d.overall_status}">${d.overall_status}</span></h2>
+    ${propertiesHtml}${marketsHtml}
+    <h2>All indicators</h2>
+    ${inds.length ? indicatorTable(inds, false) : '<div class="card">No indicators.</div>'}
+  `;
+}
+
+function mdToHtml(md) {
+  // tiny markdown: # / ## / ### / **bold** / `code` / lists / paragraphs
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const lines = md.split(/\r?\n/);
+  let out = []; let inList = false;
+  for (let raw of lines) {
+    let l = esc(raw);
+    l = l.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
+    if (/^### /.test(raw))      { if(inList){out.push('</ul>'); inList=false;} out.push(`<h3>${l.slice(4)}</h3>`); }
+    else if (/^## /.test(raw))  { if(inList){out.push('</ul>'); inList=false;} out.push(`<h2>${l.slice(3)}</h2>`); }
+    else if (/^# /.test(raw))   { if(inList){out.push('</ul>'); inList=false;} out.push(`<h1>${l.slice(2)}</h1>`); }
+    else if (/^- /.test(raw))   { if(!inList){out.push('<ul>'); inList=true;} out.push(`<li>${l.slice(2)}</li>`); }
+    else if (raw.trim() === '') { if(inList){out.push('</ul>'); inList=false;} out.push(''); }
+    else                        { if(inList){out.push('</ul>'); inList=false;} out.push(`<p>${l}</p>`); }
+  }
+  if (inList) out.push('</ul>');
+  return out.join('\n');
+}
+
+buildNav();
+loadAll();
+</script>
+</body>
+</html>

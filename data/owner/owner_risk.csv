@@ -1,0 +1,5 @@
+property_id,property_name,owner_company,contract_expiry_date,months_to_expiry,current_review_score,score_delta_90d,competing_operator_signal,risk_level
+RAD001,Radisson Blu Berlin Mitte,Berlin Hospitality Holdings,2029-12-31,44,8.6,0.10,False,LOW
+RAD002,Radisson Collection Warsaw,Polonia Estates SA,2027-06-30,14,9.0,0.05,False,LOW
+RAD003,Park Inn Riyadh Centre,Saudi Real Estate Co,2027-09-30,17,7.9,-0.40,True,HIGH
+RAD004,Radisson Blu Casablanca City,Atlas Hotels Maroc,2026-11-30,7,7.5,-0.55,False,HIGH

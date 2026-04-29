@@ -1,0 +1,9 @@
+property_id,property_name,issue_id,issue_type,location,severity,reported_date,status,hours_open,guest_facing,notes
+RAD001,Radisson Blu Berlin Mitte,ISS-001,HVAC fault,Room 412,medium,2026-04-27,open,30,True,Guest complained about temperature
+RAD001,Radisson Blu Berlin Mitte,ISS-002,Elevator maintenance,North elevator bank,low,2026-04-28,in_progress,6,True,Scheduled - one of three elevators
+RAD002,Radisson Collection Warsaw,ISS-003,Pool heating system,Spa,high,2026-04-26,open,54,True,Spa closed - revenue impact
+RAD002,Radisson Collection Warsaw,ISS-004,Leak in kitchen,Restaurant kitchen,high,2026-04-27,open,30,False,Health & safety risk
+RAD003,Park Inn Riyadh Centre,ISS-005,Internet outage,Floors 5-8,high,2026-04-28,open,8,True,ISP fault - engineer on site
+RAD003,Park Inn Riyadh Centre,ISS-006,AC unit,Conference Room B,medium,2026-04-25,open,72,True,Event booked tomorrow
+RAD004,Radisson Blu Casablanca City,ISS-007,Generator test failure,Basement,high,2026-04-27,open,30,False,Annual compliance test failed
+RAD004,Radisson Blu Casablanca City,ISS-008,Lobby water feature,Main lobby,low,2026-04-28,open,10,True,Aesthetic only
