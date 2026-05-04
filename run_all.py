@@ -31,6 +31,7 @@ import agent_owner
 import agent_talent
 import agent_regulatory
 import agent_operations
+import agent_deal_score
 import agent_orchestrator
 
 if __name__ == "__main__":
@@ -39,7 +40,8 @@ if __name__ == "__main__":
     print("=" * 60)
     failed = []
     for mod in (agent_entry, agent_competitive, agent_revenue,
-                agent_owner, agent_talent, agent_regulatory, agent_operations):
+                agent_owner, agent_talent, agent_regulatory, agent_operations,
+                agent_deal_score):
         name = mod.__name__
         try:
             mod.run()

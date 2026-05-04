@@ -74,6 +74,58 @@
   .stat.RED .val { color: #f97066; } .stat.YELLOW .val { color: #f1c40f; } .stat.GREEN .val { color: #56d364; }
   button.refresh { background: var(--accent); color: #1a1a1a; border: 0; padding: 7px 14px;
     border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; }
+
+  /* ── Deal score styles ── */
+  .score-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-bottom: 28px; }
+  .score-card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px 18px; position: relative; }
+  .score-card .rank { position: absolute; top: 12px; right: 14px; font-size: 11px; font-weight: 700;
+    color: var(--muted); letter-spacing: .06em; }
+  .score-card .market-name { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+  .score-card .country-name { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .score-number { font-size: 48px; font-weight: 800; line-height: 1; margin-bottom: 8px; }
+  .score-number.STRONG  { color: #56d364; }
+  .score-number.WATCH   { color: #f1c40f; }
+  .score-number.CAUTION { color: #fb8500; }
+  .score-number.PAUSE   { color: #f97066; }
+  .score-bar-wrap { background: rgba(255,255,255,0.07); border-radius: 4px; height: 7px; margin-bottom: 10px; overflow: hidden; }
+  .score-bar { height: 7px; border-radius: 4px; transition: width .4s ease; }
+  .score-bar.STRONG  { background: #2ea043; }
+  .score-bar.WATCH   { background: #d29922; }
+  .score-bar.CAUTION { background: #fb8500; }
+  .score-bar.PAUSE   { background: #da3633; }
+  .band-pill { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .07em;
+    padding: 2px 9px; border-radius: 999px; margin-bottom: 10px; }
+  .band-pill.STRONG  { background: rgba(46,160,67,.18);  color: #56d364; }
+  .band-pill.WATCH   { background: rgba(210,153,34,.18); color: #f1c40f; }
+  .band-pill.CAUTION { background: rgba(251,133,0,.18);  color: #fb8500; }
+  .band-pill.PAUSE   { background: rgba(218,54,51,.18);  color: #f97066; }
+  .score-rec   { font-size: 12px; color: var(--text); margin-bottom: 6px; line-height: 1.4; }
+  .score-risk  { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .score-risk b { color: var(--accent); }
+  .comp-table  { width: 100%; border-collapse: collapse; font-size: 12px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+  .comp-table th, .comp-table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .comp-table th { background: var(--panel-2); color: var(--muted); font-size: 10px;
+    text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+  .comp-table tr:last-child td { border-bottom: none; }
+  .comp-table .comp-name { color: var(--muted); font-size: 11px; }
+  .comp-table .comp-weight { color: var(--muted); font-size: 10px; }
+  .comp-mini-bar { display: flex; align-items: center; gap: 6px; }
+  .comp-mini-bar .bar-bg { flex: 1; background: rgba(255,255,255,.07); border-radius: 3px; height: 5px; overflow: hidden; min-width: 60px; }
+  .comp-mini-bar .bar-fill { height: 5px; border-radius: 3px; }
+  .comp-mini-bar .bar-fill.GREEN  { background: #2ea043; }
+  .comp-mini-bar .bar-fill.YELLOW { background: #d29922; }
+  .comp-mini-bar .bar-fill.RED    { background: #da3633; }
+  .comp-mini-bar .bar-fill.NO_DATA{ background: var(--muted); }
+  .comp-mini-bar .bar-fill.STRONG  { background: #2ea043; }
+  .comp-mini-bar .bar-fill.WATCH   { background: #d29922; }
+  .comp-mini-bar .bar-fill.CAUTION { background: #fb8500; }
+  .comp-mini-bar .bar-fill.PAUSE   { background: #da3633; }
+  .score-val { font-size: 12px; font-weight: 700; min-width: 28px; text-align: right; }
+  .score-val.GREEN  { color: #56d364; } .score-val.YELLOW { color: #f1c40f; }
+  .score-val.RED    { color: #f97066; } .score-val.NO_DATA{ color: var(--muted); }
+  .score-total-row td { font-weight: 700; background: var(--panel-2); font-size: 13px; }
+  .model-note { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -110,8 +162,9 @@
   <div id="panel-regulatory" class="panel"></div>
   <div id="panel-operations" class="panel"></div>
   <div id="panel-brief" class="panel"></div>
-  <div id="panel-history" class="panel"></div>
-  <div id="panel-whatif"  class="panel"></div>
+  <div id="panel-history"    class="panel"></div>
+  <div id="panel-whatif"     class="panel"></div>
+  <div id="panel-deal_score" class="panel"></div>
 </main>
 
 <script>
@@ -125,14 +178,15 @@ const AGENTS = [
   {id: "operations",  label: "8. Operations"},
 ];
 
-const state = { alerts: {}, system: null, brief: "", history: [], trends: null, whatifReady: false, wiCompare: false, whatif: null };
+const state = { alerts: {}, system: null, brief: "", history: [], trends: null, dealScore: null, whatifReady: false, wiCompare: false, whatif: null };
 
 function buildNav() {
   const nav = document.getElementById('nav');
   const tabs = [{id: 'overview', label: 'Overview'}, ...AGENTS,
-    {id: 'brief',   label: 'Board brief'},
-    {id: 'history', label: 'History'},
-    {id: 'whatif',  label: 'What-if'},
+    {id: 'brief',      label: 'Board brief'},
+    {id: 'deal_score', label: 'Deal Scores'},
+    {id: 'history',    label: 'History'},
+    {id: 'whatif',     label: 'What-if'},
   ];
   nav.innerHTML = tabs.map(t =>
     `<button data-tab="${t.id}" onclick="show('${t.id}')">${t.label}<span id="nav-pill-${t.id}" class="pill"></span></button>`
@@ -175,6 +229,8 @@ async function loadAll() {
     catch { state.history = []; }
     try { state.trends = await fetchJSON('../outputs/market_trends.json'); }
     catch { state.trends = null; }
+    try { state.dealScore = await fetchJSON('../outputs/alerts_deal_score.json'); }
+    catch { state.dealScore = null; }
     render();
   } catch (e) {
     document.getElementById('panel-overview').innerHTML = `<div class="err">${e.message}</div>`;
@@ -240,6 +296,7 @@ function render() {
     `<div class="brief">${mdToHtml(md)}</div>`;
 
   renderHistory();
+  renderDealScore();
 }
 
 function indicatorTable(inds, withAgent) {
@@ -371,6 +428,139 @@ function mdToHtml(md) {
   }
   if (inList) out.push('</ul>');
   return out.join('\n');
+}
+
+// ── Deal Score tab ─────────────────────────────────────────────────────────
+function renderDealScore() {
+  const el = document.getElementById('panel-deal_score');
+  const d  = state.dealScore;
+
+  // Update nav pill
+  const pill = document.getElementById('nav-pill-deal_score');
+  if (pill) {
+    const lvl = d ? d.overall_status : 'NO_DATA';
+    pill.className = 'pill ' + lvl;
+    pill.textContent = '';
+  }
+
+  if (!d || !d.markets || !d.markets.length) {
+    el.innerHTML = `<div class="err">No deal score data yet — run <code>python run_all.py</code> first.</div>`;
+    return;
+  }
+
+  const markets = d.markets;  // already sorted best → worst
+  const COMP_ORDER = ['supply','demand','fx','competitive','cost','regulatory'];
+  const COMP_LABELS = {
+    supply:      'Supply headroom',
+    demand:      'Demand strength',
+    fx:          'FX stability',
+    competitive: 'Competitive risk',
+    cost:        'Cost environment',
+    regulatory:  'Regulatory risk',
+  };
+
+  // ── Scoreboard cards ──────────────────────────────────────────────────────
+  const bandDesc = {
+    STRONG:  'Proceed — conditions favourable',
+    WATCH:   'Conditional — address risks before LOI',
+    CAUTION: 'Significant headwinds — revisit timing',
+    PAUSE:   'Multiple critical risks — hold & escalate',
+  };
+
+  const cards = markets.map((m, i) => {
+    const rank = ['1st','2nd','3rd','4th','5th'][i] || `${i+1}th`;
+    return `<div class="score-card">
+      <div class="rank">${rank}</div>
+      <div class="market-name">${m.market}</div>
+      <div class="country-name">${m.country}</div>
+      <div class="score-number ${m.band}">${m.score}</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:6px">out of 100</div>
+      <div class="score-bar-wrap"><div class="score-bar ${m.band}" style="width:${m.score}%"></div></div>
+      <span class="band-pill ${m.band}">${m.band}</span>
+      <div class="score-rec">${m.recommendation}</div>
+      <div class="score-risk"><b>Top risk:</b> ${m.top_risk}</div>
+    </div>`;
+  }).join('');
+
+  // ── Component breakdown table ─────────────────────────────────────────────
+  const mktHeaders = markets.map(m =>
+    `<th style="text-align:center;min-width:90px">
+      <div style="font-weight:700;color:var(--text)">${m.market}</div>
+      <span class="band-pill ${m.band}" style="margin-top:3px">${m.score}/100</span>
+    </th>`
+  ).join('');
+
+  const compRows = COMP_ORDER.map(key => {
+    const cells = markets.map(m => {
+      const c = (m.components || {})[key];
+      if (!c) return '<td></td>';
+      const lvl = c.level;
+      const barClass = lvl === 'GREEN' ? 'GREEN' : lvl === 'YELLOW' ? 'YELLOW' : lvl === 'RED' ? 'RED' : 'NO_DATA';
+      return `<td title="${c.detail}">
+        <div class="comp-mini-bar">
+          <div class="bar-bg"><div class="bar-fill ${barClass}" style="width:${c.score}%"></div></div>
+          <span class="score-val ${barClass}">${c.score}</span>
+        </div>
+      </td>`;
+    }).join('');
+    const wPct = Math.round((d.weights[key] || 0) * 100);
+    return `<tr>
+      <td><div class="comp-name">${COMP_LABELS[key]||key}</div></td>
+      <td style="text-align:center"><span class="comp-weight">${wPct}%</span></td>
+      ${cells}
+    </tr>`;
+  }).join('');
+
+  const totalCells = markets.map(m => {
+    const bandClass = m.band === 'STRONG' ? 'GREEN' : m.band === 'WATCH' ? 'YELLOW' : 'RED';
+    return `<td>
+      <div class="comp-mini-bar">
+        <div class="bar-bg"><div class="bar-fill ${m.band}" style="width:${m.score}%"></div></div>
+        <span class="score-val ${bandClass}">${m.score}</span>
+      </div>
+    </td>`;
+  }).join('');
+
+  const modelNote = `
+    <p class="model-note">
+      <b>Scoring model v${d.scoring_version||'1.0'}</b> &nbsp;·&nbsp;
+      Sources: Agent 1 (Market Entry), Agent 2 (Competitive — signings only), Agent 6 (Regulatory).
+      Weights: Supply ${Math.round((d.weights.supply||0)*100)}%,
+               Demand ${Math.round((d.weights.demand||0)*100)}%,
+               FX ${Math.round((d.weights.fx||0)*100)}%,
+               Competitive ${Math.round((d.weights.competitive||0)*100)}%,
+               Cost ${Math.round((d.weights.cost||0)*100)}%,
+               Regulatory ${Math.round((d.weights.regulatory||0)*100)}%.
+      &nbsp;·&nbsp;
+      Bands: STRONG &ge;75 &nbsp; WATCH 50&ndash;74 &nbsp; CAUTION 25&ndash;49 &nbsp; PAUSE &lt;25.
+    </p>`;
+
+  el.innerHTML = `
+    <h2>Market opportunity scores — ranked</h2>
+    <div class="score-grid">${cards}</div>
+
+    <h2>Component breakdown</h2>
+    <div style="overflow-x:auto">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th style="text-align:center">Weight</th>
+            ${mktHeaders}
+          </tr>
+        </thead>
+        <tbody>
+          ${compRows}
+          <tr class="score-total-row">
+            <td>TOTAL SCORE</td>
+            <td></td>
+            ${totalCells}
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    ${modelNote}
+  `;
 }
 
 // ── History tab ────────────────────────────────────────────────────────────
