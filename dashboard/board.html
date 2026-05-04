@@ -99,6 +99,17 @@
   .pop-signals .sig-name  { font-weight: 600; margin: 1px 0; }
   .pop-signals .sig-rec   { color: var(--muted); font-size: 11px; }
   .pop-signals .sig-rec b { color: var(--accent); }
+  .pop-trend { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .pop-trend .streak { font-size: 11px; font-weight: 600; color: var(--muted); }
+  .pop-trend .dir-escalating { color: #f97066; font-size: 12px; font-weight: 700; }
+  .pop-trend .dir-improving  { color: #56d364; font-size: 12px; font-weight: 700; }
+  .pop-trend .dir-stable     { color: var(--muted); font-size: 12px; }
+  .pop-trend .hist-dots { display: flex; gap: 3px; align-items: center; }
+  .pop-trend .hist-dots span { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex-shrink:0; }
+  .pop-trend .hist-dots .RED    { background: var(--red); }
+  .pop-trend .hist-dots .YELLOW { background: var(--yellow); }
+  .pop-trend .hist-dots .GREEN  { background: var(--green); }
+  .pop-trend .hist-dots .NO_DATA{ background: var(--muted); opacity:.4; }
 
   .map-caption { font-size: 12px; color: var(--muted); margin-top: 8px; margin-bottom: 0; }
 </style>
@@ -202,6 +213,39 @@ const STATUS_GLOW  = {
   YELLOW: "rgba(210,153,34,0.55)",
   GREEN:  "rgba(46,160,67,0.55)"
 };
+
+// ─── Trend helpers ───────────────────────────────────────────────────────────
+let trendsData = {};  // populated in load()
+
+function getTrend(marketName) {
+  // Try exact match then case-insensitive
+  return trendsData[marketName]
+    || Object.entries(trendsData).find(([k]) =>
+        k.toLowerCase() === marketName.toLowerCase())?.[1]
+    || null;
+}
+
+function trendHtml(marketName) {
+  const t = getTrend(marketName);
+  if (!t || t.streak <= 1) return "";
+
+  const dirLabel = { escalating: "↑ Escalating", improving: "↓ Improving", stable: "→ Stable" };
+  const dirClass = { escalating: "dir-escalating", improving: "dir-improving", stable: "dir-stable" };
+  const runs = t.streak === 1 ? "1 run" : `${t.streak} runs`;
+  const statusColor = { RED: "var(--red)", YELLOW: "var(--yellow)", GREEN: "var(--green)" };
+
+  const dots = (t.history || []).slice(0, 8).map(s =>
+    `<span class="${s}" title="${s}"></span>`
+  ).join("");
+
+  return `<div class="pop-trend">
+    <span class="${dirClass[t.direction] || "dir-stable"}">${dirLabel[t.direction] || "→ Stable"}</span>
+    <span class="streak" style="color:${statusColor[t.current_status] || "var(--muted)"}">
+      ${t.current_status} · ${runs}
+    </span>
+    <div class="hist-dots" title="Recent history (newest left)">${dots}</div>
+  </div>`;
+}
 
 // ─── Build market signal map from three agents ───────────────────────────────
 function buildMarkets(entry, competitive, regulatory) {
@@ -329,6 +373,7 @@ function initMap(markets) {
     const popup = `
       <div class="pop-title">${m.label}</div>
       <span class="pop-status ${m.status}">${m.status}</span>
+      ${trendHtml(m.label)}
       <div class="pop-signals">${signalsHtml || "<em style='color:#8b949e'>No signals</em>"}</div>
     `;
 
@@ -362,13 +407,15 @@ const AGENTS_LIST = [
 async function load() {
   const ts = "?_=" + Date.now();
 
-  const [sys, brief, entry, competitive, regulatory] = await Promise.all([
+  const [sys, brief, entry, competitive, regulatory, trends] = await Promise.all([
     fetch("../outputs/system_status.json" + ts).then(r=>r.json()).catch(()=>null),
     fetch("../outputs/board_brief.md" + ts).then(r=>r.text()).catch(()=>""),
     fetch("../outputs/alerts_entry.json" + ts).then(r=>r.json()).catch(()=>null),
     fetch("../outputs/alerts_competitive.json" + ts).then(r=>r.json()).catch(()=>null),
     fetch("../outputs/alerts_regulatory.json" + ts).then(r=>r.json()).catch(()=>null),
+    fetch("../outputs/market_trends.json" + ts).then(r=>r.json()).catch(()=>null),
   ]);
+  trendsData = (trends && trends.markets) ? trends.markets : {};
 
   if (!sys) {
     document.getElementById("hero-title").textContent = "Run python run_all.py first";

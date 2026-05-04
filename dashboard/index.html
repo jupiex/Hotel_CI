@@ -110,6 +110,8 @@
   <div id="panel-regulatory" class="panel"></div>
   <div id="panel-operations" class="panel"></div>
   <div id="panel-brief" class="panel"></div>
+  <div id="panel-history" class="panel"></div>
+  <div id="panel-whatif"  class="panel"></div>
 </main>
 
 <script>
@@ -123,11 +125,15 @@ const AGENTS = [
   {id: "operations",  label: "8. Operations"},
 ];
 
-const state = { alerts: {}, system: null, brief: "" };
+const state = { alerts: {}, system: null, brief: "", history: [], trends: null, whatifReady: false, wiCompare: false, whatif: null };
 
 function buildNav() {
   const nav = document.getElementById('nav');
-  const tabs = [{id: 'overview', label: 'Overview'}, ...AGENTS, {id: 'brief', label: 'Board brief'}];
+  const tabs = [{id: 'overview', label: 'Overview'}, ...AGENTS,
+    {id: 'brief',   label: 'Board brief'},
+    {id: 'history', label: 'History'},
+    {id: 'whatif',  label: 'What-if'},
+  ];
   nav.innerHTML = tabs.map(t =>
     `<button data-tab="${t.id}" onclick="show('${t.id}')">${t.label}<span id="nav-pill-${t.id}" class="pill"></span></button>`
   ).join('');
@@ -139,6 +145,10 @@ function show(tab) {
     b.classList.toggle('active', b.dataset.tab === tab));
   document.querySelectorAll('.panel').forEach(p =>
     p.classList.toggle('active', p.id === 'panel-' + tab));
+  if (tab === 'whatif' && !state.whatifReady) {
+    state.whatifReady = true;
+    buildWhatif();
+  }
 }
 
 async function fetchJSON(path) {
@@ -161,6 +171,10 @@ async function loadAll() {
       catch { state.alerts[a.id] = {agent: a.id, overall_status: 'NO_DATA', indicators: []}; }
     }
     state.brief = await fetchText('../outputs/board_brief.md');
+    try { state.history = await fetchJSON('../outputs/history.json'); }
+    catch { state.history = []; }
+    try { state.trends = await fetchJSON('../outputs/market_trends.json'); }
+    catch { state.trends = null; }
     render();
   } catch (e) {
     document.getElementById('panel-overview').innerHTML = `<div class="err">${e.message}</div>`;
@@ -224,6 +238,8 @@ function render() {
   const md = state.brief || '_Brief not yet generated. Run: python run_all.py_';
   document.getElementById('panel-brief').innerHTML =
     `<div class="brief">${mdToHtml(md)}</div>`;
+
+  renderHistory();
 }
 
 function indicatorTable(inds, withAgent) {
@@ -268,7 +284,7 @@ function renderAgent(id, label) {
         <div class="card-head">
           <div><div class="card-title">${m.market}</div><div class="card-sub">${m.country}</div></div>
           <span class="pill ${m.status}">${m.status}</span>
-        </div>${rows}${hedge}</div>`;
+        </div>${rows}${trendBadgeHtml(m.market)}${hedge}</div>`;
     }).join('') + '</div>';
   }
 
@@ -311,6 +327,33 @@ function renderAgent(id, label) {
   `;
 }
 
+// ── Trend helpers ──────────────────────────────────────────────────────────
+function getTrend(name) {
+  const m = state.trends && state.trends.markets;
+  if (!m) return null;
+  return m[name] || Object.entries(m).find(([k]) => k.toLowerCase() === (name||'').toLowerCase())?.[1] || null;
+}
+
+function trendBadgeHtml(name) {
+  const t = getTrend(name);
+  if (!t) return '';
+  const dirIcon  = { escalating: '↑', improving: '↓', stable: '→' };
+  const dirColor = { escalating: 'color:#f97066', improving: 'color:#56d364', stable: 'color:var(--muted)' };
+  const statColor= { RED:'color:#f97066', YELLOW:'color:#f1c40f', GREEN:'color:#56d364' };
+  const runs = t.streak === 1 ? '1 run' : `${t.streak} runs`;
+  const icon = dirIcon[t.direction] || '→';
+  const dots = (t.history||[]).slice(0,6).map(s => {
+    const c = s==='RED'?'var(--red)':s==='YELLOW'?'var(--yellow)':s==='GREEN'?'var(--green)':'var(--muted)';
+    return `<span title="${s}" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${c};flex-shrink:0"></span>`;
+  }).join('');
+  return `<div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--border);flex-wrap:wrap">
+    <span style="font-size:11px;font-weight:700;${dirColor[t.direction]||'color:var(--muted)'}">${icon} ${t.direction.charAt(0).toUpperCase()+t.direction.slice(1)}</span>
+    <span style="font-size:11px;${statColor[t.current_status]||''}">
+      ${t.current_status} for ${runs}${t.streak>1 && t.prev_status!==t.current_status ? ' <span style="color:var(--muted)">(was '+t.prev_status+')</span>':''}</span>
+    <div style="display:flex;gap:3px;align-items:center" title="Recent history (newest left)">${dots}</div>
+  </div>`;
+}
+
 function mdToHtml(md) {
   // tiny markdown: # / ## / ### / **bold** / `code` / lists / paragraphs
   const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -328,6 +371,343 @@ function mdToHtml(md) {
   }
   if (inList) out.push('</ul>');
   return out.join('\n');
+}
+
+// ── History tab ────────────────────────────────────────────────────────────
+function renderHistory() {
+  const el = document.getElementById('panel-history');
+  const h = state.history;
+  if (!h || h.length === 0) {
+    el.innerHTML = '<div class="err">No history yet. Run python run_all.py at least once.</div>';
+    return;
+  }
+
+  const colMap = { RED:'var(--red)', YELLOW:'var(--yellow)', GREEN:'var(--green)' };
+  const squares = h.map(s => {
+    const d  = s.timestamp ? s.timestamp.slice(0,10) : '?';
+    const bg = colMap[s.overall_status] || 'var(--muted)';
+    return `<span title="${d} · ${s.red_count} RED" style="display:inline-block;width:18px;height:18px;
+      border-radius:3px;background:${bg};margin:2px;opacity:.85;cursor:default;flex-shrink:0;
+      transition:opacity .15s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.85"></span>`;
+  }).join('');
+
+  const timelineHtml = `
+    <h2>Run history — ${h.length} run(s)</h2>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px 18px;overflow-x:auto">
+      <div style="display:flex;flex-wrap:wrap;gap:2px">${squares}</div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted)">Hover for date · Oldest left, newest right &nbsp;
+        <span style="color:var(--red)">■</span> RED &nbsp;
+        <span style="color:var(--yellow)">■</span> YELLOW &nbsp;
+        <span style="color:var(--green)">■</span> GREEN
+      </div>
+    </div>`;
+
+  const maxRed = Math.max(...h.map(s => s.red_count), 1);
+  const BW=28, GAP=6, BAR_MAX=80;
+  const svgW = h.length * (BW + GAP);
+  const bars = h.map((s,i) => {
+    const bh  = Math.max(2, Math.round((s.red_count / maxRed) * BAR_MAX));
+    const x   = i * (BW + GAP);
+    const y   = BAR_MAX - bh;
+    const lbl = s.timestamp ? s.timestamp.slice(5,10) : '?';
+    const fill = s.red_count > 0 ? '#da3633' : '#2ea043';
+    return `<rect x="${x}" y="${y}" width="${BW}" height="${bh}" fill="${fill}" opacity=".8" rx="3">
+        <title>${s.timestamp?s.timestamp.slice(0,10):'?'} · ${s.red_count} RED</title></rect>
+      <text x="${x+BW/2}" y="${BAR_MAX+14}" text-anchor="middle" font-size="9" fill="var(--muted)">${lbl}</text>
+      <text x="${x+BW/2}" y="${y-3}" text-anchor="middle" font-size="9" fill="var(--text)">${s.red_count||''}</text>`;
+  }).join('');
+
+  const chartHtml = `
+    <h2>RED indicator count per run</h2>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px 18px;overflow-x:auto">
+      <svg width="${svgW}" height="120" style="display:block;overflow:visible">${bars}</svg>
+    </div>`;
+
+  const slice = h.slice(-12);
+  const abpHead = slice.map(s =>
+    `<th style="min-width:60px;font-size:10px">${s.timestamp?s.timestamp.slice(5,10):'?'}</th>`).join('');
+  const abpRows = ['A1','A2','A3','A4','A5'].map(a => {
+    const cells = slice.map(s => {
+      const at = (s.abp_at_risk||[]).includes(a);
+      return at
+        ? `<td style="background:rgba(218,54,51,.15);color:#f97066;font-weight:600;text-align:center;font-size:11px">AT RISK</td>`
+        : `<td style="background:rgba(46,160,67,.1);color:#56d364;text-align:center;font-size:11px">OK</td>`;
+    }).join('');
+    return `<tr><td style="font-weight:700;padding:8px 12px">${a}</td>${cells}</tr>`;
+  }).join('');
+
+  const abpHtml = `
+    <h2>ABP assumption history (last ${slice.length} runs)</h2>
+    <div style="overflow-x:auto">
+      <table><thead><tr><th>Assumption</th>${abpHead}</tr></thead><tbody>${abpRows}</tbody></table>
+    </div>`;
+
+  // Market trends table
+  let trendsHtml = '';
+  const tm = state.trends && state.trends.markets;
+  if (tm && Object.keys(tm).length) {
+    const sorted = Object.entries(tm).sort((a, b) => {
+      const rank = {RED:3, YELLOW:2, GREEN:1, NO_DATA:0};
+      return (rank[b[1].current_status]||0) - (rank[a[1].current_status]||0);
+    });
+    const dirIcon  = { escalating:'↑', improving:'↓', stable:'→' };
+    const dirColor = { escalating:'#f97066', improving:'#56d364', stable:'var(--muted)' };
+    const statClass= { RED:'lvl-RED', YELLOW:'lvl-YELLOW', GREEN:'lvl-GREEN' };
+    const rows = sorted.map(([name, t]) => {
+      const dots = (t.history||[]).slice(0,8).map(s => {
+        const c = s==='RED'?'var(--red)':s==='YELLOW'?'var(--yellow)':s==='GREEN'?'var(--green)':'var(--muted)';
+        return `<span title="${s}" style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${c};margin-right:2px"></span>`;
+      }).join('');
+      const changed = t.prev_status !== t.current_status
+        ? `<span style="color:var(--muted);font-size:10px">(was ${t.prev_status})</span>` : '';
+      const streakTxt = `${t.streak} run${t.streak!==1?'s':''}`;
+      return `<tr>
+        <td style="font-weight:600">${name}</td>
+        <td class="${statClass[t.current_status]||''}">${t.current_status} ${changed}</td>
+        <td style="color:${dirColor[t.direction]||'var(--muted)'};font-weight:700">${dirIcon[t.direction]||'→'} ${t.direction}</td>
+        <td style="color:var(--muted)">${streakTxt}</td>
+        <td><div style="display:flex;align-items:center">${dots}</div></td>
+      </tr>`;
+    }).join('');
+    trendsHtml = `
+      <h2>Market trend tracker — ${sorted.length} markets · ${state.trends.run_count} run(s)</h2>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr>
+            <th>Market</th><th>Current status</th><th>Direction</th>
+            <th>Streak</th><th>Recent history (newest left)</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:6px">
+        Sources: Agent 1 (Market Entry) · Agent 2 (Competitive, signings only) · Agent 6 (Regulatory).
+        Updated on every run_all.py execution.
+      </p>`;
+  } else {
+    trendsHtml = `<h2>Market trend tracker</h2>
+      <div class="err" style="font-size:13px">
+        No trend data yet — run <code>python run_all.py</code> to generate the first snapshot.
+        Trends become meaningful after 2+ runs.
+      </div>`;
+  }
+
+  el.innerHTML = timelineHtml + chartHtml + abpHtml + trendsHtml;
+}
+
+// ── What-if tab ─────────────────────────────────────────────────────────────
+const WI_THRESHOLDS = {
+  fx:       {yellow:8,  red:15},
+  pipeline: {yellow:10, red:15},
+  energy:   {yellow:10, red:20},
+  wage:     {yellow:3,  red:5 },
+  revpar:   {yellow:90, red:80},
+};
+const WI_NAMES = {
+  fx:'FX depreciation vs EUR', pipeline:'Supply pipeline % of stock',
+  energy:'Energy cost QoQ', wage:'Minimum wage YoY', revpar:'RevPAR vs budget'
+};
+
+function wiLevel(key, val) {
+  const t = WI_THRESHOLDS[key];
+  if (key === 'revpar') { return val <= t.red ? 'RED' : val <= t.yellow ? 'YELLOW' : 'GREEN'; }
+  return val >= t.red ? 'RED' : val >= t.yellow ? 'YELLOW' : 'GREEN';
+}
+
+function wiAbp(fx, pipeline, energy, wage, revpar) {
+  return {
+    A1: Math.abs(fx) > 15 ? 'AT_RISK' : 'HOLDING',
+    A2: (pipeline > 15 || revpar < 80) ? 'AT_RISK' : 'HOLDING',
+    A3: 'HOLDING',
+    A4: (energy > 10 || wage > 10) ? 'BREACHED' : 'HOLDING',
+    A5: 'HOLDING',
+  };
+}
+
+function wiHedging(fx, pipeline, levels) {
+  const out = [];
+  if (Math.abs(fx) > 15) out.push({id:'H1', short:'H1 — Pause LOI; add FX floor clause',
+    full:'FX &gt;15% vs EUR. Pause LOI negotiations; add FX floor clause to term sheets. Owner: Development Director.'});
+  if (pipeline > 15) out.push({id:'H2', short:'H2 — Deprioritise market; redirect dev effort',
+    full:'Pipeline &gt;15% of existing stock. Deprioritise market; redirect BD effort. Owner: Development Director.'});
+  if (Object.values(levels).filter(l=>l==='RED').length >= 2)
+    out.push({id:'H3', short:'H3 — 90-day hold + escalate to Development Committee',
+      full:'2+ RED indicators simultaneously. 90-day moratorium on new signings; brief Development Committee. Owner: CDO.'});
+  return out;
+}
+
+function wiSeedValues(market) {
+  const inds = (state.alerts.entry || {}).indicators || [];
+  const get  = kit => inds.find(i => i.market === market && i.kit === kit);
+  const reg  = (state.alerts.regulatory || {}).indicators || [];
+  return {
+    fx:       parseFloat(get('KIT_3')?.value) || 0,
+    pipeline: parseFloat(get('KIT_1')?.value) || 0,
+    energy:   parseFloat(reg.find(i => /energy/i.test(i.name||''))?.value) || 0,
+    wage:     parseFloat(reg.find(i => /labour|wage/i.test(i.name||''))?.value) || 0,
+    revpar:   100,
+  };
+}
+
+function wiSlider(id, label, min, max, step, def, unit) {
+  return `<div style="margin-bottom:14px">
+    <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+      <label for="${id}" style="font-size:12px;color:var(--muted)">${label}</label>
+      <span id="${id}-val" style="font-size:14px;font-weight:700">${def}${unit}</span>
+    </div>
+    <input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${def}"
+      oninput="document.getElementById('${id}-val').textContent=this.value+'${unit}';calcWhatif()"
+      style="width:100%;accent-color:var(--accent)">
+    <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:2px">
+      <span>${min}${unit}</span><span>${max}${unit}</span></div>
+  </div>`;
+}
+
+function buildWhatif() {
+  document.getElementById('panel-whatif').innerHTML = `
+    <h2>What-if simulation</h2>
+    <div style="display:grid;grid-template-columns:340px 1fr;gap:24px;align-items:start">
+      <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:20px">
+        <div style="margin-bottom:16px">
+          <label style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Market</label>
+          <select id="wi-market" onchange="wiReset()" style="width:100%;margin-top:6px;
+            background:var(--panel-2);border:1px solid var(--border);color:var(--text);
+            padding:8px 10px;border-radius:6px;font-size:13px">
+            <option>Riyadh</option>
+            <option>Ho Chi Minh City</option>
+            <option>Warsaw</option>
+            <option>Casablanca</option>
+          </select>
+        </div>
+        ${wiSlider('wi-fx',       'FX depreciation vs EUR',     0,  30, 0.5, 0,   '%')}
+        ${wiSlider('wi-pipeline', 'Supply pipeline % of stock', 0,  25, 0.5, 0,   '%')}
+        ${wiSlider('wi-energy',   'Energy cost QoQ change',    -5,  40, 1,   0,   '%')}
+        ${wiSlider('wi-wage',     'Minimum wage YoY change',    0,  15, 0.5, 0,   '%')}
+        ${wiSlider('wi-revpar',   'RevPAR vs budget',          50, 110, 1,   100, '%')}
+        <div style="display:flex;gap:8px;margin-top:18px">
+          <button class="refresh" onclick="wiReset()" style="flex:1">Reset to current</button>
+          <button id="wi-cmp-btn" onclick="wiToggleCompare()" style="flex:1;
+            background:var(--panel-2);color:var(--text);border:1px solid var(--border);
+            padding:7px 14px;border-radius:6px;font-weight:600;font-size:12px;cursor:pointer">
+            Compare vs current</button>
+        </div>
+      </div>
+      <div id="wi-output"></div>
+    </div>`;
+  wiReset();
+}
+
+function wiSet(id, val) {
+  const el = document.getElementById(id); if (!el) return;
+  el.value = val;
+  document.getElementById(id+'-val').textContent = val + '%';
+}
+
+function wiReset() {
+  const market = document.getElementById('wi-market')?.value || 'Riyadh';
+  const rv = wiSeedValues(market);
+  wiSet('wi-fx',       rv.fx);
+  wiSet('wi-pipeline', rv.pipeline);
+  wiSet('wi-energy',   rv.energy);
+  wiSet('wi-wage',     rv.wage);
+  wiSet('wi-revpar',   rv.revpar);
+  state.whatif = {...rv};
+  state.wiCompare = false;
+  const btn = document.getElementById('wi-cmp-btn');
+  if (btn) { btn.style.borderColor='var(--border)'; btn.style.color='var(--text)'; }
+  calcWhatif();
+}
+
+function wiToggleCompare() {
+  state.wiCompare = !state.wiCompare;
+  const btn = document.getElementById('wi-cmp-btn');
+  btn.style.borderColor = state.wiCompare ? 'var(--accent)' : 'var(--border)';
+  btn.style.color       = state.wiCompare ? 'var(--accent)' : 'var(--text)';
+  calcWhatif();
+}
+
+function calcWhatif() {
+  const fx       = parseFloat(document.getElementById('wi-fx')?.value)       || 0;
+  const pipeline = parseFloat(document.getElementById('wi-pipeline')?.value)  || 0;
+  const energy   = parseFloat(document.getElementById('wi-energy')?.value)    || 0;
+  const wage     = parseFloat(document.getElementById('wi-wage')?.value)      || 0;
+  const revpar   = parseFloat(document.getElementById('wi-revpar')?.value)    || 100;
+  const market   = document.getElementById('wi-market')?.value || '';
+
+  const levels  = {
+    fx:       wiLevel('fx',       Math.abs(fx)),
+    pipeline: wiLevel('pipeline', pipeline),
+    energy:   wiLevel('energy',   energy),
+    wage:     wiLevel('wage',     wage),
+    revpar:   wiLevel('revpar',   revpar),
+  };
+  const abp     = wiAbp(fx, pipeline, energy, wage, revpar);
+  const hedging = wiHedging(fx, pipeline, levels);
+
+  let base = null;
+  if (state.wiCompare && state.whatif) {
+    const b = state.whatif;
+    base = {
+      fx:       wiLevel('fx',       Math.abs(b.fx)),
+      pipeline: wiLevel('pipeline', b.pipeline),
+      energy:   wiLevel('energy',   b.energy),
+      wage:     wiLevel('wage',     b.wage),
+      revpar:   wiLevel('revpar',   b.revpar),
+    };
+  }
+
+  const order = {GREEN:0, YELLOW:1, RED:2};
+  const indRows = Object.keys(levels).map(k => {
+    const lvl = levels[k];
+    let delta = '';
+    if (base && base[k] !== lvl) {
+      const worse = order[lvl] > order[base[k]];
+      delta = `<span style="font-size:11px;color:${worse?'#f97066':'#56d364'};margin-left:8px">
+        ${worse?'▲ worse':'▼ better'} (was ${base[k]})</span>`;
+    }
+    return `<tr><td>${WI_NAMES[k]}</td><td class="lvl-${lvl}">${lvl}${delta}</td></tr>`;
+  }).join('');
+
+  const abpColor = s => s==='BREACHED'?'#f97066':s==='AT_RISK'?'#f1c40f':'#56d364';
+  const abpBg    = s => s==='BREACHED'?'rgba(218,54,51,.15)':s==='AT_RISK'?'rgba(210,153,34,.15)':'rgba(46,160,67,.12)';
+  const ABP_DESC = {
+    A1:'Owner signs at standard fee',
+    A2:'RevPAR breakeven ≤36mo',
+    A3:'No cannibalisation (fixed)',
+    A4:'Energy &amp; labour &lt;10% YoY',
+    A5:'Loyalty share (fixed)',
+  };
+  const abpBadges = Object.entries(abp).map(([k,v]) =>
+    `<div style="display:flex;align-items:center;justify-content:space-between;
+      padding:8px 12px;background:${abpBg(v)};border-radius:6px;margin-bottom:6px">
+      <span style="font-size:12px"><b>${k}</b> &nbsp;${ABP_DESC[k]}</span>
+      <span class="pill" style="background:${abpBg(v)};color:${abpColor(v)}">${v}</span>
+    </div>`).join('');
+
+  const hedgeHtml = hedging.length === 0
+    ? '<div class="card GREEN" style="font-size:13px">No hedging actions triggered.</div>'
+    : hedging.map(h =>
+        `<div class="hedge"><b>${h.short}</b><br>
+         <span style="color:var(--muted)">${h.full}</span></div>`).join('');
+
+  document.getElementById('wi-output').innerHTML = `
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px">
+      <div style="font-size:12px;color:var(--muted);margin-bottom:10px">
+        Market: <b style="color:var(--text)">${market}</b>
+        ${state.wiCompare?'&nbsp;<span style="color:var(--accent)">&#9679; Compare mode</span>':''}
+      </div>
+      <h2 style="margin-top:0">Indicator alert levels</h2>
+      <table><thead><tr><th>Indicator</th><th>Alert level</th></tr></thead>
+      <tbody>${indRows}</tbody></table>
+    </div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px">
+      <h2 style="margin-top:0">ABP assumption status</h2>
+      ${abpBadges}
+    </div>
+    <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px">
+      <h2 style="margin-top:0">Triggered hedging actions</h2>
+      ${hedgeHtml}
+    </div>`;
 }
 
 buildNav();
