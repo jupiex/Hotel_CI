@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Radisson CI — Board View</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
   :root { --bg:#0e1116; --panel:#161b22; --border:#2a323d; --text:#e6edf3;
     --muted:#8b949e; --red:#da3633; --yellow:#d29922; --green:#2ea043; --accent:#f7c948; }
@@ -14,7 +15,7 @@
   h1 { margin: 0; font-size: 22px; font-weight: 600; }
   header p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
   .meta { margin-top: 14px; font-size: 13px; color: var(--muted); }
-  main { padding: 32px 48px 80px; max-width: 1100px; }
+  main { padding: 32px 48px 80px; max-width: 1200px; }
   .status-hero { display: flex; align-items: center; gap: 20px; padding: 24px 28px;
     border-radius: 12px; margin-bottom: 28px; border: 1px solid var(--border); background: var(--panel); }
   .status-dot { width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0; }
@@ -51,6 +52,55 @@
   .brief-body h1, .brief-body h2 { font-size: 15px; margin: 16px 0 6px; font-weight: 600; }
   .brief-body ul { padding-left: 20px; } .brief-body li { margin: 4px 0; }
   a.back { display: inline-block; margin-bottom: 20px; color: #58a6ff; font-size: 13px; text-decoration: none; }
+
+  /* ── Map ─────────────────────────────────────────────────── */
+  #map-wrap {
+    border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+    position: relative;
+  }
+  #ci-map { height: 480px; background: #0d1117; }
+
+  /* Legend */
+  .map-legend {
+    background: rgba(22,27,34,0.92); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 14px; font-size: 12px; line-height: 1.9;
+    color: var(--text);
+  }
+  .map-legend .leg-row { display: flex; align-items: center; gap: 8px; }
+  .map-legend .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .map-legend .dot.RED    { background: var(--red);    box-shadow: 0 0 6px rgba(218,54,51,0.7); }
+  .map-legend .dot.YELLOW { background: var(--yellow); box-shadow: 0 0 6px rgba(210,153,34,0.7); }
+  .map-legend .dot.GREEN  { background: var(--green);  box-shadow: 0 0 6px rgba(46,160,67,0.7); }
+  .map-legend .dot.MIXED  { background: linear-gradient(135deg, var(--red) 50%, var(--yellow) 50%); }
+
+  /* Leaflet overrides for dark theme */
+  .leaflet-popup-content-wrapper {
+    background: #1c2128; color: var(--text); border: 1px solid var(--border);
+    border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .leaflet-popup-tip { background: #1c2128; }
+  .leaflet-popup-content { margin: 14px 18px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+  .leaflet-container a.leaflet-popup-close-button:hover { color: var(--text); }
+
+  /* Popup internals */
+  .pop-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .pop-status { font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 2px 8px; border-radius: 999px; display: inline-block; margin-bottom: 10px; }
+  .pop-status.RED    { background: rgba(218,54,51,0.2); color:#f97066; }
+  .pop-status.YELLOW { background: rgba(210,153,34,0.2); color:#f1c40f; }
+  .pop-status.GREEN  { background: rgba(46,160,67,0.2);  color:#56d364; }
+  .pop-signals { font-size: 12px; line-height: 1.7; }
+  .pop-signals .sig { padding: 5px 0; border-top: 1px solid var(--border); }
+  .pop-signals .sig:first-child { border-top: none; }
+  .pop-signals .sig-agent { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .pop-signals .sig-name  { font-weight: 600; margin: 1px 0; }
+  .pop-signals .sig-rec   { color: var(--muted); font-size: 11px; }
+  .pop-signals .sig-rec b { color: var(--accent); }
+
+  .map-caption { font-size: 12px; color: var(--muted); margin-top: 8px; margin-bottom: 0; }
 </style>
 </head>
 <body>
@@ -73,14 +123,236 @@
   <h2 class="section">Agent status at a glance</h2>
   <div class="agent-grid" id="agent-grid"></div>
 
+  <!-- ── Strategic map ──────────────────────────── -->
+  <h2 class="section">Strategic market map — pipeline &amp; risk signals</h2>
+  <div id="map-wrap">
+    <div id="ci-map"></div>
+  </div>
+  <p class="map-caption">
+    Sources: Agent 1 (Market Entry), Agent 2 (Competitive Surveillance), Agent 6 (Regulatory &amp; Macro).
+    Agent 8 (Property Operations) excluded — see GM dashboard for hotel-level view.
+    Click any marker for signal detail.
+  </p>
+
   <h2 class="section">Top RED alerts (board action required)</h2>
   <div id="red-cards"></div>
 
   <h2 class="section">Board brief (AI-synthesised)</h2>
   <div class="card" id="brief-card"><div class="brief-body" id="brief-body">Loading…</div></div>
 </main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const AGENTS = [
+// ─── Coordinate lookup ───────────────────────────────────────────────────────
+// Covers all markets/countries currently in the sample data.
+// Add new entries here as real data sources are connected.
+const COORDS = {
+  // Development markets (Agent 1 & 2)
+  "Riyadh":           [24.71, 46.68],
+  "Ho Chi Minh City": [10.82, 106.63],
+  "Warsaw":           [52.23, 21.01],
+  "Casablanca":       [33.57, -7.59],
+  "Krakow":           [50.06, 19.94],
+  "Dubai":            [25.20, 55.27],
+  "Istanbul":         [41.01, 28.98],
+  "Cairo":            [30.04, 31.24],
+  "Nairobi":          [-1.29, 36.82],
+  "Mumbai":           [19.08, 72.88],
+  "Bangkok":          [13.76, 100.50],
+  "Singapore":        [1.35,  103.82],
+  "Tokyo":            [35.68, 139.69],
+  "Amsterdam":        [52.37, 4.90],
+  "Berlin":           [52.52, 13.40],
+  "Paris":            [48.86, 2.35],
+  "Madrid":           [40.42, -3.70],
+  "Rome":             [41.90, 12.50],
+  "Prague":           [50.08, 14.44],
+  "Budapest":         [47.50, 19.04],
+  // Country-level (Agent 6 regulatory — mapped to capital)
+  "Germany":          [52.52, 13.40],
+  "Poland":           [52.23, 21.01],  // Same as Warsaw — will merge
+  "Spain":            [40.42, -3.70],
+  "Italy":            [41.90, 12.50],
+  "France":           [48.86, 2.35],
+  "UK":               [51.51, -0.13],
+  "Netherlands":      [52.37, 4.90],
+  "EU-DE":            [52.52, 13.40],
+  "EU-PL":            [52.23, 21.01],
+  "EU-IT":            [41.90, 12.50],
+  "EU-ES":            [40.42, -3.70],
+  "EU-FR":            [48.86, 2.35],
+  "EU-UK":            [51.51, -0.13],
+  "EU-NL":            [52.37, 4.90],
+};
+
+// Human-readable names for EU market codes
+const MARKET_LABEL = {
+  "EU-DE": "Germany", "EU-PL": "Poland", "EU-IT": "Italy",
+  "EU-ES": "Spain",   "EU-FR": "France", "EU-UK": "UK", "EU-NL": "Netherlands",
+};
+
+// ─── Status helpers ──────────────────────────────────────────────────────────
+const STATUS_RANK = { RED: 3, YELLOW: 2, GREEN: 1, NO_DATA: 0 };
+function worstStatus(a, b) {
+  return STATUS_RANK[a] >= STATUS_RANK[b] ? a : b;
+}
+const STATUS_COLOR = { RED: "#da3633", YELLOW: "#d29922", GREEN: "#2ea043" };
+const STATUS_GLOW  = {
+  RED:    "rgba(218,54,51,0.55)",
+  YELLOW: "rgba(210,153,34,0.55)",
+  GREEN:  "rgba(46,160,67,0.55)"
+};
+
+// ─── Build market signal map from three agents ───────────────────────────────
+function buildMarkets(entry, competitive, regulatory) {
+  const markets = {}; // key → { label, coords, status, signals[] }
+
+  function key(name) { return (MARKET_LABEL[name] || name).trim(); }
+
+  function ensure(name) {
+    const k = key(name);
+    if (!markets[k]) {
+      const coords = COORDS[MARKET_LABEL[name] || name] || COORDS[name];
+      if (!coords) return null;
+      markets[k] = { label: k, coords, status: "GREEN", signals: [] };
+    }
+    return k;
+  }
+
+  function addSignal(name, agentLabel, indicator) {
+    const k = ensure(name);
+    if (!k) return;
+    markets[k].status = worstStatus(markets[k].status, indicator.alert_level);
+    markets[k].signals.push({ agent: agentLabel, ...indicator });
+  }
+
+  // ── Agent 1: Market Entry — use the pre-aggregated .markets array
+  if (entry && entry.markets) {
+    entry.markets.forEach(m => {
+      const k = ensure(m.market);
+      if (!k) return;
+      markets[k].status = worstStatus(markets[k].status, m.status);
+      // Attach the underlying indicators for this market
+      (entry.indicators || [])
+        .filter(ind => ind.market === m.market)
+        .forEach(ind => markets[k].signals.push({ agent: "Market Entry", ...ind }));
+    });
+  }
+
+  // ── Agent 2: Competitive — only KIT_1 (market-level signings)
+  if (competitive && competitive.indicators) {
+    competitive.indicators
+      .filter(ind => ind.kit === "KIT_1" && ind.market)
+      .forEach(ind => addSignal(ind.market, "Competitive", ind));
+  }
+
+  // ── Agent 6: Regulatory — KIT_1 (energy, EU-XX markets) + KIT_2 (labour, country)
+  if (regulatory && regulatory.indicators) {
+    regulatory.indicators
+      .filter(ind => ind.market || ind.country)
+      .forEach(ind => {
+        const loc = ind.market || ind.country;
+        addSignal(loc, "Regulatory", ind);
+      });
+  }
+
+  return markets;
+}
+
+// ─── Leaflet map initialisation ──────────────────────────────────────────────
+let leafletMap = null;
+
+function initMap(markets) {
+  if (leafletMap) { leafletMap.remove(); leafletMap = null; }
+
+  leafletMap = L.map("ci-map", {
+    center: [30, 20],
+    zoom: 3,
+    zoomControl: true,
+    attributionControl: true,
+  });
+
+  // Dark tile layer — CartoDB Dark Matter (free, no API key)
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: "abcd",
+    maxZoom: 19,
+  }).addTo(leafletMap);
+
+  // ── Markers
+  Object.values(markets).forEach(m => {
+    const color = STATUS_COLOR[m.status] || "#8b949e";
+    const glow  = STATUS_GLOW[m.status]  || "rgba(139,148,158,0.4)";
+
+    const icon = L.divIcon({
+      className: "",
+      html: `<div style="
+        width:18px; height:18px; border-radius:50%;
+        background:${color};
+        box-shadow: 0 0 0 3px rgba(14,17,22,0.8), 0 0 14px 4px ${glow};
+        border: 1.5px solid rgba(255,255,255,0.25);
+        cursor: pointer;
+      "></div>`,
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+      popupAnchor: [0, -12],
+    });
+
+    const marker = L.marker(m.coords, { icon }).addTo(leafletMap);
+
+    // Sort signals: RED first, then YELLOW, then GREEN
+    const sorted = [...m.signals].sort((a, b) =>
+      (STATUS_RANK[b.alert_level] || 0) - (STATUS_RANK[a.alert_level] || 0)
+    );
+
+    // Deduplicate signals that appear in both entry.markets and entry.indicators
+    const seen = new Set();
+    const deduped = sorted.filter(s => {
+      const sigKey = `${s.agent}|${s.kit}|${s.name}|${s.market||s.country||""}`;
+      if (seen.has(sigKey)) return false;
+      seen.add(sigKey);
+      return true;
+    });
+
+    const signalsHtml = deduped.map(s => {
+      const val = s.value !== undefined
+        ? (typeof s.value === "number" ? `${s.value}${s.unit ? " " + s.unit : ""}` : s.value)
+        : "";
+      const rec = (s.recommendation || "").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+      return `<div class="sig">
+        <div class="sig-agent">${s.agent} · ${s.kit || ""}</div>
+        <div class="sig-name">${(s.name||"").replace(/</g,"&lt;")} ${val ? "— <span style='color:#8b949e'>" + String(val).replace(/</g,"&lt;") + "</span>" : ""}</div>
+        ${rec ? `<div class="sig-rec"><b>→</b> ${rec}</div>` : ""}
+      </div>`;
+    }).join("");
+
+    const popup = `
+      <div class="pop-title">${m.label}</div>
+      <span class="pop-status ${m.status}">${m.status}</span>
+      <div class="pop-signals">${signalsHtml || "<em style='color:#8b949e'>No signals</em>"}</div>
+    `;
+
+    marker.bindPopup(popup, { maxWidth: 340, minWidth: 280 });
+  });
+
+  // ── Legend (bottom-right)
+  const legend = L.control({ position: "bottomright" });
+  legend.onAdd = function() {
+    const div = L.DomUtil.create("div", "map-legend");
+    div.innerHTML = `
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:#8b949e;margin-bottom:6px;font-weight:600">Signal status</div>
+      <div class="leg-row"><div class="dot RED"></div> RED — Immediate action</div>
+      <div class="leg-row"><div class="dot YELLOW"></div> YELLOW — Monitor &amp; prepare</div>
+      <div class="leg-row"><div class="dot GREEN"></div> GREEN — No action required</div>
+      <div style="margin-top:8px;font-size:10px;color:#8b949e">Agents 1 · 2 · 6 only<br>Click marker for detail</div>
+    `;
+    return div;
+  };
+  legend.addTo(leafletMap);
+}
+
+// ─── Main load ───────────────────────────────────────────────────────────────
+const AGENTS_LIST = [
   {id:"entry",label:"Market Entry"},{id:"competitive",label:"Competitive"},
   {id:"revenue",label:"Revenue"},{id:"owner",label:"Owner"},
   {id:"talent",label:"Talent"},{id:"regulatory",label:"Regulatory"},
@@ -88,70 +360,84 @@ const AGENTS = [
 ];
 
 async function load() {
-  const [sys, brief] = await Promise.all([
-    fetch('../outputs/system_status.json?_='+Date.now()).then(r=>r.json()).catch(()=>null),
-    fetch('../outputs/board_brief.md?_='+Date.now()).then(r=>r.text()).catch(()=>''),
+  const ts = "?_=" + Date.now();
+
+  const [sys, brief, entry, competitive, regulatory] = await Promise.all([
+    fetch("../outputs/system_status.json" + ts).then(r=>r.json()).catch(()=>null),
+    fetch("../outputs/board_brief.md" + ts).then(r=>r.text()).catch(()=>""),
+    fetch("../outputs/alerts_entry.json" + ts).then(r=>r.json()).catch(()=>null),
+    fetch("../outputs/alerts_competitive.json" + ts).then(r=>r.json()).catch(()=>null),
+    fetch("../outputs/alerts_regulatory.json" + ts).then(r=>r.json()).catch(()=>null),
   ]);
-  if (!sys) { document.getElementById('hero-title').textContent='Run python run_all.py first'; return; }
 
-  document.getElementById('ts').textContent = sys.generated_at;
-  document.getElementById('status-label').textContent = sys.overall_status;
-  document.getElementById('hero-dot').className = 'status-dot ' + sys.overall_status;
+  if (!sys) {
+    document.getElementById("hero-title").textContent = "Run python run_all.py first";
+    return;
+  }
 
-  const titles = {RED:'System Alert — Board Action Required',
-    YELLOW:'System Watch — Monitor and Prepare', GREEN:'System Clear — No Immediate Action'};
-  const subs = {RED:`${sys.red_indicator_count} RED indicators across ${Object.keys(sys.agent_status||{}).length} agents`,
-    YELLOW:'One or more YELLOW indicators require monitoring',GREEN:'All agents reporting GREEN'};
-  document.getElementById('hero-title').textContent = titles[sys.overall_status]||sys.overall_status;
-  document.getElementById('hero-sub').textContent = subs[sys.overall_status]||'';
+  document.getElementById("ts").textContent = sys.generated_at;
+  document.getElementById("status-label").textContent = sys.overall_status;
+  document.getElementById("hero-dot").className = "status-dot " + sys.overall_status;
+
+  const titles = { RED:"System Alert — Board Action Required",
+    YELLOW:"System Watch — Monitor and Prepare", GREEN:"System Clear — No Immediate Action" };
+  const subs = { RED:`${sys.red_indicator_count} RED indicators across ${Object.keys(sys.agent_status||{}).length} agents`,
+    YELLOW:"One or more YELLOW indicators require monitoring", GREEN:"All agents reporting GREEN" };
+  document.getElementById("hero-title").textContent = titles[sys.overall_status] || sys.overall_status;
+  document.getElementById("hero-sub").textContent = subs[sys.overall_status] || "";
 
   // Agent grid
-  const ag = document.getElementById('agent-grid');
-  ag.innerHTML = AGENTS.map(a => {
-    const s = (sys.agent_status||{})[a.id] || 'NO_DATA';
+  const ag = document.getElementById("agent-grid");
+  ag.innerHTML = AGENTS_LIST.map(a => {
+    const s = (sys.agent_status||{})[a.id] || "NO_DATA";
     return `<div class="agent-tile"><div class="label">${a.label}</div><div class="status ${s}">${s}</div></div>`;
-  }).join('');
+  }).join("");
+
+  // ── Map
+  const markets = buildMarkets(entry, competitive, regulatory);
+  initMap(markets);
 
   // Red cards
-  const rc = document.getElementById('red-cards');
+  const rc = document.getElementById("red-cards");
   const reds = (sys.red_indicators||[]).slice(0,6);
   if (!reds.length) {
     rc.innerHTML = '<div class="card GREEN"><div class="card-title">No RED indicators this period.</div></div>';
   } else {
     rc.innerHTML = reds.map(r => {
-      const where = r.market||r.property||r.country||r.rival||'';
+      const where = r.market||r.property||r.country||r.rival||"";
       return `<div class="card RED">
         <div class="card-top">
           <div>
-            <div class="card-title">${(r.agent||'').toUpperCase()} · ${r.name||''}</div>
-            <div class="card-sub">${where} ${r.kit||''}</div>
+            <div class="card-title">${(r.agent||"").toUpperCase()} · ${r.name||""}</div>
+            <div class="card-sub">${where} ${r.kit||""}</div>
           </div>
           <span class="pill RED">RED</span>
         </div>
-        <div class="rec"><b>Action:</b> ${r.recommendation||''}</div>
+        <div class="rec"><b>Action:</b> ${r.recommendation||""}</div>
       </div>`;
-    }).join('');
+    }).join("");
   }
 
   // Brief
-  document.getElementById('brief-body').innerHTML = brief ? mdHtml(brief) : '<i>No brief generated yet.</i>';
+  document.getElementById("brief-body").innerHTML = brief ? mdHtml(brief) : "<i>No brief generated yet.</i>";
 }
 
 function mdHtml(md) {
-  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   const lines = md.split(/\r?\n/); let out=[]; let inList=false;
   for (let raw of lines) {
-    let l = esc(raw).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`([^`]+)`/g,'<code>$1</code>');
-    if (/^### /.test(raw)) { if(inList){out.push('</ul>');inList=false;} out.push('<h2>'+l.slice(4)+'</h2>'); }
-    else if (/^## /.test(raw)) { if(inList){out.push('</ul>');inList=false;} out.push('<h2>'+l.slice(3)+'</h2>'); }
-    else if (/^# /.test(raw)) { if(inList){out.push('</ul>');inList=false;} out.push('<h1>'+l.slice(2)+'</h1>'); }
-    else if (/^- /.test(raw)) { if(!inList){out.push('<ul>');inList=true;} out.push('<li>'+l.slice(2)+'</li>'); }
-    else if (raw.trim()==='') { if(inList){out.push('</ul>');inList=false;} }
-    else { if(inList){out.push('</ul>');inList=false;} out.push('<p>'+l+'</p>'); }
+    let l = esc(raw).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/`([^`]+)`/g,"<code>$1</code>");
+    if (/^### /.test(raw)) { if(inList){out.push("</ul>");inList=false;} out.push("<h2>"+l.slice(4)+"</h2>"); }
+    else if (/^## /.test(raw)) { if(inList){out.push("</ul>");inList=false;} out.push("<h2>"+l.slice(3)+"</h2>"); }
+    else if (/^# /.test(raw)) { if(inList){out.push("</ul>");inList=false;} out.push("<h1>"+l.slice(2)+"</h1>"); }
+    else if (/^- /.test(raw)) { if(!inList){out.push("<ul>");inList=true;} out.push("<li>"+l.slice(2)+"</li>"); }
+    else if (raw.trim()==="") { if(inList){out.push("</ul>");inList=false;} }
+    else { if(inList){out.push("</ul>");inList=false;} out.push("<p>"+l+"</p>"); }
   }
-  if (inList) out.push('</ul>');
-  return out.join('\n');
+  if (inList) out.push("</ul>");
+  return out.join("\n");
 }
+
 load();
 </script>
 </body>
