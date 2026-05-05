@@ -29,3 +29,7 @@ desktop.ini
 
 # Logs
 *.log
+
+# Node
+node_modules/
+package-lock.json

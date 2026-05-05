@@ -1,5 +1,5 @@
 market,country,energy_type,price_per_unit,period,qoq_change_pct,source_url,date
-EU-DE,Germany,natural_gas_eur_mwh,38.5,2026-Q1,-4.2,https://www.eex.com,2026-04-22
+EU-DE,Germany,electricity_eur_mwh,404.2,2026-Q1,1.0,https://ec.europa.eu/eurostat (nrg_pc_204),2026-05-04
 EU-PL,Poland,natural_gas_eur_mwh,42.1,2026-Q1,12.5,https://www.eex.com,2026-04-22
-EU-IT,Italy,natural_gas_eur_mwh,49.8,2026-Q1,22.3,https://www.eex.com,2026-04-22
-EU-ES,Spain,natural_gas_eur_mwh,35.2,2026-Q1,-1.8,https://www.eex.com,2026-04-22
+EU-IT,Italy,electricity_eur_mwh,333.0,2026-Q1,-10.8,https://ec.europa.eu/eurostat (nrg_pc_204),2026-05-04
+EU-ES,Spain,electricity_eur_mwh,287.2,2026-Q1,1.1,https://ec.europa.eu/eurostat (nrg_pc_204),2026-05-04

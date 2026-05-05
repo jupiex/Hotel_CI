@@ -1,0 +1,256 @@
+{
+  "agent": "deal_score",
+  "generated_at": "2026-05-04T12:27:58.757225+00:00",
+  "overall_status": "RED",
+  "scoring_version": "1.0",
+  "weights": {
+    "supply": 0.22,
+    "demand": 0.22,
+    "fx": 0.18,
+    "competitive": 0.18,
+    "cost": 0.12,
+    "regulatory": 0.08
+  },
+  "markets": [
+    {
+      "market": "Warsaw",
+      "country": "Poland",
+      "score": 80,
+      "band": "STRONG",
+      "band_label": "STRONG",
+      "alert_level": "GREEN",
+      "recommendation": "Proceed — conditions are favourable for LOI.",
+      "top_risk": "Regulatory risk: Active compliance risk: EPBD - Energy Performance of Buildings Directive (recast) (e",
+      "components": {
+        "supply": {
+          "score": 92,
+          "weight": 0.22,
+          "weighted": 20.2,
+          "level": "GREEN",
+          "detail": "Pipeline 7.3% — very low supply pressure",
+          "label": "Supply headroom"
+        },
+        "demand": {
+          "score": 95,
+          "weight": 0.22,
+          "weighted": 20.9,
+          "level": "GREEN",
+          "detail": "Booking pace 102% — ahead of prior year",
+          "label": "Demand strength"
+        },
+        "fx": {
+          "score": 95,
+          "weight": 0.18,
+          "weighted": 17.1,
+          "level": "GREEN",
+          "detail": "FX 0.1% vs EUR — very stable",
+          "label": "FX stability"
+        },
+        "competitive": {
+          "score": 72,
+          "weight": 0.18,
+          "weighted": 13.0,
+          "level": "NO_DATA",
+          "detail": "No competitive data for this market",
+          "label": "Competitive pressure"
+        },
+        "cost": {
+          "score": 58,
+          "weight": 0.12,
+          "weighted": 7.0,
+          "level": "YELLOW",
+          "detail": "Moderate cost pressure — re-baseline P&L",
+          "label": "Cost environment"
+        },
+        "regulatory": {
+          "score": 28,
+          "weight": 0.08,
+          "weighted": 2.2,
+          "level": "RED",
+          "detail": "Active compliance risk: EPBD - Energy Performance of Buildings Directive (recast) (e",
+          "label": "Regulatory risk"
+        }
+      }
+    },
+    {
+      "market": "Riyadh",
+      "country": "Saudi Arabia",
+      "score": 52,
+      "band": "WATCH",
+      "band_label": "WATCH",
+      "alert_level": "YELLOW",
+      "recommendation": "Conditional — address flagged risks before signing.",
+      "top_risk": "Supply headroom: Pipeline 18.3% — RED: oversupply risk",
+      "components": {
+        "supply": {
+          "score": 22,
+          "weight": 0.22,
+          "weighted": 4.8,
+          "level": "RED",
+          "detail": "Pipeline 18.3% — RED: oversupply risk",
+          "label": "Supply headroom"
+        },
+        "demand": {
+          "score": 68,
+          "weight": 0.22,
+          "weighted": 15.0,
+          "level": "GREEN",
+          "detail": "Booking pace 94% — YELLOW: softening",
+          "label": "Demand strength"
+        },
+        "fx": {
+          "score": 95,
+          "weight": 0.18,
+          "weighted": 17.1,
+          "level": "GREEN",
+          "detail": "FX 2.1% vs EUR — very stable",
+          "label": "FX stability"
+        },
+        "competitive": {
+          "score": 32,
+          "weight": 0.18,
+          "weighted": 5.8,
+          "level": "RED",
+          "detail": "Rival signed (Marriott: JW Marriott Diriyah) — accelerate or stand down",
+          "label": "Competitive pressure"
+        },
+        "cost": {
+          "score": 58,
+          "weight": 0.12,
+          "weighted": 7.0,
+          "level": "NO_DATA",
+          "detail": "Moderate cost pressure — re-baseline P&L",
+          "label": "Cost environment"
+        },
+        "regulatory": {
+          "score": 28,
+          "weight": 0.08,
+          "weighted": 2.2,
+          "level": "RED",
+          "detail": "Active compliance risk: EPBD - Energy Performance of Buildings Directive (recast) (e",
+          "label": "Regulatory risk"
+        }
+      }
+    },
+    {
+      "market": "Ho Chi Minh City",
+      "country": "Vietnam",
+      "score": 48,
+      "band": "CAUTION",
+      "band_label": "CAUTION",
+      "alert_level": "RED",
+      "recommendation": "Significant headwinds — revisit market timing.",
+      "top_risk": "Regulatory risk: Active compliance risk: EPBD - Energy Performance of Buildings Directive (recast) (e",
+      "components": {
+        "supply": {
+          "score": 58,
+          "weight": 0.22,
+          "weighted": 12.8,
+          "level": "YELLOW",
+          "detail": "Pipeline 10.9% — supply building, monitor",
+          "label": "Supply headroom"
+        },
+        "demand": {
+          "score": 45,
+          "weight": 0.22,
+          "weighted": 9.9,
+          "level": "YELLOW",
+          "detail": "Booking pace 86% — below YELLOW threshold",
+          "label": "Demand strength"
+        },
+        "fx": {
+          "score": 58,
+          "weight": 0.18,
+          "weighted": 10.4,
+          "level": "YELLOW",
+          "detail": "FX 9.4% vs EUR — YELLOW: re-price term sheets",
+          "label": "FX stability"
+        },
+        "competitive": {
+          "score": 32,
+          "weight": 0.18,
+          "weighted": 5.8,
+          "level": "RED",
+          "detail": "Rival signed (Hilton: Conrad Saigon) — accelerate or stand down",
+          "label": "Competitive pressure"
+        },
+        "cost": {
+          "score": 58,
+          "weight": 0.12,
+          "weighted": 7.0,
+          "level": "NO_DATA",
+          "detail": "Moderate cost pressure — re-baseline P&L",
+          "label": "Cost environment"
+        },
+        "regulatory": {
+          "score": 28,
+          "weight": 0.08,
+          "weighted": 2.2,
+          "level": "RED",
+          "detail": "Active compliance risk: EPBD - Energy Performance of Buildings Directive (recast) (e",
+          "label": "Regulatory risk"
+        }
+      }
+    },
+    {
+      "market": "Casablanca",
+      "country": "Morocco",
+      "score": 28,
+      "band": "CAUTION",
+      "band_label": "CAUTION",
+      "alert_level": "RED",
+      "recommendation": "Significant headwinds — revisit market timing.",
+      "top_risk": "FX stability: FX 16.8% vs EUR — RED: H1 triggered",
+      "components": {
+        "supply": {
+          "score": 22,
+          "weight": 0.22,
+          "weighted": 4.8,
+          "level": "RED",
+          "detail": "Pipeline 16.1% — RED: oversupply risk",
+          "label": "Supply headroom"
+        },
+        "demand": {
+          "score": 25,
+          "weight": 0.22,
+          "weighted": 5.5,
+          "level": "RED",
+          "detail": "Booking pace 78% — RED: demand weakness",
+          "label": "Demand strength"
+        },
+        "fx": {
+          "score": 18,
+          "weight": 0.18,
+          "weighted": 3.2,
+          "level": "RED",
+          "detail": "FX 16.8% vs EUR — RED: H1 triggered",
+          "label": "FX stability"
+        },
+        "competitive": {
+          "score": 32,
+          "weight": 0.18,
+          "weighted": 5.8,
+          "level": "RED",
+          "detail": "Rival signed (IHG: InterContinental Casablanca Marina) — accelerate or stand down",
+          "label": "Competitive pressure"
+        },
+        "cost": {
+          "score": 58,
+          "weight": 0.12,
+          "weighted": 7.0,
+          "level": "NO_DATA",
+          "detail": "Moderate cost pressure — re-baseline P&L",
+          "label": "Cost environment"
+        },
+        "regulatory": {
+          "score": 28,
+          "weight": 0.08,
+          "weighted": 2.2,
+          "level": "RED",
+          "detail": "Active compliance risk: EPBD - Energy Performance of Buildings Directive (recast) (e",
+          "label": "Regulatory risk"
+        }
+      }
+    }
+  ]
+}

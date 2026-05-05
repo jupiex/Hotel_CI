@@ -1,8 +1,8 @@
 # Radisson CI — Board Brief
 
-_Generated: 2026-04-29T13:31:58.366356Z_
+_Generated: 2026-05-04T12:27:58.838027Z_
 
-**System status: RED** · 33 RED indicators across 7 agents · 5 ABP assumption(s) at risk
+**System status: RED** · 32 RED indicators across 7 agents · 5 ABP assumption(s) at risk
 
 ## 1. Top risks this period
 
@@ -13,16 +13,16 @@ _Generated: 2026-04-29T13:31:58.366356Z_
 ## 2. ABP assumption status
 
 - **A1 — ✗ AT RISK**: Target owner signs at Radisson standard fee structure (3–4% mgmt fee)
-  - _Evidence: 3 RED signal(s): Radisson Blu Casablanca City, Park Inn Riyadh Centre, Casablanca_
+  - _Evidence: 3 RED signal(s): Radisson Blu Casablanca City, Casablanca, Park Inn Riyadh Centre_
   - _Action: Asset management to schedule owner calls; review fee flexibility for at-risk properties._
 - **A2 — ✗ AT RISK**: RevPAR breakeven achievable within 36 months of opening
-  - _Evidence: 5 RED signal(s) threatening revenue model: Radisson Blu Casablanca City, Park Inn Riyadh Centre, Riyadh, Casablanca_
+  - _Evidence: 5 RED signal(s) threatening revenue model: Radisson Blu Casablanca City, Casablanca, Park Inn Riyadh Centre, Riyadh_
   - _Action: Re-run P&L models for affected markets; extend breakeven sensitivity range to 48 months._
 - **A3 — ✗ AT RISK**: No other Radisson brand already present in same submarket (no cannibalisation)
-  - _Evidence: Rival(s) signed in Radisson target submarket(s): Hilton, Marriott, IHG_
+  - _Evidence: Rival(s) signed in Radisson target submarket(s): Marriott, IHG, Hilton_
   - _Action: Development Director to confirm Radisson has no overlapping pipeline in same submarket._
 - **A4 — ✗ BREACHED**: Energy & labour cost increases stay within 10% YoY
-  - _Evidence: Energy/labour costs exceeding 10% threshold in: Italy, EU-IT, Germany_
+  - _Evidence: Energy/labour costs exceeding 10% threshold in: Italy, Germany_
   - _Action: CFO to re-baseline cost model; review CAPEX timing and procurement contracts._
 - **A5 — ✗ AT RISK**: Loyalty programme retains share against rival devaluations
   - _Evidence: Rival loyalty devaluation detected — potential switching opportunity: Marriott_

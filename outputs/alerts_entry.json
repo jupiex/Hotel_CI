@@ -1,6 +1,6 @@
 {
   "agent": "entry",
-  "generated_at": "2026-04-29T13:31:58.147899Z",
+  "generated_at": "2026-05-04T12:27:58.353490Z",
   "overall_status": "RED",
   "abp_assumptions": {
     "A1": "Target owner signs at Radisson standard fee structure (3-4% mgmt fee)",
@@ -284,7 +284,7 @@
       "name": "FX depreciation vs EUR (6mo)",
       "market": "Warsaw",
       "country": "Poland",
-      "value": 0.2,
+      "value": 0.1,
       "unit": "%",
       "threshold_yellow": 8,
       "threshold_red": 15,
@@ -292,7 +292,7 @@
       "confidence": "MEDIUM",
       "source": "ECB exchange rate feed",
       "source_url": "https://api.frankfurter.dev (ECB rates)",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "policy_notes": "PLN stable; EU funds supporting tourism infrastructure",
       "recommendation": "FX stable. No action required.",
       "abp_assumption_affected": "A1"

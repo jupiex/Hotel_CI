@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-29T13:31:58.366356Z",
+  "generated_at": "2026-05-04T12:27:58.838027Z",
   "overall_status": "RED",
   "indicator_counts": {
-    "RED": 33,
+    "RED": 32,
     "YELLOW": 22,
-    "GREEN": 27,
+    "GREEN": 28,
     "NO_DATA": 0,
     "ERROR": 0
   },
@@ -17,7 +17,7 @@
     "regulatory": "RED",
     "operations": "RED"
   },
-  "red_indicator_count": 33,
+  "red_indicator_count": 32,
   "red_indicators": [
     {
       "agent": "entry",
@@ -311,7 +311,7 @@
       "confidence": "MEDIUM",
       "source": "Reltio + Revinate (joined)",
       "source_url": "",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "owner_company": "Saudi Real Estate Co",
       "competing_operator_signal": true,
       "recommendation": "Churn risk: score down -0.4 with only 17 months to expiry; competing operator approached owner. Asset management should open renewal conversation now."
@@ -327,7 +327,7 @@
       "confidence": "MEDIUM",
       "source": "Reltio + Revinate (joined)",
       "source_url": "",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "owner_company": "Atlas Hotels Maroc",
       "competing_operator_signal": false,
       "recommendation": "Churn risk: score down -0.55 with only 7 months to expiry. Asset management should open renewal conversation now."
@@ -342,7 +342,7 @@
       "confidence": "MEDIUM",
       "source": "LinkedIn profile changes",
       "source_url": "https://www.linkedin.com",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "recommendation": "Cluster of GM departures. HR briefing required; check exit-interview themes."
     },
     {
@@ -386,22 +386,6 @@
     },
     {
       "agent": "regulatory",
-      "kit": "KIT_1",
-      "name": "Energy futures (QoQ)",
-      "market": "EU-IT",
-      "value": 22.3,
-      "unit": "% QoQ",
-      "threshold_yellow": 10,
-      "threshold_red": 20,
-      "alert_level": "RED",
-      "confidence": "MEDIUM",
-      "source": "EEX",
-      "source_url": "https://www.eex.com",
-      "capture_date": "2026-04-22",
-      "recommendation": "Energy +22.3% QoQ. Hedge forward 12 months; review tariff renegotiation."
-    },
-    {
-      "agent": "regulatory",
       "kit": "KIT_2",
       "name": "Labour cost change",
       "country": "Germany",
@@ -411,7 +395,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "recommendation": "Wage +8.4%. Re-baseline labour cost in P&L; review service-model design."
     },
     {
@@ -548,22 +532,22 @@
   "abp_status": {
     "A1": {
       "status": "AT_RISK",
-      "evidence": "3 RED signal(s): Radisson Blu Casablanca City, Park Inn Riyadh Centre, Casablanca",
+      "evidence": "3 RED signal(s): Radisson Blu Casablanca City, Casablanca, Park Inn Riyadh Centre",
       "recommendation": "Asset management to schedule owner calls; review fee flexibility for at-risk properties."
     },
     "A2": {
       "status": "AT_RISK",
-      "evidence": "5 RED signal(s) threatening revenue model: Radisson Blu Casablanca City, Park Inn Riyadh Centre, Riyadh, Casablanca",
+      "evidence": "5 RED signal(s) threatening revenue model: Radisson Blu Casablanca City, Casablanca, Park Inn Riyadh Centre, Riyadh",
       "recommendation": "Re-run P&L models for affected markets; extend breakeven sensitivity range to 48 months."
     },
     "A3": {
       "status": "AT_RISK",
-      "evidence": "Rival(s) signed in Radisson target submarket(s): Hilton, Marriott, IHG",
+      "evidence": "Rival(s) signed in Radisson target submarket(s): Marriott, IHG, Hilton",
       "recommendation": "Development Director to confirm Radisson has no overlapping pipeline in same submarket."
     },
     "A4": {
       "status": "BREACHED",
-      "evidence": "Energy/labour costs exceeding 10% threshold in: Italy, EU-IT, Germany",
+      "evidence": "Energy/labour costs exceeding 10% threshold in: Italy, Germany",
       "recommendation": "CFO to re-baseline cost model; review CAPEX timing and procurement contracts."
     },
     "A5": {

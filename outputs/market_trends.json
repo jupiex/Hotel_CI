@@ -1,0 +1,105 @@
+{
+  "generated_at": "2026-05-04T12:28:18.208666+00:00",
+  "run_count": 3,
+  "markets": {
+    "Krakow": {
+      "current_status": "YELLOW",
+      "prev_status": "YELLOW",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "YELLOW",
+        "YELLOW",
+        "YELLOW"
+      ]
+    },
+    "Germany": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Italy": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Riyadh": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Casablanca": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Spain": {
+      "current_status": "GREEN",
+      "prev_status": "GREEN",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "GREEN",
+        "GREEN",
+        "GREEN"
+      ]
+    },
+    "Warsaw": {
+      "current_status": "GREEN",
+      "prev_status": "GREEN",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "GREEN",
+        "GREEN",
+        "GREEN"
+      ]
+    },
+    "Ho Chi Minh City": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Poland": {
+      "current_status": "YELLOW",
+      "prev_status": "YELLOW",
+      "streak": 3,
+      "direction": "stable",
+      "history": [
+        "YELLOW",
+        "YELLOW",
+        "YELLOW"
+      ]
+    }
+  }
+}

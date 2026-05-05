@@ -1,6 +1,6 @@
 {
   "agent": "owner",
-  "generated_at": "2026-04-29T13:31:58.205839Z",
+  "generated_at": "2026-05-04T12:27:58.501832Z",
   "overall_status": "RED",
   "indicators": [
     {
@@ -13,7 +13,7 @@
       "confidence": "MEDIUM",
       "source": "Reltio + Revinate (joined)",
       "source_url": "",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "owner_company": "Berlin Hospitality Holdings",
       "competing_operator_signal": false,
       "recommendation": "Contract horizon stable."
@@ -28,7 +28,7 @@
       "confidence": "MEDIUM",
       "source": "Reltio + Revinate (joined)",
       "source_url": "",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "owner_company": "Polonia Estates SA",
       "competing_operator_signal": false,
       "recommendation": "Contract expires in 14 months. Schedule owner review."
@@ -43,7 +43,7 @@
       "confidence": "MEDIUM",
       "source": "Reltio + Revinate (joined)",
       "source_url": "",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "owner_company": "Saudi Real Estate Co",
       "competing_operator_signal": true,
       "recommendation": "Churn risk: score down -0.4 with only 17 months to expiry; competing operator approached owner. Asset management should open renewal conversation now."
@@ -58,7 +58,7 @@
       "confidence": "MEDIUM",
       "source": "Reltio + Revinate (joined)",
       "source_url": "",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "owner_company": "Atlas Hotels Maroc",
       "competing_operator_signal": false,
       "recommendation": "Churn risk: score down -0.55 with only 7 months to expiry. Asset management should open renewal conversation now."

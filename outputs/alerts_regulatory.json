@@ -1,21 +1,21 @@
 {
   "agent": "regulatory",
-  "generated_at": "2026-04-29T13:31:58.250730Z",
+  "generated_at": "2026-05-04T12:27:58.624963Z",
   "overall_status": "RED",
   "indicators": [
     {
       "kit": "KIT_1",
       "name": "Energy futures (QoQ)",
       "market": "EU-DE",
-      "value": -4.2,
+      "value": 1.0,
       "unit": "% QoQ",
       "threshold_yellow": 10,
       "threshold_red": 20,
       "alert_level": "GREEN",
       "confidence": "MEDIUM",
       "source": "EEX",
-      "source_url": "https://www.eex.com",
-      "capture_date": "2026-04-22",
+      "source_url": "https://ec.europa.eu/eurostat (nrg_pc_204)",
+      "capture_date": "2026-05-04",
       "recommendation": "Stable."
     },
     {
@@ -37,30 +37,30 @@
       "kit": "KIT_1",
       "name": "Energy futures (QoQ)",
       "market": "EU-IT",
-      "value": 22.3,
-      "unit": "% QoQ",
-      "threshold_yellow": 10,
-      "threshold_red": 20,
-      "alert_level": "RED",
-      "confidence": "MEDIUM",
-      "source": "EEX",
-      "source_url": "https://www.eex.com",
-      "capture_date": "2026-04-22",
-      "recommendation": "Energy +22.3% QoQ. Hedge forward 12 months; review tariff renegotiation."
-    },
-    {
-      "kit": "KIT_1",
-      "name": "Energy futures (QoQ)",
-      "market": "EU-ES",
-      "value": -1.8,
+      "value": -10.8,
       "unit": "% QoQ",
       "threshold_yellow": 10,
       "threshold_red": 20,
       "alert_level": "GREEN",
       "confidence": "MEDIUM",
       "source": "EEX",
-      "source_url": "https://www.eex.com",
-      "capture_date": "2026-04-22",
+      "source_url": "https://ec.europa.eu/eurostat (nrg_pc_204)",
+      "capture_date": "2026-05-04",
+      "recommendation": "Stable."
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Energy futures (QoQ)",
+      "market": "EU-ES",
+      "value": 1.1,
+      "unit": "% QoQ",
+      "threshold_yellow": 10,
+      "threshold_red": 20,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "EEX",
+      "source_url": "https://ec.europa.eu/eurostat (nrg_pc_204)",
+      "capture_date": "2026-05-04",
       "recommendation": "Stable."
     },
     {
@@ -73,7 +73,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "recommendation": "Wage +8.4%. Re-baseline labour cost in P&L; review service-model design."
     },
     {
@@ -86,7 +86,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "recommendation": "Modest wage pressure. Monitor."
     },
     {
@@ -99,7 +99,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-04-29",
+      "capture_date": "2026-05-04",
       "recommendation": "Within trend."
     },
     {
