@@ -1,0 +1,9 @@
+metric,competitor,value_current,radisson_value,gap,unit,period,survey_sample_n,source,source_url
+overall_satisfaction,Marriott Bonvoy,78.4,61.2,-17.2,score out of 100,2026-Q1,4200,J.D. Power EMEA Hotel Loyalty Survey,https://example.com/jdpower/emea-loyalty-2026
+overall_satisfaction,Hilton Honors,74.1,61.2,-12.9,score out of 100,2026-Q1,4200,J.D. Power EMEA Hotel Loyalty Survey,https://example.com/jdpower/emea-loyalty-2026
+overall_satisfaction,IHG One Rewards,68.9,61.2,-7.7,score out of 100,2026-Q1,4200,J.D. Power EMEA Hotel Loyalty Survey,https://example.com/jdpower/emea-loyalty-2026
+redemption_ease,Marriott Bonvoy,72.1,55.8,-16.3,score out of 100,2026-Q1,4200,J.D. Power EMEA Hotel Loyalty Survey,https://example.com/jdpower/emea-loyalty-2026
+points_value_perception,Marriott Bonvoy,65.4,48.2,-17.2,score out of 100,2026-Q1,4200,J.D. Power EMEA Hotel Loyalty Survey,https://example.com/jdpower/emea-loyalty-2026
+mobile_app_rating,Hilton Honors,4.7,3.9,-0.8,app store score out of 5,2026-05-01,87000 reviews,App Store / Google Play aggregated,https://example.com/app/loyalty-ratings
+elite_recognition_score,Marriott Bonvoy,81.2,59.4,-21.8,score out of 100,2026-Q1,1850 elite members,Skift Research Elite Loyalty 2026,https://example.com/skift/elite-loyalty
+programme_awareness,Accor ALL,58.9,52.1,-6.8,aided awareness pct,2026-Q1,8000 EMEA consumers,YouGov Brand Health Monitor,https://example.com/yougov/brand-awareness

@@ -1,0 +1,9 @@
+owner_company,country,distress_type,severity,properties_affected,debt_eur_m,ltv_pct,dscr,credit_watch_flag,news_signal,signal_date,source,source_url
+Warburg-HIH Invest GmbH,Germany,Loan covenant breach,HIGH,RAD007,58.4,82.1,0.91,YES,German CRE lender reports Q1 covenant failures in hospitality book,2026-04-15,Creditreform Monitor,https://example.com/creditreform/warburg-hih
+Globalworth Poland RE,Poland,Refinancing risk,MEDIUM,RAD009|RAD010,124.8,74.5,1.04,YES,Refinancing of EUR 125m portfolio loan due Sept 2026 — market conditions tight,2026-03-28,Moody's EMEA CRE Watch,https://example.com/moodys/globalworth
+DWS Real Estate GmbH,Germany,Investor redemption pressure,MEDIUM,RAD005,210.0,65.0,1.18,NO,DWS open-end fund facing EUR 210m redemption queue — potential asset sales,2026-04-10,Bloomberg RE Fund Monitor,https://example.com/bloomberg/dws-redemption
+CBRE Global Investors NL,Netherlands,Management contract dispute,HIGH,RAD025,0,0,0,NO,Formal legal notice served on Radisson re SLA breach — arbitration threatened,2026-04-28,Internal Legal,https://example.com/internal/legal/rad025
+M&G Real Estate,United Kingdom,Portfolio disposal review,LOW,RAD015,145.0,68.2,1.12,NO,M&G Real Estate reviewing hotel exposure as part of EMEA rebalancing,2026-03-20,Estates Gazette,https://example.com/eg/mg-re-hotels
+Union Investment Real Estate,Germany,Asset review,LOW,RAD008,88.5,61.0,1.24,NO,Standard triennial review — no distress signals but cash flow margin narrow,2026-04-01,Internal Asset Management,https://example.com/internal/am/rad008
+Grupo Lar SOCIMI,Spain,Liquidity watch,LOW,RAD021,42.1,58.4,1.31,NO,Slight leverage increase in Q1 2026 results — within covenant but trending up,2026-05-01,Grupo Lar Q1 2026 results,https://example.com/grupoLar/q1-2026
+Edwardian Hotels London,United Kingdom,None,LOW,RAD013,0,0,0,NO,No distress signals — strong operational performance and balance sheet,2026-05-01,Internal monitoring,https://example.com/internal/rad013

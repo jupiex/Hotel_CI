@@ -1,0 +1,153 @@
+{
+  "agent": "brand",
+  "generated_at": "2026-05-22T16:05:49.708238+00:00",
+  "overall_status": "RED",
+  "abp_assumptions": {
+    "A7": "Brand review scores maintain ≥4.0 average across portfolio — no systemic decline"
+  },
+  "hedging_actions": [
+    "Activate 48-hour guest recovery protocol for any property hitting 3.8 or below",
+    "Weekly sentiment dashboard review with VP Operations and VP Marketing",
+    "Pre-approved crisis communication templates for viral social media events"
+  ],
+  "indicators": [
+    {
+      "kit": "KIT_1",
+      "name": "Portfolio review score velocity",
+      "description": "Rate of change in guest review scores (TripAdvisor + Google) across portfolio",
+      "value": 2,
+      "unit": "properties at/below 4.0",
+      "threshold_yellow": 1,
+      "threshold_red": 2,
+      "alert_level": "YELLOW",
+      "confidence": "HIGH",
+      "source": "TripAdvisor / Google Reviews",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "2 propert(ies) at or below 4.0 — GM coaching and service recovery plan needed.",
+      "abp_assumption_affected": "A7",
+      "detail": {
+        "properties_reviewed": 8,
+        "below_3_8": 1,
+        "3_8_to_4_0": 1,
+        "score_drop_3m": 0
+      }
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Lowest score property — RAD025",
+      "description": "Property with the lowest average review score across all platforms",
+      "value": 3.75,
+      "unit": "avg score (0-5)",
+      "threshold_yellow": 4.0,
+      "threshold_red": 3.8,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "TripAdvisor / Google Reviews",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Property RAD025 (Netherlands) avg 3.75 — velocity -0.15 pts vs 3 months ago.",
+      "abp_assumption_affected": "A7",
+      "property_id": "RAD025",
+      "country": "Netherlands"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Negative sentiment theme clusters",
+      "description": "Complaint theme clusters showing significant YoY growth in negative mentions",
+      "value": 8,
+      "unit": "surging themes (≥80% growth)",
+      "threshold_yellow": 1,
+      "threshold_red": 3,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "ReviewPro / Internal Sentiment Monitor",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "8 negative themes surging ≥80% YoY — systemic service failures require immediate COO escalation.",
+      "abp_assumption_affected": "A7",
+      "detail": {
+        "surging_80pct": 8,
+        "rising_30_80pct": 2
+      }
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Top negative theme — Room size",
+      "description": "Fastest-growing negative guest complaint theme across portfolio",
+      "value": 120.0,
+      "unit": "% change YoY in mentions",
+      "threshold_yellow": 30,
+      "threshold_red": 80,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "ReviewPro / Internal Sentiment Monitor",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Theme 'Room size' at RAD025 (Netherlands): \"Rooms tiny for the price — barely space for luggage\"",
+      "abp_assumption_affected": "A7",
+      "property_id": "RAD025",
+      "country": "Netherlands"
+    },
+    {
+      "kit": "KIT_3",
+      "name": "Press coverage sentiment",
+      "description": "Volume and sentiment of press articles mentioning Radisson brand",
+      "value": 41.7,
+      "unit": "% negative coverage",
+      "threshold_yellow": 25,
+      "threshold_red": 40,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "Media Monitor / Google Alerts",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "5/12 articles negative (41.7%) — press sentiment crisis; PR response team activation required.",
+      "abp_assumption_affected": "A7",
+      "detail": {
+        "total_articles": 12,
+        "positive": 4,
+        "neutral": 3,
+        "negative": 5
+      }
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Social media negative signals",
+      "description": "Negative mentions, viral content and engagement decline on social platforms",
+      "value": 1,
+      "unit": "viral negative events",
+      "threshold_yellow": 0,
+      "threshold_red": 1,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "Brandwatch / Manual social monitoring",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "1 viral negative social media event(s) detected — immediate crisis response required.",
+      "abp_assumption_affected": "A7",
+      "detail": {
+        "viral_events_100k_views": 1,
+        "negative_mention_surge_properties": 4
+      }
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Viral event — RAD022",
+      "description": "Highest-view negative social media video/post currently active",
+      "value": 450000.0,
+      "unit": "views",
+      "threshold_yellow": 10000,
+      "threshold_red": 100000,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "TikTok",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Viral negative content at RAD022 (Italy) — 450,000 views on TikTok.",
+      "abp_assumption_affected": "A7",
+      "property_id": "RAD022",
+      "country": "Italy"
+    }
+  ]
+}

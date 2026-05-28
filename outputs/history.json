@@ -136,5 +136,92 @@
       "A4",
       "A5"
     ]
+  },
+  {
+    "timestamp": "2026-05-08T07:47:17.338826Z",
+    "overall_status": "RED",
+    "red_count": 32,
+    "yellow_count": 22,
+    "green_count": 28,
+    "agent_status": {
+      "entry": "RED",
+      "competitive": "RED",
+      "revenue": "RED",
+      "owner": "RED",
+      "talent": "RED",
+      "regulatory": "RED",
+      "operations": "RED"
+    },
+    "abp_at_risk": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5"
+    ]
+  },
+  {
+    "timestamp": "2026-05-22T15:56:06.236234Z",
+    "overall_status": "RED",
+    "red_count": 99,
+    "yellow_count": 24,
+    "green_count": 33,
+    "agent_status": {
+      "entry": "RED",
+      "competitive": "RED",
+      "revenue": "RED",
+      "owner": "RED",
+      "talent": "RED",
+      "regulatory": "RED",
+      "operations": "RED",
+      "ma": "GREEN",
+      "brand": "RED",
+      "loyalty": "RED",
+      "esg": "RED",
+      "franchise": "RED"
+    },
+    "abp_at_risk": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A7",
+      "A8",
+      "A9",
+      "A10"
+    ]
+  },
+  {
+    "timestamp": "2026-05-22T16:05:49.999659Z",
+    "overall_status": "RED",
+    "red_count": 99,
+    "yellow_count": 24,
+    "green_count": 33,
+    "agent_status": {
+      "entry": "RED",
+      "competitive": "RED",
+      "revenue": "RED",
+      "owner": "RED",
+      "talent": "RED",
+      "regulatory": "RED",
+      "operations": "RED",
+      "ma": "GREEN",
+      "brand": "RED",
+      "loyalty": "RED",
+      "esg": "RED",
+      "franchise": "RED"
+    },
+    "abp_at_risk": [
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "A5",
+      "A7",
+      "A8",
+      "A9",
+      "A10"
+    ]
   }
 ]

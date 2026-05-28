@@ -1,0 +1,9 @@
+property_id,country,audit_type,audit_date,audit_result,living_wage_compliant,union_agreement,turnover_rate_pct,turnover_benchmark_pct,grievance_cases_open,modern_slavery_risk_level,auditor,source
+RAD001,Germany,ETI Base Code,2025-10-15,SATISFACTORY,YES,Ver.di Agreement,28.4,31.0,1,LOW,Bureau Veritas,Internal HR Audit
+RAD005,Germany,ETI Base Code,2025-10-15,SATISFACTORY,YES,Ver.di Agreement,34.1,31.0,0,LOW,Bureau Veritas,Internal HR Audit
+RAD007,Germany,ETI Base Code,2025-11-01,IMPROVEMENT NEEDED,YES,None,48.2,31.0,3,MEDIUM,SGS,Internal HR Audit
+RAD012,United Kingdom,ETI Base Code,2025-12-01,SATISFACTORY,YES,Unite the Union,29.8,33.0,1,LOW,ERM,Internal HR Audit
+RAD015,United Kingdom,ETI Base Code,2025-12-01,IMPROVEMENT NEEDED,NO,None,52.4,33.0,5,HIGH,ERM,Internal HR Audit
+RAD022,Italy,SA8000,2025-09-20,CRITICAL FINDING,NO,None,44.7,35.0,8,HIGH,RINA,Internal HR Audit
+RAD025,Netherlands,ETI Base Code,2025-11-15,IMPROVEMENT NEEDED,YES,FNV Hospitality,41.3,28.0,2,LOW,Bureau Veritas,Internal HR Audit
+RAD028,Hungary,ETI Base Code,2025-10-05,IMPROVEMENT NEEDED,NO,None,58.1,40.0,4,MEDIUM,SGS,Internal HR Audit

@@ -1,0 +1,11 @@
+property_id,property_name,country,owner_company,invoice_type,amount_eur_k,due_date,days_overdue,payment_status,dispute_flag,dispute_reason,risk_level,source
+RAD005,Radisson Blu Frankfurt Airport,Germany,DWS Real Estate GmbH,Royalty Fee Q1 2026,48.2,2026-04-30,22,OVERDUE,NO,,HIGH,Finance AR Ledger
+RAD007,Radisson Hotel Hamburg,Germany,Warburg-HIH Invest GmbH,Royalty Fee Q1 2026,21.4,2026-04-30,22,OVERDUE,YES,Owner disputes occupancy calculation,HIGH,Finance AR Ledger
+RAD010,Radisson Hotel Krakow,Poland,Globalworth Poland RE,Royalty Fee Q1 2026,14.8,2026-04-30,22,OVERDUE,NO,,MEDIUM,Finance AR Ledger
+RAD010,Radisson Hotel Krakow,Poland,Globalworth Poland RE,Tech Fee Q1 2026,3.2,2026-04-15,37,OVERDUE,NO,,HIGH,Finance AR Ledger
+RAD025,Radisson Blu Amsterdam Airport,Netherlands,CBRE Global Investors NL,Royalty Fee Q1 2026,52.8,2026-04-30,22,OVERDUE,YES,Disputes service level agreement breach,HIGH,Finance AR Ledger
+RAD015,Radisson Hotel Glasgow,United Kingdom,M&G Real Estate,Marketing Contribution Q1,8.4,2026-03-31,52,OVERDUE,NO,,HIGH,Finance AR Ledger
+RAD008,Radisson & Suites Frankfurt,Germany,Union Investment Real Estate,Royalty Fee Q1 2026,18.1,2026-04-30,22,PARTIAL,NO,,MEDIUM,Finance AR Ledger
+RAD021,Radisson Hotel Seville,Spain,Grupo Lar SOCIMI,Royalty Fee Q1 2026,12.6,2026-04-30,22,PAID,NO,,LOW,Finance AR Ledger
+RAD017,Radisson Blu Nantes,France,Covivio SA,Royalty Fee Q1 2026,15.4,2026-04-30,22,PAID,NO,,LOW,Finance AR Ledger
+RAD002,Radisson Collection Warsaw,Poland,Polonia Estates SA,Royalty Fee Q1 2026,31.2,2026-04-30,22,PAID,NO,,LOW,Finance AR Ledger

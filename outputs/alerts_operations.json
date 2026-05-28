@@ -1,6 +1,6 @@
 {
   "agent": "operations",
-  "generated_at": "2026-05-04T12:27:58.686333Z",
+  "generated_at": "2026-05-22T16:05:49.809353Z",
   "overall_status": "RED",
   "properties": [
     {
@@ -36,6 +36,161 @@
       "kit_summary": {
         "KIT_1": "RED",
         "KIT_3": "YELLOW"
+      }
+    },
+    {
+      "property_id": "RAD005",
+      "property": "RAD005",
+      "status": "RED",
+      "red_count": 3,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED",
+        "FRANCHISE_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD008",
+      "property": "RAD008",
+      "status": "RED",
+      "red_count": 2,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED",
+        "FRANCHISE_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD009",
+      "property": "RAD009",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "status": "RED",
+      "red_count": 6,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED",
+        "FRANCHISE_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD012",
+      "property": "RAD012",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD018",
+      "property": "RAD018",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD023",
+      "property": "RAD023",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "status": "RED",
+      "red_count": 7,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED",
+        "FRANCHISE_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD027",
+      "property": "RAD027",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD028",
+      "property": "RAD028",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD031",
+      "property": "RAD031",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD032",
+      "property": "RAD032",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD022",
+      "property": "RAD022",
+      "status": "RED",
+      "red_count": 4,
+      "yellow_count": 0,
+      "kit_summary": {
+        "ESG_ALERT": "RED",
+        "FRANCHISE_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "status": "RED",
+      "red_count": 6,
+      "yellow_count": 0,
+      "kit_summary": {
+        "FRANCHISE_ALERT": "RED"
+      }
+    },
+    {
+      "property_id": "RAD015",
+      "property": "RAD015",
+      "status": "RED",
+      "red_count": 1,
+      "yellow_count": 0,
+      "kit_summary": {
+        "FRANCHISE_ALERT": "RED"
       }
     },
     {
@@ -441,6 +596,524 @@
       "capture_date": "2026-04-28",
       "recommendation": "Within SLA.",
       "notes": "Aesthetic only"
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD005",
+      "property": "RAD005",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD008",
+      "property": "RAD008",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD009",
+      "property": "RAD009",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD012",
+      "property": "RAD012",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD018",
+      "property": "RAD018",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD023",
+      "property": "RAD023",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD027",
+      "property": "RAD027",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD028",
+      "property": "RAD028",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD031",
+      "property": "RAD031",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Portfolio energy intensity gaps",
+      "property_id": "RAD032",
+      "property": "RAD032",
+      "value": 12,
+      "unit": "properties >30% above target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "12/32 properties >30% above energy target — EUR 5485k capex required; carbon penalty risk escalating."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Worst energy gap — RAD025",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": -60.5,
+      "unit": "% gap to target",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Blu Amsterdam Airport (Netherlands): 93.1 kWh/RN vs target 58.0 — capex EUR 780k"
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Labour standards audit findings",
+      "property_id": "RAD022",
+      "property": "RAD022",
+      "value": 1,
+      "unit": "critical findings",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "1 critical finding(s) + 2 high modern-slavery-risk properties — immediate remediation and legal review."
+    },
+    {
+      "kit": "ESG_ALERT",
+      "name": "Critical labour finding — RAD022",
+      "property_id": "RAD022",
+      "property": "RAD022",
+      "value": 8,
+      "unit": "open grievance cases",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "esg",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "RAD022 (Italy): CRITICAL FINDING | Living wage: NO | Modern slavery: HIGH"
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise revenue vs. budget",
+      "property_id": "RAD005",
+      "property": "RAD005",
+      "value": 3,
+      "unit": "properties >15% below budget",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "3/10 franchise properties >15% below RevPAR budget — performance intervention and contract review required."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise revenue vs. budget",
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "value": 3,
+      "unit": "properties >15% below budget",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "3/10 franchise properties >15% below RevPAR budget — performance intervention and contract review required."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise revenue vs. budget",
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "value": 3,
+      "unit": "properties >15% below budget",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "3/10 franchise properties >15% below RevPAR budget — performance intervention and contract review required."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Worst revenue — RAD010",
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "value": -27.0,
+      "unit": "% vs budget",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Hotel Krakow (Poland): RevPAR EUR 64.2 vs budget EUR 88.0 — -27.0% gap."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Management team instability",
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "value": 4,
+      "unit": "HIGH-risk vacancies",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "4 HIGH-risk management vacancies — guest experience and franchise stability at risk; regional escalation."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Management team instability",
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "value": 4,
+      "unit": "HIGH-risk vacancies",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "4 HIGH-risk management vacancies — guest experience and franchise stability at risk; regional escalation."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Management team instability",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": 4,
+      "unit": "HIGH-risk vacancies",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "4 HIGH-risk management vacancies — guest experience and franchise stability at risk; regional escalation."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Management team instability",
+      "property_id": "RAD022",
+      "property": "RAD022",
+      "value": 4,
+      "unit": "HIGH-risk vacancies",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "4 HIGH-risk management vacancies — guest experience and franchise stability at risk; regional escalation."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "HIGH vacancy — RAD007 General Manager",
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "value": 0,
+      "unit": "days vacant",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Hotel Hamburg (Germany): General Manager Resignation — Second GM departure in 18 months — pattern of instability"
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "HIGH vacancy — RAD010 General Manager",
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "value": 0,
+      "unit": "days vacant",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Hotel Krakow (Poland): General Manager Termination — Revenue performance below threshold triggered PIP then termination"
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "HIGH vacancy — RAD025 Director of Finance",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": 0,
+      "unit": "days vacant",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Blu Amsterdam Airport (Netherlands): Director of Finance Resignation — Key control — no replacement identified"
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "HIGH vacancy — RAD022 General Manager",
+      "property_id": "RAD022",
+      "property": "RAD022",
+      "value": 0,
+      "unit": "days vacant",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Blu Milan (Italy): General Manager Resignation — Resigned following labour audit critical finding — urgency to fill"
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise fee payment status",
+      "property_id": "RAD005",
+      "property": "RAD005",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise fee payment status",
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise fee payment status",
+      "property_id": "RAD010",
+      "property": "RAD010",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise fee payment status",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise fee payment status",
+      "property_id": "RAD015",
+      "property": "RAD015",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchise fee payment status",
+      "property_id": "RAD008",
+      "property": "RAD008",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchisee company financial distress",
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "value": 2,
+      "unit": "HIGH-severity distress signals",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "2 franchisee companies in HIGH financial distress — strategic reserve and early-termination review required."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Franchisee company financial distress",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": 2,
+      "unit": "HIGH-severity distress signals",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "2 franchisee companies in HIGH financial distress — strategic reserve and early-termination review required."
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Distress — Warburg-HIH Invest GmbH",
+      "property_id": "RAD007",
+      "property": "RAD007",
+      "value": 82.1,
+      "unit": "LTV %",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Warburg-HIH Invest GmbH (Germany): Loan covenant breach — German CRE lender reports Q1 covenant failures in hospitality book"
+    },
+    {
+      "kit": "FRANCHISE_ALERT",
+      "name": "Distress — CBRE Global Investors NL",
+      "property_id": "RAD025",
+      "property": "RAD025",
+      "value": 0.0,
+      "unit": "LTV %",
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "franchise",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "CBRE Global Investors NL (Netherlands): Management contract dispute — Formal legal notice served on Radisson re SLA breach — arbitration threatened"
     }
   ]
 }

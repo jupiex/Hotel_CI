@@ -1,0 +1,9 @@
+property_id,property_name,country,role,change_type,change_date,incumbent_name,replacement_name,interim_coverage,risk_level,notes,source
+RAD007,Radisson Hotel Hamburg,Germany,General Manager,Resignation,2026-02-28,Petra Wagner,TBC,Regional Director coverage,HIGH,Second GM departure in 18 months — pattern of instability,Internal HR Records
+RAD010,Radisson Hotel Krakow,Poland,General Manager,Termination,2026-03-15,Bartosz Kowalski,Jan Wiśniewski (interim),Internal interim,HIGH,Revenue performance below threshold triggered PIP then termination,Internal HR Records
+RAD015,Radisson Hotel Glasgow,United Kingdom,General Manager,Resignation,2026-01-20,Alistair Cameron,Sarah McLeod,External interim,MEDIUM,Departed to open competitor property — taking 2 HODs,Internal HR Records
+RAD025,Radisson Blu Amsterdam Airport,Netherlands,Director of Finance,Resignation,2026-04-01,Hans Vermeer,TBC,Group Finance support,HIGH,Key control — no replacement identified,Internal HR Records
+RAD005,Radisson Blu Frankfurt Airport,Germany,Director of Sales,Resignation,2026-03-10,Monika Braun,Felix Hoffmann,Internal promotion,MEDIUM,Revenue decline period coincides with sales team turnover,Internal HR Records
+RAD022,Radisson Blu Milan,Italy,General Manager,Resignation,2026-04-20,Marco Rossi,TBC,None assigned,HIGH,Resigned following labour audit critical finding — urgency to fill,Internal HR Records
+RAD008,Radisson & Suites Frankfurt,Germany,Head of Housekeeping,Termination,2026-02-15,Greta Schneider,TBC,Agency cover,LOW,Performance related — agency cover adequate short term,Internal HR Records
+RAD002,Radisson Collection Warsaw,Poland,Director of Revenue Management,Lateral transfer,2026-05-01,Aleksandra Piotrowska,Tomasz Zielinski,Internal transfer,LOW,Planned internal mobility — no risk,Internal HR Records

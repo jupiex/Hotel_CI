@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 import pandas as pd
 
 AGENT_NAME = "operations"
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(ROOT, "data", AGENT_NAME)
 OUT_PATH = os.path.join(ROOT, "outputs", f"alerts_{AGENT_NAME}.json")
 
@@ -194,8 +194,70 @@ def kit3_maintenance():
     return indicators
 
 
+def load_esg_franchise_property_alerts():
+    """Read property-level indicators from Agent 12 (ESG) and Agent 13 (Franchise).
+    Returns a list of synthetic indicator dicts — one per affected property_id."""
+    extra = []
+    out_dir = os.path.join(ROOT, "outputs")
+    priority = {"RED": 3, "YELLOW": 2, "GREEN": 1, "NO_DATA": 0}
+
+    for agent_name in ("esg", "franchise"):
+        path = os.path.join(out_dir, f"alerts_{agent_name}.json")
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            continue
+
+        for ind in data.get("indicators", []):
+            lvl = ind.get("alert_level", "NO_DATA")
+            if lvl not in ("RED", "YELLOW"):
+                continue
+
+            # Single-property indicator
+            pid = ind.get("property_id")
+            if pid:
+                extra.append({
+                    "kit": f"{agent_name.upper()}_ALERT",
+                    "name": ind.get("name", ""),
+                    "property_id": pid,
+                    "property": pid,
+                    "value": ind.get("value", ""),
+                    "unit": ind.get("unit", ""),
+                    "alert_level": lvl,
+                    "confidence": ind.get("confidence", "MEDIUM"),
+                    "source": agent_name,
+                    "source_url": "",
+                    "capture_date": ind.get("capture_date", ""),
+                    "recommendation": ind.get("recommendation", ""),
+                })
+
+            # Multi-property indicator (property_ids list)
+            for list_pid in ind.get("property_ids", []):
+                if not list_pid:
+                    continue
+                extra.append({
+                    "kit": f"{agent_name.upper()}_ALERT",
+                    "name": ind.get("name", ""),
+                    "property_id": list_pid,
+                    "property": list_pid,
+                    "value": ind.get("value", ""),
+                    "unit": ind.get("unit", ""),
+                    "alert_level": lvl,
+                    "confidence": ind.get("confidence", "MEDIUM"),
+                    "source": agent_name,
+                    "source_url": "",
+                    "capture_date": ind.get("capture_date", ""),
+                    "recommendation": ind.get("recommendation", ""),
+                })
+
+    return extra
+
+
 def build_property_summaries(indicators):
-    """Aggregate per-property: worst alert level across all 3 KITs."""
+    """Aggregate per-property: worst alert level across all KITs including ESG + Franchise."""
     by_prop = {}
     for ind in indicators:
         pid = ind.get("property_id")
@@ -236,9 +298,12 @@ def build_property_summaries(indicators):
 
 def run():
     indicators = kit1_daily_kpis() + kit2_staffing() + kit3_maintenance()
-    property_summaries = build_property_summaries(indicators)
+    # Augment with property-level alerts from Agent 12 (ESG) and Agent 13 (Franchise)
+    esg_franchise_alerts = load_esg_franchise_property_alerts()
+    all_indicators = indicators + esg_franchise_alerts
+    property_summaries = build_property_summaries(all_indicators)
 
-    levels = [i.get("alert_level") for i in indicators]
+    levels = [i.get("alert_level") for i in all_indicators]
     overall = ("RED" if "RED" in levels else
                "YELLOW" if "YELLOW" in levels else
                "GREEN" if all(l == "GREEN" for l in levels) else "NO_DATA")
@@ -248,12 +313,12 @@ def run():
         "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "overall_status": overall,
         "properties": property_summaries,
-        "indicators": indicators,
+        "indicators": all_indicators,
     }
     os.makedirs(os.path.dirname(OUT_PATH), exist_ok=True)
     with open(OUT_PATH, "w", encoding="utf-8") as f:
         json.dump(out, f, indent=2, ensure_ascii=False)
-    print(f"Agent {AGENT_NAME}: {overall} - {len(indicators)} indicators across "
+    print(f"Agent {AGENT_NAME}: {overall} - {len(all_indicators)} indicators across "
           f"{len(property_summaries)} properties")
     return out
 

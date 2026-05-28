@@ -11,7 +11,8 @@ OUTPUT_DIR = os.path.join(ROOT, "outputs")
 
 SOURCE_AGENTS = [
     "entry", "competitive", "revenue", "owner",
-    "talent", "regulatory", "operations"
+    "talent", "regulatory", "operations",
+    "ma", "brand", "loyalty", "esg", "franchise",
 ]
 
 ABP_ASSUMPTIONS = {
@@ -20,6 +21,11 @@ ABP_ASSUMPTIONS = {
     "A3": "No other Radisson brand already present in same submarket (no cannibalisation)",
     "A4": "Energy & labour cost increases stay within 10% YoY",
     "A5": "Loyalty programme retains share against rival devaluations",
+    "A6": "M&A pipeline provides ≥2 actionable acquisition targets per quarter",
+    "A7": "Brand review scores maintain ≥4.0 average across portfolio — no systemic decline",
+    "A8": "Radisson Rewards retains competitive parity — no material member share loss to rivals",
+    "A9": "ESG compliance maintained — no material regulatory breach affecting hotel valuations",
+    "A10": "Franchise partner portfolio health maintained — <5% of portfolio in material distress",
 }
 
 HEDGING_ACTIONS = {
@@ -183,6 +189,98 @@ def evaluate_abp(all_alerts):
         }
     else:
         results["A5"] = {"status": "HOLDING", "evidence": "No adverse loyalty moves detected.", "recommendation": ""}
+
+    # A6: M&A pipeline provides ≥2 actionable targets per quarter
+    a6_reds    = reds_matching(["distressed asset", "acquisition", "portfolio exit", "pe exit", "competitor disposal"])
+    a6_yellows = yellows_matching(["distressed asset", "acquisition", "portfolio exit"])
+    if a6_reds:
+        results["A6"] = {
+            "status": "AT_RISK",
+            "evidence": f"{len(a6_reds)} RED M&A signal(s) — pipeline quality or quantity insufficient",
+            "recommendation": "Development Director to review M&A pipeline and engage transaction advisors.",
+        }
+    elif a6_yellows:
+        results["A6"] = {
+            "status": "WATCH",
+            "evidence": f"{len(a6_yellows)} YELLOW M&A signal(s) — monitor pipeline closely",
+            "recommendation": "Ensure standing NDAs with EMEA hotel advisors are current.",
+        }
+    else:
+        results["A6"] = {"status": "HOLDING", "evidence": "M&A pipeline providing adequate deal flow.", "recommendation": ""}
+
+    # A7: Brand review scores ≥4.0, no systemic decline
+    a7_reds    = reds_matching(["review score", "score velocity", "viral", "sentiment", "negative theme", "press coverage"])
+    a7_yellows = yellows_matching(["review score", "score velocity", "sentiment", "negative", "press"])
+    if a7_reds:
+        props = list({i.get("property_id") or i.get("property", "") for i in a7_reds if i.get("property_id") or i.get("property")})
+        results["A7"] = {
+            "status": "AT_RISK",
+            "evidence": f"{len(a7_reds)} RED brand signal(s) — properties affected: {', '.join(props[:4])}",
+            "recommendation": "VP Marketing and VP Operations to activate guest recovery protocol and crisis comms.",
+        }
+    elif a7_yellows:
+        results["A7"] = {
+            "status": "WATCH",
+            "evidence": f"{len(a7_yellows)} YELLOW brand signal(s) — declining scores or negative themes",
+            "recommendation": "GM coaching and weekly sentiment review for flagged properties.",
+        }
+    else:
+        results["A7"] = {"status": "HOLDING", "evidence": "Brand scores stable across portfolio.", "recommendation": ""}
+
+    # A8: Radisson Rewards competitive parity
+    a8_reds    = reds_matching(["programme health", "satisfaction gap", "competitor promotion", "rule change", "nps", "enrolment"])
+    a8_yellows = yellows_matching(["programme health", "satisfaction gap", "competitor promotion", "loyalty"])
+    if a8_reds:
+        results["A8"] = {
+            "status": "AT_RISK",
+            "evidence": f"{len(a8_reds)} RED loyalty signal(s) — member share or programme health deteriorating",
+            "recommendation": "VP Loyalty to present programme competitiveness review to CMO within 30 days.",
+        }
+    elif a8_yellows:
+        results["A8"] = {
+            "status": "WATCH",
+            "evidence": f"{len(a8_yellows)} YELLOW loyalty signal(s) — competitor activity elevated",
+            "recommendation": "Activate counter-promotion response fund if competitor triple-points extends beyond 60 days.",
+        }
+    else:
+        results["A8"] = {"status": "HOLDING", "evidence": "Loyalty programme competitive parity maintained.", "recommendation": ""}
+
+    # A9: ESG compliance — no material breach
+    a9_reds    = reds_matching(["at risk", "regulatory deadline", "energy gap", "carbon", "labour", "critical finding", "esg"])
+    a9_yellows = yellows_matching(["compliance", "energy", "carbon", "labour", "esg"])
+    if a9_reds:
+        results["A9"] = {
+            "status": "BREACHED",
+            "evidence": f"{len(a9_reds)} RED ESG/compliance signal(s) — penalty or regulatory risk active",
+            "recommendation": "CFO and General Counsel to review ESG compliance exposure; approve remediation capex.",
+        }
+    elif a9_yellows:
+        results["A9"] = {
+            "status": "WATCH",
+            "evidence": f"{len(a9_yellows)} YELLOW ESG signal(s) — compliance on watchlist",
+            "recommendation": "Head of Sustainability to submit 90-day remediation plans for all AT RISK regulations.",
+        }
+    else:
+        results["A9"] = {"status": "HOLDING", "evidence": "ESG compliance on track — no material breach risk.", "recommendation": ""}
+
+    # A10: Franchise partner health — <5% of portfolio in material distress
+    a10_reds    = reds_matching(["franchise", "distress", "overdue", "payment", "management vacancy", "revenue below budget"])
+    a10_yellows = yellows_matching(["franchise", "distress", "overdue", "management change"])
+    if a10_reds:
+        props = list({i.get("property_id") or i.get("property", "") for i in a10_reds if i.get("property_id") or i.get("property")})
+        results["A10"] = {
+            "status": "AT_RISK",
+            "evidence": f"{len(a10_reds)} RED franchise partner signal(s) — properties: {', '.join(props[:4])}",
+            "recommendation": "Asset Management Director to engage distressed franchisees; prepare contingency plan.",
+        }
+    elif a10_yellows:
+        results["A10"] = {
+            "status": "WATCH",
+            "evidence": f"{len(a10_yellows)} YELLOW franchise signal(s) — monitor partner health",
+            "recommendation": "Monthly AR and financial health check for flagged franchisees.",
+        }
+    else:
+        results["A10"] = {"status": "HOLDING", "evidence": "Franchise partner portfolio healthy.", "recommendation": ""}
 
     return results
 

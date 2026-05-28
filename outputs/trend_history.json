@@ -40,5 +40,47 @@
       "Italy": "RED",
       "Spain": "GREEN"
     }
+  },
+  {
+    "run_at": "2026-05-08T07:47:25.432935+00:00",
+    "markets": {
+      "Riyadh": "RED",
+      "Ho Chi Minh City": "RED",
+      "Warsaw": "GREEN",
+      "Casablanca": "RED",
+      "Krakow": "YELLOW",
+      "Germany": "RED",
+      "Poland": "YELLOW",
+      "Italy": "RED",
+      "Spain": "GREEN"
+    }
+  },
+  {
+    "run_at": "2026-05-22T15:56:16.511450+00:00",
+    "markets": {
+      "Riyadh": "RED",
+      "Ho Chi Minh City": "RED",
+      "Warsaw": "GREEN",
+      "Casablanca": "RED",
+      "Krakow": "YELLOW",
+      "Germany": "RED",
+      "Poland": "YELLOW",
+      "Italy": "RED",
+      "Spain": "GREEN"
+    }
+  },
+  {
+    "run_at": "2026-05-22T16:05:51.651659+00:00",
+    "markets": {
+      "Riyadh": "RED",
+      "Ho Chi Minh City": "RED",
+      "Warsaw": "GREEN",
+      "Casablanca": "RED",
+      "Krakow": "YELLOW",
+      "Germany": "RED",
+      "Poland": "YELLOW",
+      "Italy": "RED",
+      "Spain": "GREEN"
+    }
   }
 ]

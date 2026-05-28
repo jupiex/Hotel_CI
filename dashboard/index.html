@@ -131,7 +131,7 @@
 <body>
 <header>
   <h1>Radisson CI — Early Warning System</h1>
-  <p>7-agent EWS · CSV inputs → threshold logic → board brief. Reference: Inditex CI prototype.</p>
+  <p>13-agent EWS · CSV inputs → threshold logic → board brief. Reference: Inditex CI prototype.</p>
   <div class="meta">
     <span>System: <span id="overall-pill" class="pill">…</span></span>
     <span>Generated: <b id="generated">…</b></span>
@@ -161,6 +161,11 @@
   <div id="panel-talent" class="panel"></div>
   <div id="panel-regulatory" class="panel"></div>
   <div id="panel-operations" class="panel"></div>
+  <div id="panel-ma" class="panel"></div>
+  <div id="panel-brand" class="panel"></div>
+  <div id="panel-loyalty" class="panel"></div>
+  <div id="panel-esg" class="panel"></div>
+  <div id="panel-franchise" class="panel"></div>
   <div id="panel-brief" class="panel"></div>
   <div id="panel-history"    class="panel"></div>
   <div id="panel-whatif"     class="panel"></div>
@@ -176,6 +181,11 @@ const AGENTS = [
   {id: "talent",      label: "5. Talent"},
   {id: "regulatory",  label: "6. Regulatory"},
   {id: "operations",  label: "8. Operations"},
+  {id: "ma",          label: "9. M&A Intel"},
+  {id: "brand",       label: "10. Brand"},
+  {id: "loyalty",     label: "11. Loyalty"},
+  {id: "esg",         label: "12. ESG"},
+  {id: "franchise",   label: "13. Franchise"},
 ];
 
 const state = { alerts: {}, system: null, brief: "", history: [], trends: null, dealScore: null, whatifReady: false, wiCompare: false, whatif: null };

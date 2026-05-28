@@ -1,6 +1,6 @@
 {
   "agent": "deal_score",
-  "generated_at": "2026-05-04T12:27:58.757225+00:00",
+  "generated_at": "2026-05-22T16:05:49.842954+00:00",
   "overall_status": "RED",
   "scoring_version": "1.0",
   "weights": {
@@ -43,7 +43,7 @@
           "weight": 0.18,
           "weighted": 17.1,
           "level": "GREEN",
-          "detail": "FX 0.1% vs EUR — very stable",
+          "detail": "FX 0.5% vs EUR — very stable",
           "label": "FX stability"
         },
         "competitive": {

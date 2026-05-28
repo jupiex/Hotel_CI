@@ -1,0 +1,6 @@
+competitor,property_name,city,country,brand,rooms,disposal_type,disposal_date,buyer,price_eur_m,strategic_rationale,source,source_url
+Marriott International,Marriott Frankfurt City,Frankfurt,Germany,Marriott,398,Sale-leaseback,2026-02-28,Deka Immobilien,88,Reduce asset-heavy exposure EMEA,Hospitality Investor,https://example.com/hi/marriott-frankfurt
+IHG Hotels & Resorts,Holiday Inn Express Warsaw Centrum,Warsaw,Poland,Holiday Inn Express,218,Franchise termination,2026-01-15,Independant operator,0,Underperforming franchise agreement,Mergermarket,https://example.com/mm/ihg-warsaw
+Accor,Sofitel Brussels Le Louise,Brussels,Belgium,Sofitel,169,Disposal to Covivio,2026-03-10,Covivio SA,54,Asset-light strategy,Bloomberg M&A,https://example.com/bloomberg/accor-sofitel
+Hilton Hotels & Resorts,DoubleTree Prague,Prague,Czech Republic,DoubleTree by Hilton,228,Sale of management contract,2026-04-05,Local family office,31,Portfolio rebalancing CEE,Real Capital Analytics,https://example.com/rca/doubletree
+Hyatt Hotels Corporation,Hyatt Regency Birmingham,Birmingham,United Kingdom,Hyatt Regency,319,Sale-leaseback,2026-02-05,M&G Real Estate,79,UK capex reinvestment,CBRE Capital Markets,https://example.com/cbre/hyatt-bham

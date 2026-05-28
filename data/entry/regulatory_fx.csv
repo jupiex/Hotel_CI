@@ -1,5 +1,5 @@
 market,country,fx_vs_eur_6mo_pct,policy_status,policy_notes,date,source_url
 Riyadh,Saudi Arabia,2.1,stable,SAR pegged to USD; Vision 2030 hospitality incentives active,2026-04-22,https://www.ecb.europa.eu/stats/policy_and_exchange_rates/
 Ho Chi Minh City,Vietnam,9.4,watch,VND under pressure; new foreign ownership rules pending,2026-04-22,https://www.ecb.europa.eu/stats/policy_and_exchange_rates/
-Warsaw,Poland,0.1,stable,PLN stable; EU funds supporting tourism infrastructure,2026-05-04,https://api.frankfurter.dev (ECB rates)
+Warsaw,Poland,-0.5,stable,PLN stable; EU funds supporting tourism infrastructure,2026-05-08,https://api.frankfurter.dev (ECB rates)
 Casablanca,Morocco,16.8,deteriorating,MAD weakening; tourism levy increase proposed for 2027,2026-04-22,https://www.ecb.europa.eu/stats/policy_and_exchange_rates/

@@ -1,0 +1,9 @@
+scope,country,emissions_tco2e_current,emissions_tco2e_target_2030,reduction_achieved_pct,reduction_needed_pct,on_track,reporting_standard,last_verified,verifier,source
+Scope 1 — Direct combustion,Germany,4820,2410,-18.4,-50.0,NO,GHG Protocol,2025-12-01,Bureau Veritas,Internal Carbon Report
+Scope 2 — Purchased electricity,Germany,12450,4982,-31.2,-60.0,NO,GHG Protocol (market-based),2025-12-01,Bureau Veritas,Internal Carbon Report
+Scope 1 — Direct combustion,Poland,3210,1605,-12.1,-50.0,NO,GHG Protocol,2025-11-15,SGS,Internal Carbon Report
+Scope 2 — Purchased electricity,Poland,8940,3576,-22.4,-60.0,NO,GHG Protocol (market-based),2025-11-15,SGS,Internal Carbon Report
+Scope 1 — Direct combustion,United Kingdom,3940,1970,-24.5,-50.0,YES,GHG Protocol,2025-12-15,ERM,Internal Carbon Report
+Scope 2 — Purchased electricity,United Kingdom,7820,3128,-38.9,-60.0,YES,GHG Protocol (market-based),2025-12-15,ERM,Internal Carbon Report
+Scope 1 — Direct combustion,France,2180,1090,-19.7,-50.0,NO,GHG Protocol,2025-11-01,Bureau Veritas,Internal Carbon Report
+Scope 2 — Purchased electricity,France,5640,2256,-29.8,-60.0,NO,GHG Protocol (market-based),2025-11-01,Bureau Veritas,Internal Carbon Report

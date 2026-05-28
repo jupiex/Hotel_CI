@@ -1,0 +1,33 @@
+property_id,property_name,country,energy_intensity_kwh_per_room_night,target_kwh_per_room_night,gap_pct,epc_rating,certification,last_audit_date,capex_needed_eur_k,source
+RAD001,Radisson Blu Berlin Mitte,Germany,62.4,55.0,-13.5,B,ISO 50001,2025-11-01,180,Internal Energy Audit
+RAD002,Radisson Collection Warsaw,Poland,71.2,55.0,-29.5,C,In progress,2025-09-15,320,Internal Energy Audit
+RAD003,Park Inn Riyadh Centre,Saudi Arabia,148.3,120.0,-23.6,N/A,Saudi Green Building,2025-10-20,450,Internal Energy Audit
+RAD004,Radisson Blu Casablanca City,Morocco,88.1,70.0,-25.9,D,None,2025-08-10,280,Internal Energy Audit
+RAD005,Radisson Blu Frankfurt Airport,Germany,79.8,55.0,-45.1,C,ISO 50001,2025-12-01,520,Internal Energy Audit
+RAD006,Radisson Blu Hotel Munich,Germany,58.2,55.0,-5.8,B,ISO 50001,2025-11-15,95,Internal Energy Audit
+RAD007,Radisson Hotel Hamburg,Germany,67.4,55.0,-22.5,C,In progress,2025-10-05,210,Internal Energy Audit
+RAD008,Radisson & Suites Frankfurt,Germany,72.1,55.0,-31.1,C,None,2025-09-20,340,Internal Energy Audit
+RAD009,Radisson Blu Hotel Wroclaw,Poland,75.9,55.0,-38.0,C,In progress,2025-10-18,290,Internal Energy Audit
+RAD010,Radisson Hotel Krakow,Poland,82.4,55.0,-49.8,D,None,2025-08-22,380,Internal Energy Audit
+RAD011,Radisson Blu Hotel Gdansk,Poland,69.3,55.0,-26.0,C,In progress,2025-11-08,245,Internal Energy Audit
+RAD012,Radisson Blu London Stansted,United Kingdom,84.7,60.0,-41.2,D,In progress,2025-12-10,610,Internal Energy Audit
+RAD013,Radisson Blu Edwardian Manchester,United Kingdom,71.5,60.0,-19.2,C,BREEAM In-Use,2025-10-25,185,Internal Energy Audit
+RAD014,Radisson RED Edinburgh,United Kingdom,63.8,60.0,-6.3,B,BREEAM In-Use,2025-11-20,110,Internal Energy Audit
+RAD015,Radisson Hotel Glasgow,United Kingdom,77.2,60.0,-28.7,D,None,2025-09-05,420,Internal Energy Audit
+RAD016,Radisson Blu Paris Boulogne,France,68.4,58.0,-17.9,C,HQE Exploitation,2025-10-01,225,Internal Energy Audit
+RAD017,Radisson Blu Nantes,France,74.1,58.0,-27.8,C,In progress,2025-08-18,315,Internal Energy Audit
+RAD018,Radisson Hotel Nice,France,79.6,58.0,-37.2,D,None,2025-09-30,395,Internal Energy Audit
+RAD019,Radisson Blu Barcelona,Spain,57.3,60.0,4.7,B,BREEAM ES,2025-11-12,0,Internal Energy Audit
+RAD020,Radisson Blu Madrid Prado,Spain,63.8,60.0,-6.3,B,In progress,2025-10-08,85,Internal Energy Audit
+RAD021,Radisson Hotel Seville,Spain,70.5,60.0,-17.5,C,None,2025-09-15,195,Internal Energy Audit
+RAD022,Radisson Blu Milan,Italy,74.8,62.0,-20.6,C,LEED O+M Silver,2025-11-05,260,Internal Energy Audit
+RAD023,Radisson Blu Rome,Italy,81.2,62.0,-31.0,C,None,2025-10-12,410,Internal Energy Audit
+RAD024,Radisson Hotel Venice Mestre,Italy,69.4,62.0,-11.9,C,In progress,2025-09-25,165,Internal Energy Audit
+RAD025,Radisson Blu Amsterdam Airport,Netherlands,93.1,58.0,-60.5,D,None,2025-12-05,780,Internal Energy Audit
+RAD026,Radisson Blu Brussels,Belgium,72.4,58.0,-24.8,C,BREEAM BE,2025-10-15,280,Internal Energy Audit
+RAD027,Radisson Blu Prague,Czech Republic,77.8,58.0,-34.1,C,None,2025-09-10,345,Internal Energy Audit
+RAD028,Radisson Blu Budapest,Hungary,83.5,58.0,-43.9,D,None,2025-08-28,495,Internal Energy Audit
+RAD029,Radisson Blu Jeddah,Saudi Arabia,138.7,120.0,-15.6,N/A,Saudi Green Building,2025-10-30,380,Internal Energy Audit
+RAD030,Radisson Hotel Al Khobar,Saudi Arabia,151.2,120.0,-26.0,N/A,None,2025-09-18,510,Internal Energy Audit
+RAD031,Radisson Blu Marrakech,Morocco,91.4,70.0,-30.6,D,None,2025-08-15,340,Internal Energy Audit
+RAD032,Radisson Blu Dubai Deira Creek,United Arab Emirates,112.4,85.0,-32.2,N/A,LEED Silver (expired),2025-10-22,580,Internal Energy Audit

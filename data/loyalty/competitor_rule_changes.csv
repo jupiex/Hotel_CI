@@ -1,0 +1,9 @@
+competitor_programme,change_type,change_description,effective_date,impact_level,affected_tier,points_change_pct,source,source_url
+Marriott Bonvoy,Points devaluation,Point redemption rates increased 15% across EMEA award hotels,2026-04-01,HIGH,All tiers,-15,Marriott Bonvoy programme update email,https://example.com/bonvoy/2026-q2-update
+IHG One Rewards,Category restructure,150+ European properties moved to higher award categories,2026-03-15,MEDIUM,All tiers,-10,IHG One programme announcement,https://example.com/ihg-one/category-update
+Hilton Honors,Accelerator bonus extended,Triple miles promotion for all stays extended to Dec 2026,2026-04-15,HIGH,All tiers,+200,Hilton Honors email communication,https://example.com/hilton-honors/accelerator
+Accor Live Limitless,Silver tier threshold raised,Silver status now requires 30 nights vs 20 previously,2026-05-01,MEDIUM,Silver,-,ALL member communication,https://example.com/all/tier-changes
+Marriott Bonvoy,Free night certificate improvement,Free night certs now valid at properties up to 50K pts (was 40K),2026-04-01,MEDIUM,Gold+,+25,Marriott Bonvoy blog post,https://example.com/bonvoy/free-night-cert
+World of Hyatt,Transfer partnership with Chase expanded,2x bonus on Chase transfer to Hyatt for 90 days,2026-04-10,HIGH,All tiers,+100,Hyatt and Chase press release,https://example.com/hyatt/chase-transfer
+Best Western Rewards,Flat rate simplification,All redemptions now 5K points per night (was tiered),2026-03-01,LOW,All tiers,0,Best Western news release,https://example.com/bwr/flat-rate
+Wyndham Rewards,Co-brand credit card launch in Germany,New Barclays DE co-brand card offering 5x earn at Wyndham,2026-04-20,MEDIUM,All tiers,+400,Wyndham and Barclays press release,https://example.com/wyndham/barclays-de

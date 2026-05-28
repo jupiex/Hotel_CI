@@ -1,0 +1,17 @@
+property_id,property_name,country,platform,score_current,score_3m_ago,score_12m_ago,review_count_30d,review_count_py_30d,capture_date
+RAD001,Radisson Blu Berlin Mitte,Germany,TripAdvisor,4.2,4.4,4.5,142,189,2026-05-01
+RAD001,Radisson Blu Berlin Mitte,Germany,Google,4.1,4.3,4.4,318,401,2026-05-01
+RAD002,Radisson Collection Warsaw,Poland,TripAdvisor,4.6,4.5,4.4,98,87,2026-05-01
+RAD002,Radisson Collection Warsaw,Poland,Google,4.5,4.4,4.3,210,195,2026-05-01
+RAD005,Radisson Blu Frankfurt Airport,Germany,TripAdvisor,3.9,4.1,4.3,201,234,2026-05-01
+RAD005,Radisson Blu Frankfurt Airport,Germany,Google,3.8,4.0,4.2,456,502,2026-05-01
+RAD012,Radisson Blu London Stansted,United Kingdom,TripAdvisor,4.0,4.2,4.3,178,209,2026-05-01
+RAD012,Radisson Blu London Stansted,United Kingdom,Google,4.1,4.2,4.4,390,428,2026-05-01
+RAD013,Radisson Blu Edwardian Manchester,United Kingdom,TripAdvisor,4.4,4.3,4.2,88,79,2026-05-01
+RAD013,Radisson Blu Edwardian Manchester,United Kingdom,Google,4.5,4.4,4.3,199,182,2026-05-01
+RAD019,Radisson Blu Barcelona,Spain,TripAdvisor,4.3,4.3,4.4,156,168,2026-05-01
+RAD019,Radisson Blu Barcelona,Spain,Google,4.2,4.3,4.4,334,362,2026-05-01
+RAD022,Radisson Blu Milan,Italy,TripAdvisor,4.1,4.2,4.3,121,138,2026-05-01
+RAD022,Radisson Blu Milan,Italy,Google,4.0,4.1,4.3,287,319,2026-05-01
+RAD025,Radisson Blu Amsterdam Airport,Netherlands,TripAdvisor,3.8,3.9,4.1,231,268,2026-05-01
+RAD025,Radisson Blu Amsterdam Airport,Netherlands,Google,3.7,3.9,4.0,512,589,2026-05-01

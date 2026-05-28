@@ -1,0 +1,9 @@
+asset_name,city,country,asset_class,rooms,distress_type,asking_price_eur_m,discount_to_book_pct,seller,listed_date,source,source_url
+Hotel Metropol Berlin,Berlin,Germany,Full-service hotel,298,Receiver-led sale,42.0,28,Distressed Asset Fund I LP,2026-02-10,CoStar Distressed Monitor,https://example.com/costar/metropol
+Palace Hotel Warsaw,Warsaw,Poland,Full-service hotel,218,Owner-financed default,31.5,22,PKO Bank Polski,2026-01-28,Cushman & Wakefield Deal Track,https://example.com/cw/palace-warsaw
+Citygate Hotel Frankfurt,Frankfurt,Germany,Select-service hotel,164,Insolvency,19.8,35,Commerzbank RE,2026-03-05,CBRE Capital Markets Alert,https://example.com/cbre/citygate
+Boulevard Hotel Brussels,Brussels,Belgium,Full-service hotel,241,CVA process,29.0,18,AG Real Estate,2026-02-20,JLL Hospitality Research,https://example.com/jll/boulevard
+Vistula Grand Krakow,Krakow,Poland,Boutique hotel,112,Loan maturity default,12.4,26,mBank SA,2026-03-15,Colliers Hospitality Monitor,https://example.com/colliers/vistula
+Harbour View Hotel Hamburg,Hamburg,Germany,Full-service hotel,195,Pre-pack administration,24.5,20,Warburg-HIH Invest,2026-01-15,Hospitality Investor,https://example.com/hi/harbour
+Central Park Hotel Budapest,Budapest,Hungary,Full-service hotel,177,Refinancing failure,18.0,32,OTP Bank,2026-04-01,CBRE Capital Markets Alert,https://example.com/cbre/centralpark
+Phoenix Residence Milan,Milan,Italy,Extended-stay hotel,143,Lender appointed receiver,22.3,24,UniCredit RE,2026-03-22,CoStar Distressed Monitor,https://example.com/costar/phoenix

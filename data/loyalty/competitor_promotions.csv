@@ -1,0 +1,9 @@
+competitor_programme,promotion_name,promotion_type,start_date,end_date,bonus_multiplier,min_stays,target_markets,estimated_cost_eur_m,source,source_url
+Marriott Bonvoy,Bonus Points Fiesta,Stay promotion,2026-04-01,2026-06-30,2.0,2,EMEA-wide,45,Marriott Bonvoy email,https://example.com/bonvoy/fiesta
+Hilton Honors,Double Points Summer Sprint,Stay promotion,2026-05-01,2026-08-31,2.0,1,Europe,38,Hilton Honors email,https://example.com/honors/summer
+IHG One Rewards,QuadMiles for Business,Corporate promotion,2026-04-15,2026-07-31,4.0,3,Germany+UK+France,22,IHG One email,https://example.com/ihg/quadmiles
+Accor ALL,Promo Escapade Été,Leisure promotion,2026-06-01,2026-08-31,3.0,2,France+Spain+Italy,31,ALL programme website,https://example.com/all/escapade
+World of Hyatt,More Nights More Points,Milestone bonus,2026-04-01,2026-09-30,2.5,5,EMEA-wide,18,Hyatt programme site,https://example.com/hyatt/milestone
+Wyndham Rewards,Triple Points Weekends,Weekend promotion,2026-05-01,2026-07-31,3.0,1,Germany+Poland+Czech,8,Wyndham email,https://example.com/wyndham/triple-wknd
+Radisson Rewards,Business Bonus Spring,Corporate promotion,2026-04-01,2026-06-30,2.0,2,EMEA-wide,12,Radisson Rewards email,https://example.com/radisson-rewards/biz-spring
+Choice Privileges,Elite Fast Track 2026,Status challenge,2026-01-01,2026-12-31,1.5,10,EMEA-wide,5,Choice Hotels press,https://example.com/choice/fast-track

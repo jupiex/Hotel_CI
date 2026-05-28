@@ -1,0 +1,9 @@
+metric,region,value_current,value_py,change_pct,unit,period,notes,source
+active_members,Global,42800000,39500000,8.4,members,2026-Q1,YTD active defined as 1+ stay in 12 months,Internal CRM
+new_enrolments_rate,EMEA,18.2,22.5,-19.1,new members per 100 stays,2026-Q1,Declining conversion at check-in,Internal CRM
+member_redemption_rate,EMEA,31.4,34.8,-9.8,pct of eligible points redeemed,2026-Q1,Redemption friction reported,Internal CRM
+points_breakage_rate,Global,38.2,35.1,8.8,pct of issued points never redeemed,2026-Q1,Rising — member disengagement signal,Internal actuarial
+nps_member_score,EMEA,42,48,-12.5,NPS (Net Promoter Score),2026-Q1,6-point decline vs YoY,Internal survey
+tier_upgrade_rate,EMEA,9.1,11.8,-22.9,pct of members upgrading tier,2026-Q1,Slower than programme target,Internal CRM
+corporate_account_renewal_rate,EMEA,82.3,87.6,-6.1,pct of corporate accounts renewing,2026-Q1,Key account attrition emerging,Commercial Operations
+partner_earn_transactions,EMEA,1240000,1380000,-10.1,partner earn transactions,2026-Q1,Airline/retail partners underperforming,Partner settlement data

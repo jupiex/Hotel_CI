@@ -1,4 +1,7 @@
-"""Run all 7 source agents (including Agent 8 — Operations), then the orchestrator."""
+"""Run all 13 source agents, then the orchestrator.
+Run order note: agent_esg and agent_franchise must run BEFORE agent_operations
+because operations reads their property-level output JSON files.
+"""
 import sys
 import os
 import traceback
@@ -30,6 +33,11 @@ import agent_revenue
 import agent_owner
 import agent_talent
 import agent_regulatory
+import agent_ma
+import agent_brand
+import agent_loyalty
+import agent_esg        # must run before agent_operations
+import agent_franchise  # must run before agent_operations
 import agent_operations
 import agent_deal_score
 import agent_orchestrator
@@ -40,7 +48,10 @@ if __name__ == "__main__":
     print("=" * 60)
     failed = []
     for mod in (agent_entry, agent_competitive, agent_revenue,
-                agent_owner, agent_talent, agent_regulatory, agent_operations,
+                agent_owner, agent_talent, agent_regulatory,
+                agent_ma, agent_brand, agent_loyalty,
+                agent_esg, agent_franchise,   # ESG + Franchise before Operations
+                agent_operations,
                 agent_deal_score):
         name = mod.__name__
         try:
@@ -73,3 +84,5 @@ if __name__ == "__main__":
     if failed:
         print(f"WARNING: {len(failed)} agent(s) failed: {', '.join(failed)}")
     print("Done. Open dashboard/index.html or dashboard/board.html.")
+    print("  Agents: entry, competitive, revenue, owner, talent, regulatory,")
+    print("          ma, brand, loyalty, esg, franchise, operations, deal_score")

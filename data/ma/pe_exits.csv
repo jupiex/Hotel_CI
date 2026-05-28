@@ -1,0 +1,11 @@
+fund_name,portfolio_company,country,strategy,entry_year,planned_exit_year,exit_signal,hotels_in_portfolio,total_rooms,implied_value_eur_m,source,source_url
+Blackstone Real Estate,NH Hotel Group (partial),Spain+Germany+Italy,OpCo separation,2022,2026,Secondary to Core+ buyer rumoured,28,6420,980,Bloomberg M&A Monitor,https://example.com/bloomberg/blackstone-nh
+Cerberus Capital,Lindner Hotels AG,Germany,Operational turnaround,2021,2026,Sale mandate confirmed,9,2180,310,Mergermarket,https://example.com/mm/cerberus-lindner
+Apollo Global Management,Ruby Hotels & Serviced Apts,Germany+Austria+UK,Growth platform exit,2020,2026,IPO shelved — trade sale preferred,22,5050,720,Dealogic,https://example.com/dealogic/apollo-ruby
+Value-Add Partners III,Hotel Terminus Warsaw,Poland,Rebranding value-add,2019,2026,Asset sale to IHG discussed,1,312,41,Colliers Hospitality,https://example.com/colliers/terminus
+Starwood Capital,Louvre Hotels EMEA,France+Germany+BeNeLux,Scale hospitality,2021,2027,Recapitalisation in progress,35,8900,1250,Real Capital Analytics,https://example.com/rca/louvre
+Monarch Alternative Capital,Crown Plaza Paris,France,Single-asset distress,2023,2026,Formal sale process launched,1,405,85,CBRE Capital Markets,https://example.com/cbre/crowne
+Brookfield Asset Management,Village Hotels UK,United Kingdom,Repositioning,2020,2026,LOI signed with ADIA,16,4200,560,Bloomberg M&A Monitor,https://example.com/bloomberg/village
+KSL Capital Partners,Malmaison & Hotel du Vin,United Kingdom,Lifestyle brand platform,2022,2027,Strategic alternatives review,22,2900,420,Mergermarket,https://example.com/mm/ksl-malmaison
+Oaktree Capital Management,Crowne Plaza Brussels,Belgium,Distress acquisition,2023,2026,Asset sale expected Q3 2026,1,354,62,JLL Capital Markets,https://example.com/jll/oaktree
+Advent International,Czech&Slovak Hotel Portfolio,Czech Republic+Slovakia,Regional consolidation,2018,2026,Mandate given to CBRE,7,1540,195,CBRE Capital Markets,https://example.com/cbre/advent

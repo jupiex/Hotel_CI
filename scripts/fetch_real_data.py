@@ -244,18 +244,19 @@ def update_labour_regulation_csv(wage_changes: dict[str, float]):
     print(f"  [Wages] Updated {path}")
 
 
-# ---------- 3) Eurostat — natural gas prices for households (proxy for hotel energy) ----------
+# ---------- 3) Eurostat — electricity prices for households (proxy for hotel energy) ----------
 
 def fetch_energy_prices() -> dict[str, float]:
     """
-    Use Eurostat dataset nrg_pc_202 (natural gas prices, household consumers).
+    Use Eurostat dataset nrg_pc_204 (electricity prices, household consumers, all bands).
     QoQ change in latest two semesters.
+    nrg_pc_202 (natural gas) was removed from the API in 2025; nrg_pc_204 is the live equivalent.
     """
     countries = {"DE": "EU-DE", "PL": "EU-PL", "IT": "EU-IT", "ES": "EU-ES"}
     url = (
-        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_pc_202"
-        "?format=JSON&lang=en&product=4100&unit=KWH&consom=4141902&"
-        "tax=I_TAX&currency=EUR&lastTimePeriod=4"
+        "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_pc_204"
+        "?format=JSON&lang=en&unit=KWH&nrg_cons=TOT_KWH"
+        "&tax=I_TAX&currency=EUR&geo=DE&geo=PL&geo=IT&geo=ES&lastTimePeriod=4"
     )
 
     try:
@@ -301,11 +302,14 @@ def fetch_energy_prices() -> dict[str, float]:
     for code, market in countries.items():
         v_now = lookup(code, latest)
         v_then = lookup(code, prior)
-        if v_now is None or v_then is None or v_then == 0:
-            print(f"  [Energy] No data for {market}")
+        if v_now is None or v_then is None:
+            print(f"  [Energy] Incomplete data for {market} (missing period — skipping QoQ)")
+            continue
+        if v_then == 0:
+            print(f"  [Energy] Zero prior value for {market} — skipping")
             continue
         pct = (v_now - v_then) / v_then * 100.0
-        out[market] = (v_now * 1000.0, pct)  # convert EUR/kWh to EUR/MWh
+        out[market] = (v_now * 1000.0, pct)  # EUR/kWh → EUR/MWh
         print(f"  [Energy] {market}: {v_then*1000:.1f} -> {v_now*1000:.1f} EUR/MWh = {pct:+.2f}% QoQ")
 
     return out
@@ -322,8 +326,9 @@ def update_energy_costs_csv(energy: dict):
             price, pct = energy[r["market"]]
             r["price_per_unit"] = f"{price:.1f}"
             r["qoq_change_pct"] = f"{pct:.1f}"
+            r["energy_type"] = "electricity_eur_mwh"
             r["date"] = today
-            r["source_url"] = "https://ec.europa.eu/eurostat (nrg_pc_202)"
+            r["source_url"] = "https://ec.europa.eu/eurostat (nrg_pc_204)"
 
     fieldnames = list(rows[0].keys())
     with open(path, "w", encoding="utf-8", newline="") as f:

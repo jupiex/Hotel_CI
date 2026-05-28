@@ -1,0 +1,254 @@
+{
+  "agent": "franchise",
+  "generated_at": "2026-05-22T16:05:49.785759+00:00",
+  "overall_status": "RED",
+  "abp_assumptions": {
+    "A10": "Franchise partner portfolio health maintained — <5% of portfolio in material distress"
+  },
+  "hedging_actions": [
+    "Monthly AR review with Finance — any invoice >45 days triggers asset manager call",
+    "GM departure protocol: Regional Director on-site within 72 hours for HIGH-risk properties",
+    "Annual franchisee financial health review — credit watch list maintained"
+  ],
+  "indicators": [
+    {
+      "kit": "KIT_1",
+      "name": "Franchise revenue vs. budget",
+      "description": "Properties materially below RevPAR budget — franchise stability risk",
+      "value": 3,
+      "unit": "properties >15% below budget",
+      "threshold_yellow": 1,
+      "threshold_red": 3,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "PMS Revenue Extract",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "3/10 franchise properties >15% below RevPAR budget — performance intervention and contract review required.",
+      "abp_assumption_affected": "A10",
+      "detail": {
+        "properties_tracked": 10,
+        "red_gt15pct_below": 3,
+        "yellow_7_5_to_15pct_below": 3
+      },
+      "property_ids": [
+        "RAD005",
+        "RAD007",
+        "RAD010"
+      ]
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Worst revenue — RAD010",
+      "description": "Franchise property furthest below RevPAR budget",
+      "value": -27.0,
+      "unit": "% vs budget",
+      "threshold_yellow": -7.5,
+      "threshold_red": -15.0,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "PMS Revenue Extract",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Hotel Krakow (Poland): RevPAR EUR 64.2 vs budget EUR 88.0 — -27.0% gap.",
+      "abp_assumption_affected": "A10",
+      "property_id": "RAD010",
+      "country": "Poland"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Management team instability",
+      "description": "High-risk GM and key executive vacancies at franchise properties",
+      "value": 4,
+      "unit": "HIGH-risk vacancies",
+      "threshold_yellow": 1,
+      "threshold_red": 3,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Internal HR Records",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "4 HIGH-risk management vacancies — guest experience and franchise stability at risk; regional escalation.",
+      "abp_assumption_affected": "A10",
+      "detail": {
+        "total_changes_tracked": 8,
+        "high_risk": 4,
+        "medium_risk": 2
+      },
+      "property_ids": [
+        "RAD007",
+        "RAD010",
+        "RAD025",
+        "RAD022"
+      ]
+    },
+    {
+      "kit": "KIT_2",
+      "name": "HIGH vacancy — RAD007 General Manager",
+      "description": "High-risk management vacancy",
+      "value": 0,
+      "unit": "days vacant",
+      "threshold_yellow": 30,
+      "threshold_red": 60,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Internal HR Records",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Hotel Hamburg (Germany): General Manager Resignation — Second GM departure in 18 months — pattern of instability",
+      "abp_assumption_affected": "A10",
+      "property_id": "RAD007",
+      "country": "Germany"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "HIGH vacancy — RAD010 General Manager",
+      "description": "High-risk management vacancy",
+      "value": 0,
+      "unit": "days vacant",
+      "threshold_yellow": 30,
+      "threshold_red": 60,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Internal HR Records",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Hotel Krakow (Poland): General Manager Termination — Revenue performance below threshold triggered PIP then termination",
+      "abp_assumption_affected": "A10",
+      "property_id": "RAD010",
+      "country": "Poland"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "HIGH vacancy — RAD025 Director of Finance",
+      "description": "High-risk management vacancy",
+      "value": 0,
+      "unit": "days vacant",
+      "threshold_yellow": 30,
+      "threshold_red": 60,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Internal HR Records",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Blu Amsterdam Airport (Netherlands): Director of Finance Resignation — Key control — no replacement identified",
+      "abp_assumption_affected": "A10",
+      "property_id": "RAD025",
+      "country": "Netherlands"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "HIGH vacancy — RAD022 General Manager",
+      "description": "High-risk management vacancy",
+      "value": 0,
+      "unit": "days vacant",
+      "threshold_yellow": 30,
+      "threshold_red": 60,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Internal HR Records",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Radisson Blu Milan (Italy): General Manager Resignation — Resigned following labour audit critical finding — urgency to fill",
+      "abp_assumption_affected": "A10",
+      "property_id": "RAD022",
+      "country": "Italy"
+    },
+    {
+      "kit": "KIT_3",
+      "name": "Franchise fee payment status",
+      "description": "Overdue and disputed franchise fee invoices",
+      "value": 166.9,
+      "unit": "EUR k overdue",
+      "threshold_yellow": 50,
+      "threshold_red": 150,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Finance AR Ledger",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "EUR 167k overdue across 7 invoice(s); 2 >30 days — legal notice and withhold-services review.",
+      "abp_assumption_affected": "A10",
+      "detail": {
+        "invoices_tracked": 10,
+        "overdue_count": 7,
+        "disputed_count": 2,
+        "over_30_days": 2,
+        "total_overdue_eur_k": 166.9
+      },
+      "property_ids": [
+        "RAD005",
+        "RAD007",
+        "RAD010",
+        "RAD025",
+        "RAD015",
+        "RAD008"
+      ]
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Franchisee company financial distress",
+      "description": "Owner / franchisee company leverage, covenant and credit watch signals",
+      "value": 2,
+      "unit": "HIGH-severity distress signals",
+      "threshold_yellow": 1,
+      "threshold_red": 2,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "Creditreform / Bloomberg / Internal monitoring",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "2 franchisee companies in HIGH financial distress — strategic reserve and early-termination review required.",
+      "abp_assumption_affected": "A10",
+      "detail": {
+        "companies_monitored": 8,
+        "high_severity": 2,
+        "medium_severity": 2
+      },
+      "property_ids": [
+        "RAD007",
+        "RAD025"
+      ]
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Distress — Warburg-HIH Invest GmbH",
+      "description": "High-severity financial distress at franchise owner company",
+      "value": 82.1,
+      "unit": "LTV %",
+      "threshold_yellow": 65,
+      "threshold_red": 75,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "Creditreform Monitor",
+      "source_url": "https://example.com/creditreform/warburg-hih",
+      "capture_date": "2026-05-22",
+      "recommendation": "Warburg-HIH Invest GmbH (Germany): Loan covenant breach — German CRE lender reports Q1 covenant failures in hospitality book",
+      "abp_assumption_affected": "A10",
+      "country": "Germany",
+      "property_ids": [
+        "RAD007"
+      ]
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Distress — CBRE Global Investors NL",
+      "description": "High-severity financial distress at franchise owner company",
+      "value": 0.0,
+      "unit": "LTV %",
+      "threshold_yellow": 65,
+      "threshold_red": 75,
+      "alert_level": "RED",
+      "confidence": "MEDIUM",
+      "source": "Internal Legal",
+      "source_url": "https://example.com/internal/legal/rad025",
+      "capture_date": "2026-05-22",
+      "recommendation": "CBRE Global Investors NL (Netherlands): Management contract dispute — Formal legal notice served on Radisson re SLA breach — arbitration threatened",
+      "abp_assumption_affected": "A10",
+      "country": "Netherlands",
+      "property_ids": [
+        "RAD025"
+      ]
+    }
+  ]
+}

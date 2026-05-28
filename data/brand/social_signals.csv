@@ -1,0 +1,13 @@
+property_id,country,platform,metric,value_current,value_30d_ago,value_py,change_pct_30d,change_pct_yoy,capture_date
+RAD001,Germany,Instagram,follower_count,12400,12800,-3.1,18900,-34.4,2026-05-01
+RAD001,Germany,Instagram,engagement_rate_pct,1.2,1.8,-33.3,3.1,-61.3,2026-05-01
+RAD001,Germany,X (Twitter),brand_mentions_negative,38,22,72.7,12,216.7,2026-05-01
+RAD005,Germany,TikTok,negative_video_views,89000,12000,641.7,3000,2866.7,2026-05-01
+RAD005,Germany,Instagram,engagement_rate_pct,0.9,1.1,-18.2,2.4,-62.5,2026-05-01
+RAD012,United Kingdom,X (Twitter),brand_mentions_negative,52,29,79.3,18,188.9,2026-05-01
+RAD012,United Kingdom,Instagram,follower_count,8900,9100,-2.2,11200,-20.5,2026-05-01
+RAD013,United Kingdom,Instagram,engagement_rate_pct,3.2,2.9,10.3,2.6,23.1,2026-05-01
+RAD022,Italy,TikTok,negative_video_views,450000,0,999999.9,0,999999.9,2026-05-01
+RAD022,Italy,X (Twitter),brand_mentions_negative,112,8,1300.0,4,2700.0,2026-05-01
+RAD025,Netherlands,X (Twitter),brand_mentions_negative,44,28,57.1,14,214.3,2026-05-01
+RAD002,Poland,Instagram,follower_count,15600,15100,3.3,12800,21.9,2026-05-01

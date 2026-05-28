@@ -1,0 +1,114 @@
+{
+  "agent": "loyalty",
+  "generated_at": "2026-05-22T16:05:49.731467+00:00",
+  "overall_status": "RED",
+  "abp_assumptions": {
+    "A8": "Radisson Rewards retains competitive parity — no material member share loss to rival programmes"
+  },
+  "hedging_actions": [
+    "Maintain a 'competitor move' response fund (EUR 2m) for rapid counter-promotions",
+    "Quarterly loyalty benchmarking review with CMO and VP Loyalty",
+    "NPS recovery threshold: trigger programme audit if member NPS drops below 40"
+  ],
+  "indicators": [
+    {
+      "kit": "KIT_1",
+      "name": "Competitor loyalty rule changes",
+      "description": "Major rule changes by rival programmes (devaluations, tier shifts, new benefits)",
+      "value": 3,
+      "unit": "HIGH-impact changes",
+      "threshold_yellow": 1,
+      "threshold_red": 2,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Programme announcements / Points Guy",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "3 HIGH-impact competitor rule changes detected — Radisson Rewards response review required.",
+      "abp_assumption_affected": "A8",
+      "detail": {
+        "high_impact": 3,
+        "medium_impact": 4,
+        "total_changes": 8
+      }
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Competitor bonus promotions active",
+      "description": "Live competitor loyalty promotions competing for Radisson member stays",
+      "value": 7,
+      "unit": "active competitor promotions",
+      "threshold_yellow": 3,
+      "threshold_red": 5,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Competitor programme websites",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "7 competitor promotions active; 3 with ≥3x multiplier — counter-promotion or matched offer needed.",
+      "abp_assumption_affected": "A8",
+      "detail": {
+        "active_promotions": 7,
+        "triple_plus_multiplier": 3
+      }
+    },
+    {
+      "kit": "KIT_3",
+      "name": "Radisson Rewards programme health",
+      "description": "Key programme health metrics: enrolment, redemption, NPS, breakage",
+      "value": 1,
+      "unit": "metrics declining >20%",
+      "threshold_yellow": 1,
+      "threshold_red": 3,
+      "alert_level": "YELLOW",
+      "confidence": "HIGH",
+      "source": "Internal CRM / Actuarial",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "1 red + 3 yellow health metrics — programme health review needed.",
+      "abp_assumption_affected": "A8",
+      "detail": {
+        "metrics_tracked": 8,
+        "red_gt_20pct_decline": 1,
+        "yellow_10_20pct_decline": 3
+      }
+    },
+    {
+      "kit": "KIT_3",
+      "name": "Metric — tier_upgrade_rate (EMEA)",
+      "description": "Worst-performing Radisson Rewards programme health metric",
+      "value": -22.9,
+      "unit": "% change vs prior year",
+      "threshold_yellow": -10,
+      "threshold_red": -20,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "Internal CRM",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "tier_upgrade_rate (EMEA): 9.1 vs PY 11.8 — Slower than programme target",
+      "abp_assumption_affected": "A8"
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Member satisfaction gap vs. competitors",
+      "description": "Radisson Rewards satisfaction scores vs top competitor programmes",
+      "value": -12.6,
+      "unit": "avg points gap (Radisson vs rival)",
+      "threshold_yellow": -10,
+      "threshold_red": -15,
+      "alert_level": "RED",
+      "confidence": "HIGH",
+      "source": "J.D. Power EMEA Hotel Loyalty Survey",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "Avg gap -12.6 pts vs competitors; worst -21.8 pts — major competitiveness deficit; programme redesign needed.",
+      "abp_assumption_affected": "A8",
+      "detail": {
+        "avg_gap": -12.6,
+        "worst_gap": -21.8,
+        "metrics_with_gap_gt_15": 4
+      }
+    }
+  ]
+}

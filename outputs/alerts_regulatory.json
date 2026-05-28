@@ -1,6 +1,6 @@
 {
   "agent": "regulatory",
-  "generated_at": "2026-05-04T12:27:58.624963Z",
+  "generated_at": "2026-05-22T16:05:49.659211Z",
   "overall_status": "RED",
   "indicators": [
     {
@@ -15,7 +15,7 @@
       "confidence": "MEDIUM",
       "source": "EEX",
       "source_url": "https://ec.europa.eu/eurostat (nrg_pc_204)",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-08",
       "recommendation": "Stable."
     },
     {
@@ -45,7 +45,7 @@
       "confidence": "MEDIUM",
       "source": "EEX",
       "source_url": "https://ec.europa.eu/eurostat (nrg_pc_204)",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-08",
       "recommendation": "Stable."
     },
     {
@@ -60,7 +60,7 @@
       "confidence": "MEDIUM",
       "source": "EEX",
       "source_url": "https://ec.europa.eu/eurostat (nrg_pc_204)",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-08",
       "recommendation": "Stable."
     },
     {
@@ -73,7 +73,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-08",
       "recommendation": "Wage +8.4%. Re-baseline labour cost in P&L; review service-model design."
     },
     {
@@ -86,7 +86,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-08",
       "recommendation": "Modest wage pressure. Monitor."
     },
     {
@@ -99,7 +99,7 @@
       "confidence": "MEDIUM",
       "source": "Eurostat / national",
       "source_url": "https://ec.europa.eu/eurostat (earn_mw_cur)",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-08",
       "recommendation": "Within trend."
     },
     {

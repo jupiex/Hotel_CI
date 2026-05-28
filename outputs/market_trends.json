@@ -1,57 +1,44 @@
 {
-  "generated_at": "2026-05-04T12:28:18.208666+00:00",
-  "run_count": 3,
+  "generated_at": "2026-05-22T16:05:51.656893+00:00",
+  "run_count": 6,
   "markets": {
-    "Krakow": {
-      "current_status": "YELLOW",
-      "prev_status": "YELLOW",
-      "streak": 3,
+    "Riyadh": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 6,
       "direction": "stable",
       "history": [
-        "YELLOW",
-        "YELLOW",
-        "YELLOW"
+        "RED",
+        "RED",
+        "RED",
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Ho Chi Minh City": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 6,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED",
+        "RED",
+        "RED",
+        "RED"
       ]
     },
     "Germany": {
       "current_status": "RED",
       "prev_status": "RED",
-      "streak": 3,
+      "streak": 6,
       "direction": "stable",
       "history": [
         "RED",
         "RED",
-        "RED"
-      ]
-    },
-    "Italy": {
-      "current_status": "RED",
-      "prev_status": "RED",
-      "streak": 3,
-      "direction": "stable",
-      "history": [
         "RED",
-        "RED",
-        "RED"
-      ]
-    },
-    "Riyadh": {
-      "current_status": "RED",
-      "prev_status": "RED",
-      "streak": 3,
-      "direction": "stable",
-      "history": [
-        "RED",
-        "RED",
-        "RED"
-      ]
-    },
-    "Casablanca": {
-      "current_status": "RED",
-      "prev_status": "RED",
-      "streak": 3,
-      "direction": "stable",
-      "history": [
         "RED",
         "RED",
         "RED"
@@ -60,31 +47,40 @@
     "Spain": {
       "current_status": "GREEN",
       "prev_status": "GREEN",
-      "streak": 3,
+      "streak": 6,
       "direction": "stable",
       "history": [
+        "GREEN",
+        "GREEN",
+        "GREEN",
         "GREEN",
         "GREEN",
         "GREEN"
       ]
     },
-    "Warsaw": {
-      "current_status": "GREEN",
-      "prev_status": "GREEN",
-      "streak": 3,
-      "direction": "stable",
-      "history": [
-        "GREEN",
-        "GREEN",
-        "GREEN"
-      ]
-    },
-    "Ho Chi Minh City": {
+    "Casablanca": {
       "current_status": "RED",
       "prev_status": "RED",
-      "streak": 3,
+      "streak": 6,
       "direction": "stable",
       "history": [
+        "RED",
+        "RED",
+        "RED",
+        "RED",
+        "RED",
+        "RED"
+      ]
+    },
+    "Italy": {
+      "current_status": "RED",
+      "prev_status": "RED",
+      "streak": 6,
+      "direction": "stable",
+      "history": [
+        "RED",
+        "RED",
+        "RED",
         "RED",
         "RED",
         "RED"
@@ -93,12 +89,43 @@
     "Poland": {
       "current_status": "YELLOW",
       "prev_status": "YELLOW",
-      "streak": 3,
+      "streak": 6,
       "direction": "stable",
       "history": [
         "YELLOW",
         "YELLOW",
+        "YELLOW",
+        "YELLOW",
+        "YELLOW",
         "YELLOW"
+      ]
+    },
+    "Krakow": {
+      "current_status": "YELLOW",
+      "prev_status": "YELLOW",
+      "streak": 6,
+      "direction": "stable",
+      "history": [
+        "YELLOW",
+        "YELLOW",
+        "YELLOW",
+        "YELLOW",
+        "YELLOW",
+        "YELLOW"
+      ]
+    },
+    "Warsaw": {
+      "current_status": "GREEN",
+      "prev_status": "GREEN",
+      "streak": 6,
+      "direction": "stable",
+      "history": [
+        "GREEN",
+        "GREEN",
+        "GREEN",
+        "GREEN",
+        "GREEN",
+        "GREEN"
       ]
     }
   }

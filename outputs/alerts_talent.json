@@ -1,6 +1,6 @@
 {
   "agent": "talent",
-  "generated_at": "2026-05-04T12:27:58.567772Z",
+  "generated_at": "2026-05-22T16:05:49.644031Z",
   "overall_status": "RED",
   "indicators": [
     {
@@ -12,7 +12,7 @@
       "confidence": "MEDIUM",
       "source": "LinkedIn profile changes",
       "source_url": "https://www.linkedin.com",
-      "capture_date": "2026-05-04",
+      "capture_date": "2026-05-22",
       "recommendation": "Cluster of GM departures. HR briefing required; check exit-interview themes."
     },
     {

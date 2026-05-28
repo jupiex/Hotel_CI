@@ -1,0 +1,114 @@
+{
+  "agent": "ma",
+  "generated_at": "2026-05-22T16:05:49.677100+00:00",
+  "overall_status": "GREEN",
+  "abp_assumptions": {
+    "A6": "M&A pipeline provides ≥2 actionable acquisition targets per quarter"
+  },
+  "hedging_actions": [
+    "Maintain pre-approved term sheet templates for distressed acquisitions",
+    "Establish standing NDA with top-3 EMEA hotel transaction advisors",
+    "Brief investment committee monthly on active pipeline"
+  ],
+  "indicators": [
+    {
+      "kit": "KIT_1",
+      "name": "Distressed asset pipeline",
+      "description": "Count and discount depth of distressed hotel assets available for acquisition",
+      "value": 8,
+      "unit": "assets",
+      "threshold_yellow": 3,
+      "threshold_red": 1,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "CoStar / CBRE Distressed Monitor",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "8 distressed assets in pipeline; 4 at ≥25% discount — strong acquisition opportunity.",
+      "abp_assumption_affected": "A6",
+      "detail": {
+        "total_assets": 8,
+        "deep_discount_25pct_plus": 4,
+        "moderate_discount": 4
+      }
+    },
+    {
+      "kit": "KIT_1",
+      "name": "Best distressed acquisition — discount",
+      "description": "Single highest-discount distressed hotel asset currently in market",
+      "value": 35.0,
+      "unit": "% discount to book",
+      "threshold_yellow": 20,
+      "threshold_red": 10,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "CBRE Capital Markets Alert",
+      "source_url": "https://example.com/cbre/citygate",
+      "capture_date": "2026-05-22",
+      "recommendation": "Top target: Citygate Hotel Frankfurt in Frankfurt, Germany — Insolvency.",
+      "abp_assumption_affected": "A6",
+      "market": "Frankfurt",
+      "country": "Germany"
+    },
+    {
+      "kit": "KIT_2",
+      "name": "Fund portfolio exit signals",
+      "description": "Active fund mandates and portfolio sales expected to reach market",
+      "value": 6,
+      "unit": "active signals",
+      "threshold_yellow": 3,
+      "threshold_red": 1,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "Preqin / JLL Capital Markets",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "6 active fund exit signals detected — strong pipeline of portfolio opportunities.",
+      "abp_assumption_affected": "A6",
+      "detail": {
+        "portfolio_sale_signals": 1
+      }
+    },
+    {
+      "kit": "KIT_3",
+      "name": "PE fund exit readiness",
+      "description": "Private equity funds approaching end of hold period with hotel portfolios",
+      "value": 10,
+      "unit": "imminent exits",
+      "threshold_yellow": 3,
+      "threshold_red": 1,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "Mergermarket / Dealogic",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "10 PE exits imminent (≤2027); total implied value EUR 4623m — exceptional deal flow.",
+      "abp_assumption_affected": "A6",
+      "detail": {
+        "total_pe_exits_tracked": 10,
+        "imminent_exits": 10,
+        "total_implied_value_eur_m": 4623.0
+      }
+    },
+    {
+      "kit": "KIT_4",
+      "name": "Competitor disposal signals",
+      "description": "Hotels being disposed of by competitors creating management contract opportunities",
+      "value": 5,
+      "unit": "active disposals",
+      "threshold_yellow": 2,
+      "threshold_red": 1,
+      "alert_level": "GREEN",
+      "confidence": "MEDIUM",
+      "source": "Hospitality Investor / RCA",
+      "source_url": "",
+      "capture_date": "2026-05-22",
+      "recommendation": "5 competitor disposals active; 1332 total rooms — proactively approach sellers.",
+      "abp_assumption_affected": "A6",
+      "detail": {
+        "franchise_terminations": 1,
+        "total_rooms_available": 1332
+      }
+    }
+  ]
+}

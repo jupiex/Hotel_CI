@@ -1,0 +1,17 @@
+property_id,country,theme,sentiment,mention_count_30d,mention_count_py_30d,change_pct,sample_verbatim,capture_date
+RAD001,Germany,Room cleanliness,Negative,48,22,118.2,Rooms not properly cleaned between stays — found previous guest items,2026-05-01
+RAD001,Germany,Check-in speed,Negative,31,18,72.2,Queue at reception for 40 minutes — totally unacceptable,2026-05-01
+RAD001,Germany,Staff friendliness,Positive,62,58,6.9,Front desk team very welcoming and helpful,2026-05-01
+RAD005,Germany,F&B quality,Negative,55,27,103.7,Breakfast quality has dropped noticeably — cold eggs and limited choice,2026-05-01
+RAD005,Germany,Wifi speed,Negative,41,19,115.8,Internet unusable for business work — constant dropouts,2026-05-01
+RAD005,Germany,Location,Positive,89,91,-2.2,Ideal for airport connections — very convenient,2026-05-01
+RAD012,United Kingdom,Noise levels,Negative,37,21,76.2,Rooms overlooking busy road — very noisy at night,2026-05-01
+RAD012,United Kingdom,Bed comfort,Negative,29,14,107.1,Mattress was old and uncomfortable — poor sleep,2026-05-01
+RAD012,United Kingdom,Value for money,Negative,52,28,85.7,Price-quality ratio disappointing vs nearby competitors,2026-05-01
+RAD025,Netherlands,Shuttle service,Negative,71,33,115.2,Shuttle to terminal cancelled without notice — missed flight,2026-05-01
+RAD025,Netherlands,Room size,Negative,44,20,120.0,Rooms tiny for the price — barely space for luggage,2026-05-01
+RAD025,Netherlands,Restaurant,Positive,38,35,8.6,On-site restaurant surprisingly good — recommend the salmon,2026-05-01
+RAD013,United Kingdom,Service quality,Positive,55,48,14.6,Staff went above and beyond for our anniversary stay,2026-05-01
+RAD019,Spain,Pool area,Positive,68,61,11.5,Pool area well maintained and spacious — highlight of stay,2026-05-01
+RAD022,Italy,Air conditioning,Negative,47,23,104.3,AC unit broken — maintenance team slow to respond,2026-05-01
+RAD002,Poland,Overall experience,Positive,74,65,13.8,Outstanding property — best hotel in Warsaw city centre,2026-05-01
